@@ -128,3 +128,56 @@ section {
   background: var(--badge-neutral-bg);
   color: var(--badge-neutral-text);
 }
+
+.nav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border-color);
+  padding: var(--nav-padding-y) var(--nav-padding-x);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  color: var(--nav-brand-color);
+  font-weight: var(--heading-font-weight);
+  font-size: var(--heading-font-size);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-padding-y);
+}
+
+.page-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.page-sidebar {
+  background: var(--layout-sidebar-bg);
+  border-right: 1px solid var(--layout-sidebar-border-color);
+  padding: var(--nav-padding-x);
+  width: 200px;
+  flex-shrink: 0;
+}
+
+.page-content {
+  background: var(--layout-bg);
+  padding: var(--nav-padding-x);
+  flex: 1;
+}
+
+.sidebar-link {
+  display: block;
+  color: var(--layout-sidebar-text);
+  padding: var(--nav-padding-y) 0;
+  text-decoration: none;
+}
+
+.sidebar-link.active,
+.sidebar-link--active {
+  color: var(--layout-sidebar-active-text);
+  font-weight: var(--heading-font-weight);
+}

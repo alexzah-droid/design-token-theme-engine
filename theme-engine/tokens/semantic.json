@@ -74,5 +74,20 @@
     "errorText": "{color.onError}",
     "neutralBg": "{color.surface}",
     "neutralText": "{color.textSecondary}"
+  },
+  "nav": {
+    "bg": "{color.surface}",
+    "text": "{color.textPrimary}",
+    "brandColor": "{color.primary}",
+    "borderColor": "{color.border}",
+    "paddingY": "{spacing.sm}",
+    "paddingX": "{spacing.md}"
+  },
+  "layout": {
+    "bg": "{color.background}",
+    "sidebarBg": "{color.surface}",
+    "sidebarBorderColor": "{color.border}",
+    "sidebarText": "{color.textPrimary}",
+    "sidebarActiveText": "{color.primary}"
   }
 }

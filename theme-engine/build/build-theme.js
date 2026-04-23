@@ -1,0 +1,136 @@
+const fs = require("fs");
+const path = require("path");
+
+const ROOT_DIR = path.resolve(__dirname, "..");
+const TOKENS_DIR = path.join(ROOT_DIR, "tokens");
+const THEMES_DIR = path.join(ROOT_DIR, "themes");
+const DIST_DIR = path.join(ROOT_DIR, "dist");
+
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function isObject(value) {
+  return value !== null && typeof value === "object" && !Array.isArray(value);
+}
+
+function deepMerge(base, override) {
+  const result = { ...base };
+
+  for (const key of Object.keys(override)) {
+    const baseValue = base[key];
+    const overrideValue = override[key];
+
+    if (isObject(baseValue) && isObject(overrideValue)) {
+      result[key] = deepMerge(baseValue, overrideValue);
+    } else {
+      result[key] = overrideValue;
+    }
+  }
+
+  return result;
+}
+
+function getValueByPath(source, tokenPath) {
+  return tokenPath.split(".").reduce((current, part) => {
+    if (current == null) {
+      return undefined;
+    }
+
+    return current[part];
+  }, source);
+}
+
+function resolveToken(value, sourceTokens) {
+  if (typeof value !== "string") {
+    return value;
+  }
+
+  const match = value.match(/^\{(.+)\}$/);
+
+  if (!match) {
+    return value;
+  }
+
+  return getValueByPath(sourceTokens, match[1]);
+}
+
+function resolveObjectTokens(tokens, sourceTokens) {
+  const result = {};
+
+  for (const [key, value] of Object.entries(tokens)) {
+    if (isObject(value)) {
+      result[key] = resolveObjectTokens(value, sourceTokens);
+    } else {
+      result[key] = resolveToken(value, sourceTokens);
+    }
+  }
+
+  return result;
+}
+
+function toKebabCase(value) {
+  return value.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+function flattenTokens(tokens, parentPath = []) {
+  const variables = [];
+
+  for (const [key, value] of Object.entries(tokens)) {
+    const nextPath = [...parentPath, toKebabCase(key)];
+
+    if (isObject(value)) {
+      variables.push(...flattenTokens(value, nextPath));
+    } else {
+      variables.push({
+        name: `--${nextPath.join("-")}`,
+        value
+      });
+    }
+  }
+
+  return variables;
+}
+
+function buildTheme(themeName, mode) {
+  const baseTokens = readJson(path.join(TOKENS_DIR, "base.json"));
+  const semanticTokens = readJson(path.join(TOKENS_DIR, "semantic.json"));
+  const themeTokens = readJson(path.join(THEMES_DIR, `${themeName}.json`));
+
+  let mergedBaseTokens = deepMerge(baseTokens, themeTokens);
+
+  if (mode === "dark") {
+    const darkTokens = readJson(path.join(THEMES_DIR, `${themeName}.dark.json`));
+    mergedBaseTokens = deepMerge(mergedBaseTokens, darkTokens);
+  }
+
+  const resolvedSemanticTokens = resolveObjectTokens(semanticTokens, mergedBaseTokens);
+
+  const cssVariables = [
+    ...flattenTokens(mergedBaseTokens),
+    ...flattenTokens(resolvedSemanticTokens)
+  ];
+
+  const selector = mode === "dark"
+    ? `[data-theme="${themeName}"][data-mode="dark"]`
+    : `[data-theme="${themeName}"]`;
+
+  const outputFile = mode === "dark" ? `${themeName}.dark.css` : `${themeName}.css`;
+
+  const cssContent = [
+    `${selector} {`,
+    ...cssVariables.map(({ name, value }) => `  ${name}: ${value};`),
+    "}",
+    ""
+  ].join("\n");
+
+  fs.mkdirSync(DIST_DIR, { recursive: true });
+  fs.writeFileSync(path.join(DIST_DIR, outputFile), cssContent, "utf8");
+}
+
+buildTheme("corporate");
+buildTheme("minimal");
+buildTheme("apple");
+
+const darkFiles = fs.readdirSync(THEMES_DIR).filter(f => f.endsWith(".dark.json"));
+darkFiles.forEach(file => buildTheme(file.replace(".dark.json", ""), "dark"));

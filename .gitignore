@@ -39,6 +39,7 @@ venv/
 dist/
 dist-release/
 build/
+!theme-engine/build/
 *.egg-info/
 
 # Test artifacts
