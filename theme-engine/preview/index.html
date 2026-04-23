@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice Manager</title>
+
+  <link rel="stylesheet" href="../dist/corporate.css">
+  <link rel="stylesheet" href="../dist/minimal.css">
+  <link rel="stylesheet" href="../dist/apple.css">
+  <link rel="stylesheet" href="../dist/apple.dark.css">
+  <link rel="stylesheet" href="../dist/corporate.dark.css">
+  <link rel="stylesheet" href="../styles/components.css">
+
+  <style>
+    body {
+      font-family: var(--typography-font-family);
+      padding: 32px 24px;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .mode-note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-left: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- APP HEADER -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+      <span class="heading">Invoice Manager</span>
+
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label class="label">Theme:</label>
+          <select class="select" onchange="setTheme(this.value)">
+            <option value="corporate">Corporate</option>
+            <option value="minimal">Minimal</option>
+            <option value="apple">Apple</option>
+          </select>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <label class="label">Mode:</label>
+          <select class="select" onchange="setMode(this.value)" id="modeSelect">
+            <option value="">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+          <span class="mode-note" id="modeNote"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTERS BAR -->
+    <div style="display: flex; gap: 16px; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label class="label">Status:</label>
+        <select class="select">
+          <option value="all">All</option>
+          <option value="paid">Paid</option>
+          <option value="pending">Pending</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label class="label">Search:</label>
+        <input class="input" placeholder="Invoice # or client" style="width: 220px;" />
+      </div>
+
+      <button class="button">Apply filters</button>
+    </div>
+
+    <!-- INVOICES TABLE -->
+    <table class="table" style="width: 100%; margin-bottom: 24px;">
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="text">INV-1042</span></td>
+          <td><span class="text">Acme Corp</span></td>
+          <td><span class="text">$4,200.00</span></td>
+          <td><span class="text-secondary">2026-04-01</span></td>
+          <td><span class="badge badge-success">Paid</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1043</span></td>
+          <td><span class="text">TechFlow Ltd</span></td>
+          <td><span class="text">$1,850.00</span></td>
+          <td><span class="text-secondary">2026-04-05</span></td>
+          <td><span class="badge badge-warning">Pending</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1044</span></td>
+          <td><span class="text">Globex Inc</span></td>
+          <td><span class="text">$9,600.00</span></td>
+          <td><span class="text-secondary">2026-03-28</span></td>
+          <td><span class="badge badge-error">Overdue</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1045</span></td>
+          <td><span class="text">Initech</span></td>
+          <td><span class="text">$730.00</span></td>
+          <td><span class="text-secondary">2026-04-10</span></td>
+          <td><span class="badge badge-success">Paid</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1046</span></td>
+          <td><span class="text">Umbrella Co</span></td>
+          <td><span class="text">$2,150.00</span></td>
+          <td><span class="text-secondary">2026-04-12</span></td>
+          <td><span class="badge badge-warning">Pending</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1047</span></td>
+          <td><span class="text">Stark Industries</span></td>
+          <td><span class="text">$18,400.00</span></td>
+          <td><span class="text-secondary">2026-04-15</span></td>
+          <td><span class="badge badge-neutral">Draft</span></td>
+          <td><button class="button">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SUMMARY FOOTER -->
+    <div class="card">
+      <div style="display: flex; gap: 48px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span class="text-secondary">Total Invoices</span>
+          <span class="heading">6</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span class="text-secondary">Total Amount</span>
+          <span class="heading">$36,930.00</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <span class="text-secondary">Overdue</span>
+          <span class="heading">1</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const themesWithDark = ["apple", "corporate"];
+
+    function setTheme(name) {
+      document.documentElement.setAttribute("data-theme", name);
+      updateModeNote(name);
+    }
+
+    function setMode(mode) {
+      if (mode === "dark") {
+        document.documentElement.setAttribute("data-mode", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-mode");
+      }
+      const theme = document.documentElement.getAttribute("data-theme");
+      updateModeNote(theme);
+    }
+
+    function updateModeNote(theme) {
+      const mode = document.documentElement.getAttribute("data-mode");
+      const note = document.getElementById("modeNote");
+      if (mode === "dark" && !themesWithDark.includes(theme)) {
+        note.textContent = "(dark not supported for this theme)";
+      } else {
+        note.textContent = "";
+      }
+    }
+  </script>
+
+</body>
+</html>

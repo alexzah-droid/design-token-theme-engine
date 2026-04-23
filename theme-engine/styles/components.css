@@ -1,0 +1,130 @@
+body {
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+section {
+  margin-bottom: var(--page-section-gap);
+}
+
+.button {
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--button-radius);
+  border: none;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  font-weight: var(--button-font-weight);
+}
+
+.button:hover {
+  background: var(--button-hover-bg);
+}
+
+.button:disabled {
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-text);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
+}
+
+.input {
+  background: var(--input-bg);
+  color: var(--input-text);
+  padding: var(--input-padding);
+  border-radius: var(--input-radius);
+  border: 1px solid var(--input-border);
+  box-shadow: var(--input-shadow);
+}
+
+.text {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.heading {
+  color: var(--heading-color);
+  font-size: var(--heading-font-size);
+  font-weight: var(--heading-font-weight);
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.label {
+  display: inline-block;
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+}
+
+.select {
+  background: var(--select-bg);
+  color: var(--select-text);
+  padding: var(--select-padding);
+  border-radius: var(--select-radius);
+  border: 1px solid var(--select-border);
+  box-shadow: var(--select-shadow);
+  width: 100%;
+  cursor: pointer;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th {
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  padding: var(--table-cell-padding);
+  border: 1px solid var(--table-border-color);
+  text-align: left;
+}
+
+.table td {
+  padding: var(--table-cell-padding);
+  border: 1px solid var(--table-border-color);
+}
+
+.table tr:hover td {
+  background: var(--table-row-hover-bg);
+}
+
+.badge {
+  display: inline-block;
+  border-radius: var(--badge-radius);
+  padding: var(--badge-padding-y) var(--badge-padding-x);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-font-weight);
+}
+
+.badge-success {
+  background: var(--badge-success-bg);
+  color: var(--badge-success-text);
+}
+
+.badge-warning {
+  background: var(--badge-warning-bg);
+  color: var(--badge-warning-text);
+}
+
+.badge-error {
+  background: var(--badge-error-bg);
+  color: var(--badge-error-text);
+}
+
+.badge-neutral {
+  background: var(--badge-neutral-bg);
+  color: var(--badge-neutral-text);
+}

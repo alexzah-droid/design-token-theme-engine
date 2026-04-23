@@ -1,0 +1,78 @@
+{
+  "page": {
+    "bg": "{color.background}",
+    "sectionGap": "{spacing.lg}"
+  },
+  "button": {
+    "bg": "{color.primary}",
+    "text": "{color.onPrimary}",
+    "hoverBg": "{color.primaryHover}",
+    "disabledBg": "{color.surface}",
+    "disabledText": "{color.textSecondary}",
+    "radius": "{radius.md}",
+    "paddingY": "{spacing.sm}",
+    "paddingX": "{spacing.md}",
+    "fontWeight": "{typography.buttonFontWeight}",
+    "shadow": "{shadow.sm}"
+  },
+  "card": {
+    "bg": "{color.surface}",
+    "padding": "{spacing.md}",
+    "radius": "{radius.lg}",
+    "borderColor": "{color.border}",
+    "shadow": "{shadow.md}"
+  },
+  "text": {
+    "primary": "{color.textPrimary}",
+    "secondary": "{color.textSecondary}"
+  },
+  "heading": {
+    "color": "{color.textPrimary}",
+    "fontSize": "{typography.headingFontSize}",
+    "fontWeight": "{typography.headingFontWeight}",
+    "letterSpacing": "{typography.headingLetterSpacing}"
+  },
+  "input": {
+    "bg": "{color.background}",
+    "text": "{color.textPrimary}",
+    "border": "{color.border}",
+    "radius": "{radius.sm}",
+    "padding": "{spacing.sm}",
+    "shadow": "{shadow.sm}"
+  },
+  "label": {
+    "color": "{color.textPrimary}",
+    "fontSize": "{typography.fontSizeBase}",
+    "fontWeight": "{typography.labelFontWeight}"
+  },
+  "select": {
+    "bg": "{color.background}",
+    "text": "{color.textPrimary}",
+    "border": "{color.border}",
+    "radius": "{radius.sm}",
+    "padding": "{spacing.sm}",
+    "shadow": "{shadow.sm}"
+  },
+  "table": {
+    "headerBg": "{color.surface}",
+    "headerText": "{color.textPrimary}",
+    "borderColor": "{color.border}",
+    "cellPadding": "{spacing.sm}",
+    "rowHoverBg": "{color.surface}"
+  },
+  "badge": {
+    "radius": "{radius.sm}",
+    "paddingY": "{spacing.xs}",
+    "paddingX": "{spacing.sm}",
+    "fontSize": "{typography.fontSizeSmall}",
+    "fontWeight": "{typography.labelFontWeight}",
+    "successBg": "{color.success}",
+    "successText": "{color.onSuccess}",
+    "warningBg": "{color.warning}",
+    "warningText": "{color.onWarning}",
+    "errorBg": "{color.error}",
+    "errorText": "{color.onError}",
+    "neutralBg": "{color.surface}",
+    "neutralText": "{color.textSecondary}"
+  }
+}

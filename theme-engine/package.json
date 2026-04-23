@@ -1,0 +1,9 @@
+{
+  "name": "theme-engine",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node build/build-theme.js",
+    "validate": "node build/validate.js"
+  }
+}

@@ -1,0 +1,120 @@
+/* ============================================================
+   ZTZ · Themes (light / dark)
+   Переключение: <html data-theme="light|dark">
+   Режим auto определяется в ui.js через prefers-color-scheme.
+   ============================================================ */
+
+/* ========== LIGHT (default) ========== */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg:               #F6F2EA;          /* paper */
+  --surface-1:        #FFFFFF;
+  --surface-2:        #FBF8F1;
+  --surface-3:        #EDE6D7;
+  --surface-inverse:  #17311F;
+
+  /* Ink */
+  --ink:              #1B1C19;
+  --ink-80:           rgba(27,28,25,.80);
+  --ink-60:           rgba(27,28,25,.60);
+  --ink-40:           rgba(27,28,25,.40);
+  --ink-on-inverse:   #EFE9D9;
+
+  /* Borders */
+  --line:             rgba(27,28,25,.12);
+  --line-strong:      rgba(27,28,25,.22);
+  --line-on-dark:     rgba(255,255,255,.14);
+
+  /* Brand mapped */
+  --primary:          var(--ztz-green-800);
+  --primary-hover:    var(--ztz-green-700);
+  --on-primary:       #EFE9D9;
+  --accent:           var(--ztz-gold-500);
+  --accent-hover:     var(--ztz-gold-600);
+  --accent-soft:      rgba(176,138,62,.14);
+
+  /* Semantics */
+  --ok: var(--ztz-ok);     --ok-soft:  rgba(46,107,62,.12);
+  --warn: var(--ztz-warn); --warn-soft:rgba(158,122,28,.14);
+  --danger: var(--ztz-danger); --danger-soft:rgba(140,46,46,.12);
+  --info: var(--ztz-info); --info-soft:rgba(43,79,116,.12);
+
+  /* Chart palette */
+  --chart-1: #1F3D2E;   /* green */
+  --chart-2: #B08A3E;   /* brass */
+  --chart-3: #2B4F74;   /* info  */
+  --chart-4: #8C2E2E;   /* danger */
+  --chart-5: #7BA78A;   /* g-300 */
+  --chart-6: #9E7A1C;   /* warn  */
+  --chart-grid: rgba(27,28,25,.08);
+  --chart-axis: rgba(27,28,25,.55);
+  --chart-heat: 31,61,46;           /* r,g,b for rgba() */
+
+  /* Shadows */
+  --sh-1: 0 1px 2px rgba(16,35,26,.06), 0 1px 1px rgba(16,35,26,.04);
+  --sh-2: 0 6px 18px rgba(16,35,26,.10), 0 2px 6px rgba(16,35,26,.06);
+  --sh-3: 0 24px 60px rgba(16,35,26,.18);
+  --sh-pop: 0 12px 32px rgba(16,35,26,.18), 0 2px 8px rgba(16,35,26,.08);
+}
+
+/* ========== DARK ========== */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg:               #0E1A13;
+  --surface-1:        #152921;
+  --surface-2:        #1B3327;
+  --surface-3:        #23402F;
+  --surface-inverse:  #EDE6D7;
+
+  --ink:              #EFE9D9;
+  --ink-80:           rgba(239,233,217,.80);
+  --ink-60:           rgba(239,233,217,.60);
+  --ink-40:           rgba(239,233,217,.40);
+  --ink-on-inverse:   #17311F;
+
+  --line:             rgba(239,233,217,.12);
+  --line-strong:      rgba(239,233,217,.22);
+  --line-on-dark:     rgba(239,233,217,.14);
+
+  --primary:          var(--ztz-gold-500);
+  --primary-hover:    var(--ztz-gold-400);
+  --on-primary:       #10231A;
+  --accent:           var(--ztz-gold-400);
+  --accent-hover:     var(--ztz-gold-300);
+  --accent-soft:      rgba(226,192,121,.18);
+
+  --ok:     #5FB37A;     --ok-soft:    rgba(95,179,122,.18);
+  --warn:   #D8AE4D;     --warn-soft:  rgba(216,174,77,.18);
+  --danger: #D87373;     --danger-soft:rgba(216,115,115,.18);
+  --info:   #79A7D0;     --info-soft:  rgba(121,167,208,.18);
+
+  --chart-1: #E2C079;
+  --chart-2: #7BA78A;
+  --chart-3: #79A7D0;
+  --chart-4: #D87373;
+  --chart-5: #C9A35A;
+  --chart-6: #D8AE4D;
+  --chart-grid: rgba(239,233,217,.08);
+  --chart-axis: rgba(239,233,217,.55);
+  --chart-heat: 226,192,121;
+
+  --sh-1: 0 1px 2px rgba(0,0,0,.35);
+  --sh-2: 0 6px 18px rgba(0,0,0,.45), 0 2px 6px rgba(0,0,0,.25);
+  --sh-3: 0 24px 60px rgba(0,0,0,.55);
+  --sh-pop: 0 12px 32px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.35);
+}
+
+/* Прямое наследование (если auto) */
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] { color-scheme: dark; }
+}
+
+/* Плавный переход темы */
+html {
+  transition: background-color var(--dur-3) var(--ease-out),
+              color var(--dur-3) var(--ease-out);
+}

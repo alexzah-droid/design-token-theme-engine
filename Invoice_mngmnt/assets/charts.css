@@ -1,0 +1,149 @@
+/* ============================================================
+   ZTZ · Charts · Gantt · Heatmap
+   ============================================================ */
+
+.chart-card{padding:20px}
+.chart-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart .grid line{stroke:var(--chart-grid);stroke-width:1;stroke-dasharray:2 3}
+.chart .axis text{fill:var(--chart-axis);font-family:var(--ff-mono);font-size:11px}
+.chart .pts circle{fill:var(--chart-1);stroke:var(--surface-1);stroke-width:1.5}
+
+.chart-donut .donut-v{font-family:var(--ff-display);font-weight:600;font-size:18px;fill:var(--ink)}
+.chart-donut .donut-k{font-family:var(--ff-sans);font-size:8px;fill:var(--ink-60);letter-spacing:.18em;text-transform:uppercase}
+
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--ink-80)}
+.legend.legend-col{flex-direction:column;gap:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:-1px}
+.legend b{font-family:var(--ff-mono);color:var(--ink);margin-left:8px}
+
+/* Heatmap */
+.heat{display:grid;gap:3px;margin-top:8px}
+.heat-row{display:grid;grid-template-columns:32px repeat(14,1fr);gap:3px;align-items:center}
+.heat-lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-60);font-family:var(--ff-mono)}
+.heat-row i{
+  display:block;height:22px;border-radius:2px;
+  background:rgba(var(--chart-heat), var(--v, 0));
+  transition:transform var(--dur-1) var(--ease-out);
+}
+.heat-row i:hover{transform:scale(1.1)}
+.heat-scale{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:var(--ink-60);font-family:var(--ff-mono)}
+.heat-scale-bar{flex:1;height:6px;border-radius:2px;background:linear-gradient(90deg, rgba(var(--chart-heat),.05), rgba(var(--chart-heat),1))}
+
+/* ============================================================
+   GANTT
+   --s: start offset in weeks (0..16)
+   --d: duration in weeks
+   16 week columns, each 1/16 = 6.25% wide
+   ============================================================ */
+.gantt{
+  --col-w: calc(100% / 16);
+  --task-w: 280px;
+  font-size:13px;color:var(--ink);
+  background:var(--surface-1);
+}
+.gantt-head{
+  display:grid;grid-template-columns:var(--task-w) 1fr;
+  border-bottom:1px solid var(--line);background:var(--surface-2);
+  position:sticky;top:0;z-index:2;
+}
+.gantt-tasks-h{padding:14px 18px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink-60);border-right:1px solid var(--line)}
+.gantt-scale{display:flex;flex-direction:column}
+.gantt-months{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.gantt-months div{padding:8px 10px;font-family:var(--ff-display);font-weight:600;font-size:14px;color:var(--ink);border-left:1px solid var(--line)}
+.gantt-months div:first-child{border-left:none}
+.gantt-weeks{display:grid;grid-template-columns:repeat(16,1fr)}
+.gantt-weeks div{padding:6px 4px;font-family:var(--ff-mono);font-size:10px;color:var(--ink-60);text-align:center;border-left:1px solid var(--line)}
+.gantt-weeks div:first-child{border-left:none}
+
+.gantt-body{position:relative}
+
+.gantt-grid{
+  position:absolute;inset:0 0 0 var(--task-w);
+  display:grid;grid-template-columns:repeat(16,1fr);
+  pointer-events:none;z-index:0;
+}
+.gantt-grid span{border-left:1px solid var(--line);opacity:.6}
+.gantt-grid span:first-child{border-left:none}
+
+.gantt-row{
+  display:grid;grid-template-columns:var(--task-w) 1fr;
+  border-bottom:1px solid var(--line);min-height:52px;
+  position:relative;
+}
+.gantt-row:hover{background:var(--surface-2)}
+
+.gantt-task{
+  padding:10px 18px;border-right:1px solid var(--line);
+  background:var(--surface-1);z-index:1;
+  display:flex;flex-direction:column;justify-content:center;gap:2px;
+}
+.gantt-row:hover .gantt-task{background:var(--surface-2)}
+.gantt-task-name{font-weight:700;font-size:13px;color:var(--ink)}
+.gantt-task-who{font-size:11px;color:var(--ink-60);letter-spacing:.1em;text-transform:uppercase;font-family:var(--ff-mono)}
+
+.gantt-track{position:relative;height:100%}
+
+.gantt-bar{
+  position:absolute;top:50%;transform:translateY(-50%);
+  left:calc(var(--col-w) * var(--s));
+  width:calc(var(--col-w) * var(--d));
+  height:22px;border-radius:var(--r-1);
+  display:flex;align-items:center;padding:0 10px;
+  font-size:11px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;
+  transition:filter var(--dur-2) var(--ease-out), transform var(--dur-2) var(--ease-out);
+  cursor:pointer;
+}
+.gantt-bar:hover{filter:brightness(1.08);transform:translateY(-50%) scale(1.01)}
+.gantt-bar span{position:relative;z-index:2;text-overflow:ellipsis;overflow:hidden}
+
+.gantt-bar.done{background:var(--ok-soft);color:var(--ok);border:1px solid var(--ok)}
+.gantt-bar.active{background:var(--accent-soft);color:var(--ink);border:1px solid var(--accent)}
+.gantt-bar.active .gantt-fill{
+  position:absolute;left:0;top:0;bottom:0;
+  background:var(--accent);opacity:.55;border-radius:var(--r-1);z-index:1;
+}
+.gantt-bar.plan{
+  background:repeating-linear-gradient(45deg, var(--surface-3) 0 6px, transparent 6px 12px);
+  border:1px dashed var(--line-strong);color:var(--ink-80);
+}
+.gantt-bar.risk{border-color:var(--danger);color:var(--danger)}
+.gantt-bar.risk::before{content:"";position:absolute;inset:0;background:var(--danger-soft);opacity:.5;z-index:0}
+
+.gantt-milestone{
+  position:absolute;top:50%;
+  left:calc(var(--col-w) * var(--s));
+  width:14px;height:14px;transform:translate(-50%,-50%) rotate(45deg);
+  background:var(--primary);border:1.5px solid var(--surface-1);z-index:3;
+}
+.gantt-milestone.gold{background:var(--accent)}
+
+.gantt-today{
+  position:absolute;top:0;bottom:0;
+  left:calc(var(--task-w) + (100% - var(--task-w)) * var(--s) / 16);
+  width:2px;background:var(--danger);z-index:2;pointer-events:none;
+}
+.gantt-today::before{
+  content:"СЕГОДНЯ";position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+  background:var(--danger);color:#fff;font-size:9px;letter-spacing:.18em;
+  padding:2px 6px;border-radius:2px;font-family:var(--ff-sans);font-weight:700;
+}
+
+.gantt-legend{
+  display:flex;flex-wrap:wrap;gap:20px;padding:14px 18px;
+  border-top:1px solid var(--line);background:var(--surface-2);
+  font-size:12px;color:var(--ink-80);
+}
+.gantt-legend .l{display:inline-block;width:18px;height:10px;margin-right:8px;vertical-align:-1px;border-radius:2px}
+.gantt-legend .l.done{background:var(--ok-soft);border:1px solid var(--ok)}
+.gantt-legend .l.active{background:var(--accent);border:1px solid var(--accent)}
+.gantt-legend .l.plan{background:repeating-linear-gradient(45deg, var(--surface-3) 0 3px, transparent 3px 6px);border:1px dashed var(--line-strong)}
+.gantt-legend .l.risk{background:var(--danger-soft);border:1px solid var(--danger)}
+.gantt-legend .l.ms{width:10px;height:10px;background:var(--primary);transform:rotate(45deg);margin-right:12px}
+.gantt-legend .l.today{width:2px;height:14px;background:var(--danger);vertical-align:-2px;margin:0 12px 0 2px}
+
+@media (max-width: 900px){
+  .gantt{overflow-x:auto}
+  .gantt-head, .gantt-row{min-width:900px}
+  .gantt-body{min-width:900px}
+}

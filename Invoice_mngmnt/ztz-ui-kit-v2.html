@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ЗТЗ · UI Kit и Frontend Guide v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400..700;1,400..600&family=PT+Sans:wght@400;700&family=PT+Serif:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<link rel="stylesheet" href="assets/themes.css">
+<link rel="stylesheet" href="assets/components.css">
+<link rel="stylesheet" href="assets/charts.css">
+<link rel="stylesheet" href="assets/page.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <div class="brand-mark">ЗТЗ</div>
+      <div>
+        <div class="brand-name">Design&nbsp;System</div>
+        <div class="brand-sub">Завод&nbsp;Турбинных&nbsp;Запчастей · v&nbsp;2.0</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#foundations">Основы</a>
+      <a href="#components">Компоненты</a>
+      <a href="#dashboard">Дашборд</a>
+      <a href="#gantt">Гант</a>
+      <a href="#guide">Гайдлайн</a>
+    </nav>
+    <div class="theme-toggle" role="radiogroup" aria-label="Тема">
+      <button data-theme-set="light" role="radio" aria-checked="true" title="Светлая">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+      </button>
+      <button data-theme-set="dark" role="radio" aria-checked="false" title="Тёмная">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button data-theme-set="auto" role="radio" aria-checked="false" title="Системная">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 20h8M12 17v3"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-decor">Q</div>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">UI&nbsp;KIT · FRONTEND GUIDE · v&nbsp;2</span>
+      <h1>Качество,&nbsp;надёжность&nbsp;и&nbsp;<em>инженерная&nbsp;точность</em>&nbsp;в&nbsp;интерфейсе.</h1>
+      <p>Визуальный язык ЗТЗ: сдержанный, промышленный, с акцентами латуни и глубокой зелени. Две темы, дашборд, диаграмма Ганта и всё необходимое для продакшена.</p>
+    </div>
+    <div class="hero-meta">
+      <div><div class="k">Версия</div><div class="v">2.0 · 22.04.26</div></div>
+      <div><div class="k">Тем</div><div class="v">Light · Dark · Auto</div></div>
+      <div><div class="k">Экспорт</div><div class="v">assets/ · README.md</div></div>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <!-- ================================================================== -->
+  <section id="foundations" class="section">
+    <div class="section-head">
+      <span class="num">01</span>
+      <h2>Основы</h2>
+      <span class="hint">Палитра · Типографика · Сетка</span>
+    </div>
+
+    <h3 class="t-h3" style="margin-bottom:16px">Основные цвета бренда</h3>
+    <div class="row grid-4">
+      <div class="swatch"><div class="chip" style="background:var(--ztz-green-800)"></div>
+        <div class="meta"><div class="name">Green Deep</div><div class="hex">#17311F</div><div class="role">Primary · фон</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-green-700)"></div>
+        <div class="meta"><div class="name">Green Forest</div><div class="hex">#1F3D2E</div><div class="role">Primary surface</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-gold-500)"></div>
+        <div class="meta"><div class="name">Brass</div><div class="hex">#B08A3E</div><div class="role">Accent</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-paper)"></div>
+        <div class="meta"><div class="name">Paper</div><div class="hex">#F6F2EA</div><div class="role">Background</div></div></div>
+    </div>
+
+    <h3 class="t-h3" style="margin:32px 0 16px">Семантические цвета</h3>
+    <div class="row grid-4">
+      <div class="swatch"><div class="chip" style="background:var(--ztz-ok)"></div><div class="meta"><div class="name">Success</div><div class="hex">#2E6B3E</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-warn)"></div><div class="meta"><div class="name">Warning</div><div class="hex">#9E7A1C</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-danger)"></div><div class="meta"><div class="name">Danger</div><div class="hex">#8C2E2E</div></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ztz-info)"></div><div class="meta"><div class="name">Info</div><div class="hex">#2B4F74</div></div></div>
+    </div>
+
+    <h3 class="t-h3" style="margin:32px 0 16px">Типографическая шкала</h3>
+    <div class="card">
+      <div class="type-stack">
+        <div class="type-sample"><div class="meta"><b>Display</b>Cormorant · 600 · 52</div><p class="t-display">Наша продукция</p></div>
+        <div class="type-sample"><div class="meta"><b>Italic</b>Cormorant · 500i · 44</div><p class="t-display-italic">инженерная точность</p></div>
+        <div class="type-sample"><div class="meta"><b>H1</b>Cormorant · 600 · 36</div><p class="t-h1">Производственные процессы</p></div>
+        <div class="type-sample"><div class="meta"><b>Label</b>PT Sans · 700 · 14 upper</div><p class="t-h3">ПРИГЛАШАЕМ ВАС НА ПРАЗДНОВАНИЕ</p></div>
+        <div class="type-sample"><div class="meta"><b>Body</b>PT Sans · 400 · 16</div><p class="t-body">Обладая глубокими знаниями и опытом, компания производит запасные части для паровых и газовых турбин.</p></div>
+        <div class="type-sample"><div class="meta"><b>Mono</b>JetBrains · 400 · 13</div><p class="t-mono">ART-4812-G-RZ-04 · GOST 24642-81</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section id="components" class="section">
+    <div class="section-head">
+      <span class="num">02</span>
+      <h2>Компоненты</h2>
+      <span class="hint">Интерактивные элементы</span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="card" style="margin-bottom:32px">
+      <p class="card-title">Кнопки</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:20px">
+        <button class="btn btn-primary">Оставить заявку <span class="arrow"></span></button>
+        <button class="btn btn-gold">Скачать каталог</button>
+        <button class="btn btn-outline">Подробнее</button>
+        <button class="btn btn-ghost">Отменить</button>
+        <button class="btn btn-primary" disabled>Отправлено</button>
+      </div>
+    </div>
+
+    <!-- Forms + custom select -->
+    <div class="card" style="margin-bottom:32px">
+      <p class="card-title">Поля ввода и выпадающий список</p>
+      <div class="row grid-2">
+        <div class="field">
+          <label>Название компании</label>
+          <input class="input" value="ООО Энергетика">
+        </div>
+
+        <!-- Custom animated dropdown -->
+        <div class="field">
+          <label>Отрасль (кастомный select)</label>
+          <div class="dropdown" data-dropdown>
+            <button type="button" class="dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+              <span class="dropdown-value">Энергетика</span>
+              <svg class="dropdown-caret" viewBox="0 0 12 8" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M1 1.5l5 5 5-5"/></svg>
+            </button>
+            <ul class="dropdown-list" role="listbox">
+              <li role="option" aria-selected="true" data-value="Энергетика">
+                <span class="dot" style="background:var(--ztz-green-700)"></span>Энергетика
+              </li>
+              <li role="option" data-value="Нефтегаз">
+                <span class="dot" style="background:var(--ztz-gold-500)"></span>Нефтегаз
+              </li>
+              <li role="option" data-value="Судостроение">
+                <span class="dot" style="background:var(--ztz-info)"></span>Судостроение
+              </li>
+              <li role="option" data-value="Химия и металлургия">
+                <span class="dot" style="background:var(--ztz-danger)"></span>Химия и металлургия
+              </li>
+              <li role="option" data-value="Авиация">
+                <span class="dot" style="background:var(--ztz-warn)"></span>Авиация
+              </li>
+            </ul>
+          </div>
+          <span class="hint">Раскрывается плавно · клавиатура: ↑ ↓ Enter Esc</span>
+        </div>
+
+        <div class="field" style="grid-column:span 2">
+          <label>Комментарий к заявке</label>
+          <textarea class="textarea" placeholder="Опишите задачу — тип турбины, режим, срок поставки…"></textarea>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:20px">
+        <label class="check"><input type="checkbox" checked><span class="box"></span><span>Согласен с политикой обработки данных</span></label>
+        <label class="radio"><input type="radio" name="r" checked><span class="box"></span><span>Производитель</span></label>
+        <label class="radio"><input type="radio" name="r"><span class="box"></span><span>Дистрибьютор</span></label>
+        <label class="switch"><input type="checkbox" checked><span class="track"></span><span>Показывать цены с НДС</span></label>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="card" style="margin-bottom:32px">
+      <p class="card-title">Бейджи</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+        <span class="badge">В наличии</span>
+        <span class="badge badge-gold">Премиум</span>
+        <span class="badge badge-ok">Сертифицировано</span>
+        <span class="badge badge-warn">Под заказ</span>
+        <span class="badge badge-danger">Снято с производства</span>
+        <span class="badge badge-info">GOST 24642-81</span>
+        <span class="badge badge-outline">Энергетика</span>
+      </div>
+    </div>
+
+    <!-- Tabs + smooth accordion -->
+    <div class="row grid-2" style="margin-bottom:32px">
+      <div class="card">
+        <p class="card-title">Табы</p>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true">Описание</button>
+          <button class="tab" role="tab" aria-selected="false">Характеристики</button>
+          <button class="tab" role="tab" aria-selected="false">Документация</button>
+        </div>
+        <p class="t-body" style="margin-top:16px;color:var(--ink-60)">Высокотехнологичные детали для обеспечения бесперебойного и эффективного функционирования энергетического оборудования.</p>
+      </div>
+      <div>
+        <p class="card-title" style="margin-bottom:12px">Аккордеон · плавное раскрытие</p>
+        <div class="acc">
+          <div class="acc-item" data-acc open>
+            <button class="acc-head" aria-expanded="true">Каковы сроки поставки? <span class="plus"></span></button>
+            <div class="acc-body"><div class="acc-inner">Типовой срок — от 30 до 90 рабочих дней. Для срочных заказов предусмотрен режим экспресс-поставки.</div></div>
+          </div>
+          <div class="acc-item" data-acc>
+            <button class="acc-head" aria-expanded="false">Работаете ли вы с зарубежными клиентами? <span class="plus"></span></button>
+            <div class="acc-body"><div class="acc-inner">Да, у нас отдельный контракт-менеджмент для партнёров из СНГ и дальнего зарубежья.</div></div>
+          </div>
+          <div class="acc-item" data-acc>
+            <button class="acc-head" aria-expanded="false">Какие сертификаты вы предоставляете? <span class="plus"></span></button>
+            <div class="acc-body"><div class="acc-inner">Паспорт изделия, сертификат соответствия ГОСТ, акты заводских испытаний и протоколы независимой экспертизы.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div style="margin-bottom:32px">
+      <p class="card-title" style="margin-bottom:14px">Уведомления</p>
+      <div class="row" style="gap:12px">
+        <div class="alert is-ok"><div class="ico">✓</div><div><h4>Заявка отправлена</h4><p>Менеджер свяжется с вами в течение рабочего дня.</p></div><button class="x">×</button></div>
+        <div class="alert is-warn"><div class="ico">!</div><div><h4>Проверьте реквизиты</h4><p>ИНН должен содержать 10 или 12 цифр.</p></div><button class="x">×</button></div>
+        <div class="alert is-danger"><div class="ico">×</div><div><h4>Ошибка отправки</h4><p>Сервис временно недоступен, попробуйте повторить.</p></div><button class="x">×</button></div>
+        <div class="alert is-info"><div class="ico">i</div><div><h4>Плановые работы 28.04</h4><p>С 02:00 до 04:00 возможны перерывы в работе ЛК.</p></div><button class="x">×</button></div>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div style="margin-bottom:32px">
+      <p class="card-title" style="margin-bottom:14px">Прогресс-бары</p>
+      <div class="row grid-2">
+        <div class="card">
+          <p class="t-h3" style="margin-bottom:12px">Линейные</p>
+          <div class="pb"><div class="pb-label"><span>Производство лопаток</span><span>62%</span></div><div class="progress"><span style="width:62%"></span></div></div>
+          <div class="pb"><div class="pb-label"><span>Термообработка</span><span>34%</span></div><div class="progress progress-gold"><span style="width:34%"></span></div></div>
+          <div class="pb"><div class="pb-label"><span>ОТК</span><span>88%</span></div><div class="progress progress-ok"><span style="width:88%"></span></div></div>
+          <div class="pb"><div class="pb-label"><span>Отгрузка · риск задержки</span><span>12%</span></div><div class="progress progress-danger"><span style="width:12%"></span></div></div>
+          <div class="pb"><div class="pb-label"><span>Идёт балансировка…</span><span>—</span></div><div class="progress progress-indet"><span></span></div></div>
+        </div>
+        <div class="card">
+          <p class="t-h3" style="margin-bottom:12px">Круговые и сегментные</p>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+            <div class="circ" style="--p:72"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18"/></svg><div class="circ-v">72%</div></div>
+            <div class="circ" style="--p:41;--col:var(--ztz-gold-500)"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18"/></svg><div class="circ-v">41%</div></div>
+            <div class="circ" style="--p:96;--col:var(--ztz-ok)"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fg" cx="22" cy="22" r="18"/></svg><div class="circ-v">96%</div></div>
+          </div>
+          <div class="segmented" aria-label="Этапы сборки" style="margin-top:20px">
+            <span class="seg done"></span><span class="seg done"></span><span class="seg done"></span>
+            <span class="seg active"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
+          </div>
+          <p class="t-small" style="margin-top:10px">Сборка · этап 4 из 7</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table · поиск, сортировка, фильтры -->
+    <div style="margin-bottom:32px">
+      <p class="card-title" style="margin-bottom:14px">Таблица · поиск, сортировка, фильтры</p>
+      <div class="card" style="padding:0;overflow:hidden" data-table>
+
+        <div class="tbl-toolbar">
+          <div class="tbl-toolbar-top">
+            <label class="tbl-search">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              <input type="search" placeholder="поиск по артикулу, наименованию…" data-tbl-search>
+            </label>
+          </div>
+          <span class="tbl-count" data-tbl-count>— / —</span>
+
+          <div class="tbl-filters">
+            <div class="tbl-filter-group">
+              <span class="tbl-filter-group-label">Отрасль</span>
+              <button class="chip active" data-filter-col="2" data-filter-val="">все</button>
+              <button class="chip" data-filter-col="2" data-filter-val="Энергетика">Энергетика</button>
+              <button class="chip" data-filter-col="2" data-filter-val="Нефтегаз">Нефтегаз</button>
+              <button class="chip" data-filter-col="2" data-filter-val="Судостроение">Судостроение</button>
+              <button class="chip" data-filter-col="2" data-filter-val="Химия">Химия</button>
+            </div>
+            <div class="tbl-filter-group">
+              <span class="tbl-filter-group-label">Статус</span>
+              <button class="chip active" data-filter-col="3" data-filter-val="">все</button>
+              <button class="chip" data-filter-col="3" data-filter-val="В наличии">В наличии</button>
+              <button class="chip" data-filter-col="3" data-filter-val="Под заказ">Под заказ</button>
+              <button class="chip" data-filter-col="3" data-filter-val="GOST">GOST</button>
+            </div>
+          </div>
+        </div>
+
+        <table class="tbl tbl-sortable">
+          <thead>
+            <tr>
+              <th data-sort="text">Артикул<span class="sort-ico"></span></th>
+              <th data-sort="text">Наименование<span class="sort-ico"></span></th>
+              <th data-sort="text">Отрасль<span class="sort-ico"></span></th>
+              <th data-sort="text">Статус<span class="sort-ico"></span></th>
+              <th class="num" data-sort="num">Цена, ₽<span class="sort-ico"></span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="mono">К-235-НТ-04</td><td>Рабочее колесо 4-й ступени</td><td>Энергетика</td><td data-v="В наличии"><span class="badge badge-ok">В наличии</span></td><td class="num" data-v="1240000">1 240 000</td></tr>
+            <tr><td class="mono">К-300-ВТ-12</td><td>Сопловой аппарат 12-й ступени</td><td>Нефтегаз</td><td data-v="Под заказ"><span class="badge badge-warn">Под заказ</span></td><td class="num" data-v="2880500">2 880 500</td></tr>
+            <tr><td class="mono">Р-50-СТ-09</td><td>Диафрагма 9-й ступени</td><td>Судостроение</td><td data-v="GOST"><span class="badge badge-info">GOST</span></td><td class="num" data-v="560000">560 000</td></tr>
+            <tr><td class="mono">Т-110-РЗ-02</td><td>Лопатка рабочая 2-й ступени</td><td>Химия</td><td data-v="В наличии"><span class="badge">В наличии</span></td><td class="num" data-v="184200">184 200</td></tr>
+            <tr><td class="mono">К-235-НТ-07</td><td>Рабочее колесо 7-й ступени</td><td>Энергетика</td><td data-v="В наличии"><span class="badge badge-ok">В наличии</span></td><td class="num" data-v="1480000">1 480 000</td></tr>
+            <tr><td class="mono">Г-150-СА-03</td><td>Сопловой аппарат ГТУ</td><td>Нефтегаз</td><td data-v="Под заказ"><span class="badge badge-warn">Под заказ</span></td><td class="num" data-v="3150000">3 150 000</td></tr>
+            <tr><td class="mono">С-80-ДФ-01</td><td>Диафрагма судовой турбины</td><td>Судостроение</td><td data-v="GOST"><span class="badge badge-info">GOST</span></td><td class="num" data-v="720000">720 000</td></tr>
+          </tbody>
+        </table>
+
+        <div class="tbl-empty" data-tbl-empty hidden>По вашему запросу ничего не найдено</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section id="dashboard" class="section">
+    <div class="section-head">
+      <span class="num">03</span>
+      <h2>Дашборд · графики</h2>
+      <span class="hint">SVG · тематизируются через токены</span>
+    </div>
+
+    <!-- KPI strip -->
+    <div class="row grid-4" style="margin-bottom:24px">
+      <div class="kpi">
+        <div class="kpi-k">Заказы · апрель</div>
+        <div class="kpi-v">184</div>
+        <div class="kpi-d up">▲ +12.4% м/м</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline points="0,22 10,20 20,18 30,19 40,14 50,15 60,10 70,12 80,7 90,8 100,4" fill="none" stroke="var(--chart-1)" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="kpi">
+        <div class="kpi-k">Выполнение плана</div>
+        <div class="kpi-v">87%</div>
+        <div class="kpi-d up">▲ +3.1 пп</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline points="0,18 10,20 20,16 30,15 40,17 50,13 60,14 70,10 80,11 90,8 100,9" fill="none" stroke="var(--chart-2)" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="kpi">
+        <div class="kpi-k">Возвраты / брак</div>
+        <div class="kpi-v">0.42%</div>
+        <div class="kpi-d down">▼ −0.08 пп</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline points="0,8 10,10 20,9 30,12 40,11 50,14 60,12 70,16 80,18 90,20 100,22" fill="none" stroke="var(--chart-3)" stroke-width="1.6"/>
+        </svg>
+      </div>
+      <div class="kpi">
+        <div class="kpi-k">Средний срок поставки</div>
+        <div class="kpi-v">42 дн</div>
+        <div class="kpi-d flat">◆ без изм.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none">
+          <polyline points="0,15 10,14 20,16 30,13 40,15 50,14 60,16 70,15 80,14 90,15 100,14" fill="none" stroke="var(--chart-4)" stroke-width="1.6"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Area + Bars -->
+    <div class="row grid-2" style="margin-bottom:24px">
+      <div class="card chart-card">
+        <div class="chart-head"><p class="card-title" style="margin:0">Выручка · 12 месяцев</p><span class="t-mono">млн ₽</span></div>
+        <!-- Area chart -->
+        <svg class="chart" viewBox="0 0 600 240" preserveAspectRatio="none" aria-label="Area chart">
+          <defs>
+            <linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="var(--chart-1)" stop-opacity=".35"/>
+              <stop offset="100%" stop-color="var(--chart-1)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- grid -->
+          <g class="grid">
+            <line x1="40" x2="590" y1="40"  y2="40"/>
+            <line x1="40" x2="590" y1="90"  y2="90"/>
+            <line x1="40" x2="590" y1="140" y2="140"/>
+            <line x1="40" x2="590" y1="190" y2="190"/>
+          </g>
+          <!-- y labels -->
+          <g class="axis">
+            <text x="34" y="44" text-anchor="end">120</text>
+            <text x="34" y="94" text-anchor="end">90</text>
+            <text x="34" y="144" text-anchor="end">60</text>
+            <text x="34" y="194" text-anchor="end">30</text>
+          </g>
+          <!-- area -->
+          <path d="M40,170 L90,155 L140,160 L190,130 L240,120 L290,100 L340,110 L390,80 L440,90 L490,60 L540,70 L590,50 L590,210 L40,210 Z" fill="url(#areaGrad)"/>
+          <polyline points="40,170 90,155 140,160 190,130 240,120 290,100 340,110 390,80 440,90 490,60 540,70 590,50" fill="none" stroke="var(--chart-1)" stroke-width="2"/>
+          <!-- points -->
+          <g class="pts">
+            <circle cx="40" cy="170" r="3"/><circle cx="90" cy="155" r="3"/><circle cx="140" cy="160" r="3"/><circle cx="190" cy="130" r="3"/>
+            <circle cx="240" cy="120" r="3"/><circle cx="290" cy="100" r="3"/><circle cx="340" cy="110" r="3"/><circle cx="390" cy="80" r="3"/>
+            <circle cx="440" cy="90" r="3"/><circle cx="490" cy="60" r="3"/><circle cx="540" cy="70" r="3"/><circle cx="590" cy="50" r="3"/>
+          </g>
+          <!-- x labels -->
+          <g class="axis">
+            <text x="40"  y="225">Май</text><text x="140" y="225">Июл</text>
+            <text x="240" y="225">Сен</text><text x="340" y="225">Ноя</text>
+            <text x="440" y="225">Янв</text><text x="540" y="225">Мар</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="card chart-card">
+        <div class="chart-head"><p class="card-title" style="margin:0">Заказы по отраслям</p><span class="t-mono">ед.</span></div>
+        <!-- Stacked bars -->
+        <svg class="chart" viewBox="0 0 600 240" preserveAspectRatio="none">
+          <g class="grid">
+            <line x1="40" x2="590" y1="40" y2="40"/><line x1="40" x2="590" y1="90" y2="90"/>
+            <line x1="40" x2="590" y1="140" y2="140"/><line x1="40" x2="590" y1="190" y2="190"/>
+          </g>
+          <g class="axis">
+            <text x="34" y="44" text-anchor="end">80</text><text x="34" y="94" text-anchor="end">60</text>
+            <text x="34" y="144" text-anchor="end">40</text><text x="34" y="194" text-anchor="end">20</text>
+          </g>
+          <!-- Bars: 6 groups -->
+          <g>
+            <!-- each group: energy(chart1) + oilgas(chart2) + ships(chart3) -->
+            <g transform="translate(70,0)">
+              <rect x="0" y="140" width="22" height="70" fill="var(--chart-1)"/>
+              <rect x="0" y="110" width="22" height="30" fill="var(--chart-2)"/>
+              <rect x="0" y="90"  width="22" height="20" fill="var(--chart-3)"/>
+            </g>
+            <g transform="translate(160,0)">
+              <rect x="0" y="120" width="22" height="90" fill="var(--chart-1)"/>
+              <rect x="0" y="80"  width="22" height="40" fill="var(--chart-2)"/>
+              <rect x="0" y="55"  width="22" height="25" fill="var(--chart-3)"/>
+            </g>
+            <g transform="translate(250,0)">
+              <rect x="0" y="150" width="22" height="60" fill="var(--chart-1)"/>
+              <rect x="0" y="115" width="22" height="35" fill="var(--chart-2)"/>
+              <rect x="0" y="95"  width="22" height="20" fill="var(--chart-3)"/>
+            </g>
+            <g transform="translate(340,0)">
+              <rect x="0" y="100" width="22" height="110" fill="var(--chart-1)"/>
+              <rect x="0" y="65"  width="22" height="35"  fill="var(--chart-2)"/>
+              <rect x="0" y="45"  width="22" height="20"  fill="var(--chart-3)"/>
+            </g>
+            <g transform="translate(430,0)">
+              <rect x="0" y="115" width="22" height="95" fill="var(--chart-1)"/>
+              <rect x="0" y="80"  width="22" height="35" fill="var(--chart-2)"/>
+              <rect x="0" y="60"  width="22" height="20" fill="var(--chart-3)"/>
+            </g>
+            <g transform="translate(520,0)">
+              <rect x="0" y="85"  width="22" height="125" fill="var(--chart-1)"/>
+              <rect x="0" y="55"  width="22" height="30"  fill="var(--chart-2)"/>
+              <rect x="0" y="35"  width="22" height="20"  fill="var(--chart-3)"/>
+            </g>
+          </g>
+          <g class="axis">
+            <text x="81"  y="225" text-anchor="middle">Ноя</text>
+            <text x="171" y="225" text-anchor="middle">Дек</text>
+            <text x="261" y="225" text-anchor="middle">Янв</text>
+            <text x="351" y="225" text-anchor="middle">Фев</text>
+            <text x="441" y="225" text-anchor="middle">Мар</text>
+            <text x="531" y="225" text-anchor="middle">Апр</text>
+          </g>
+        </svg>
+        <div class="legend">
+          <span><i style="background:var(--chart-1)"></i>Энергетика</span>
+          <span><i style="background:var(--chart-2)"></i>Нефтегаз</span>
+          <span><i style="background:var(--chart-3)"></i>Судостроение</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donut + Multi-line -->
+    <div class="row grid-2" style="margin-bottom:24px">
+      <div class="card chart-card">
+        <div class="chart-head"><p class="card-title" style="margin:0">Структура заказов</p><span class="t-mono">%</span></div>
+        <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap">
+          <!-- Donut -->
+          <svg class="chart-donut" viewBox="0 0 120 120" width="220" height="220" aria-label="Donut chart">
+            <!-- circumference = 2π·45 ≈ 282.74 -->
+            <g transform="rotate(-90 60 60)">
+              <circle cx="60" cy="60" r="45" fill="none" stroke="var(--surface-3)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="var(--chart-1)" stroke-width="18" stroke-dasharray="113 283" stroke-dashoffset="0"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="var(--chart-2)" stroke-width="18" stroke-dasharray="73 283" stroke-dashoffset="-113"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="var(--chart-3)" stroke-width="18" stroke-dasharray="51 283" stroke-dashoffset="-186"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="var(--chart-4)" stroke-width="18" stroke-dasharray="46 283" stroke-dashoffset="-237"/>
+            </g>
+            <text x="60" y="58" text-anchor="middle" class="donut-v">184</text>
+            <text x="60" y="74" text-anchor="middle" class="donut-k">заказов</text>
+          </svg>
+          <div class="legend legend-col">
+            <span><i style="background:var(--chart-1)"></i>Энергетика <b>40%</b></span>
+            <span><i style="background:var(--chart-2)"></i>Нефтегаз <b>26%</b></span>
+            <span><i style="background:var(--chart-3)"></i>Судостроение <b>18%</b></span>
+            <span><i style="background:var(--chart-4)"></i>Прочее <b>16%</b></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card chart-card">
+        <div class="chart-head"><p class="card-title" style="margin:0">План vs Факт · производство</p><span class="t-mono">ед./мес.</span></div>
+        <svg class="chart" viewBox="0 0 600 240" preserveAspectRatio="none">
+          <g class="grid">
+            <line x1="40" x2="590" y1="40" y2="40"/><line x1="40" x2="590" y1="90" y2="90"/>
+            <line x1="40" x2="590" y1="140" y2="140"/><line x1="40" x2="590" y1="190" y2="190"/>
+          </g>
+          <g class="axis">
+            <text x="34" y="44" text-anchor="end">200</text><text x="34" y="94" text-anchor="end">150</text>
+            <text x="34" y="144" text-anchor="end">100</text><text x="34" y="194" text-anchor="end">50</text>
+          </g>
+          <!-- Plan (dashed) -->
+          <polyline points="60,150 150,140 240,130 330,120 420,110 510,100 590,95" fill="none" stroke="var(--chart-4)" stroke-width="1.8" stroke-dasharray="5 4"/>
+          <!-- Fact -->
+          <polyline points="60,160 150,120 240,135 330,95 420,115 510,75 590,80" fill="none" stroke="var(--chart-1)" stroke-width="2.2"/>
+          <g class="pts">
+            <circle cx="60" cy="160" r="3.2"/><circle cx="150" cy="120" r="3.2"/><circle cx="240" cy="135" r="3.2"/>
+            <circle cx="330" cy="95" r="3.2"/><circle cx="420" cy="115" r="3.2"/><circle cx="510" cy="75" r="3.2"/><circle cx="590" cy="80" r="3.2"/>
+          </g>
+          <g class="axis">
+            <text x="60"  y="225" text-anchor="middle">Окт</text><text x="150" y="225" text-anchor="middle">Ноя</text>
+            <text x="240" y="225" text-anchor="middle">Дек</text><text x="330" y="225" text-anchor="middle">Янв</text>
+            <text x="420" y="225" text-anchor="middle">Фев</text><text x="510" y="225" text-anchor="middle">Мар</text>
+          </g>
+        </svg>
+        <div class="legend"><span><i style="background:var(--chart-1)"></i>Факт</span><span><i style="background:var(--chart-4);border:1px dashed var(--chart-4)"></i>План</span></div>
+      </div>
+    </div>
+
+    <!-- Heatmap -->
+    <div class="card chart-card">
+      <div class="chart-head"><p class="card-title" style="margin:0">Загрузка цехов · календарная карта</p><span class="t-mono">% мощности</span></div>
+      <div class="heat">
+        <div class="heat-row"><span class="heat-lbl">Пн</span>
+          <i style="--v:.2"></i><i style="--v:.4"></i><i style="--v:.6"></i><i style="--v:.8"></i><i style="--v:.9"></i><i style="--v:.7"></i><i style="--v:.5"></i>
+          <i style="--v:.3"></i><i style="--v:.6"></i><i style="--v:.8"></i><i style="--v:.95"></i><i style="--v:.8"></i><i style="--v:.6"></i><i style="--v:.4"></i>
+        </div>
+        <div class="heat-row"><span class="heat-lbl">Вт</span>
+          <i style="--v:.3"></i><i style="--v:.5"></i><i style="--v:.7"></i><i style="--v:.85"></i><i style="--v:.95"></i><i style="--v:.8"></i><i style="--v:.6"></i>
+          <i style="--v:.4"></i><i style="--v:.7"></i><i style="--v:.9"></i><i style="--v:1"></i><i style="--v:.9"></i><i style="--v:.7"></i><i style="--v:.5"></i>
+        </div>
+        <div class="heat-row"><span class="heat-lbl">Ср</span>
+          <i style="--v:.2"></i><i style="--v:.4"></i><i style="--v:.7"></i><i style="--v:.8"></i><i style="--v:.85"></i><i style="--v:.75"></i><i style="--v:.55"></i>
+          <i style="--v:.35"></i><i style="--v:.65"></i><i style="--v:.85"></i><i style="--v:.9"></i><i style="--v:.85"></i><i style="--v:.65"></i><i style="--v:.45"></i>
+        </div>
+        <div class="heat-row"><span class="heat-lbl">Чт</span>
+          <i style="--v:.25"></i><i style="--v:.45"></i><i style="--v:.65"></i><i style="--v:.75"></i><i style="--v:.9"></i><i style="--v:.8"></i><i style="--v:.6"></i>
+          <i style="--v:.4"></i><i style="--v:.7"></i><i style="--v:.9"></i><i style="--v:.95"></i><i style="--v:.85"></i><i style="--v:.65"></i><i style="--v:.45"></i>
+        </div>
+        <div class="heat-row"><span class="heat-lbl">Пт</span>
+          <i style="--v:.15"></i><i style="--v:.35"></i><i style="--v:.55"></i><i style="--v:.7"></i><i style="--v:.8"></i><i style="--v:.7"></i><i style="--v:.5"></i>
+          <i style="--v:.3"></i><i style="--v:.6"></i><i style="--v:.8"></i><i style="--v:.85"></i><i style="--v:.75"></i><i style="--v:.55"></i><i style="--v:.35"></i>
+        </div>
+        <div class="heat-row"><span class="heat-lbl">Сб</span>
+          <i style="--v:.05"></i><i style="--v:.1"></i><i style="--v:.15"></i><i style="--v:.2"></i><i style="--v:.25"></i><i style="--v:.2"></i><i style="--v:.1"></i>
+          <i style="--v:.05"></i><i style="--v:.15"></i><i style="--v:.25"></i><i style="--v:.3"></i><i style="--v:.2"></i><i style="--v:.1"></i><i style="--v:.05"></i>
+        </div>
+      </div>
+      <div class="heat-scale">
+        <span>0%</span>
+        <div class="heat-scale-bar"></div>
+        <span>100%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section id="gantt" class="section">
+    <div class="section-head">
+      <span class="num">04</span>
+      <h2>Диаграмма Ганта</h2>
+      <span class="hint">Производственный цикл К-235</span>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden">
+      <div class="gantt">
+        <!-- Header -->
+        <div class="gantt-head">
+          <div class="gantt-tasks-h">Работа · ответственный</div>
+          <div class="gantt-scale">
+            <div class="gantt-months">
+              <div>Апр 2026</div><div>Май</div><div>Июн</div><div>Июл</div>
+            </div>
+            <div class="gantt-weeks">
+              <div>н.16</div><div>н.17</div><div>н.18</div><div>н.19</div>
+              <div>н.20</div><div>н.21</div><div>н.22</div><div>н.23</div>
+              <div>н.24</div><div>н.25</div><div>н.26</div><div>н.27</div>
+              <div>н.28</div><div>н.29</div><div>н.30</div><div>н.31</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rows -->
+        <div class="gantt-body">
+          <!-- grid overlay -->
+          <div class="gantt-grid" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- row -->
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Согласование чертежей</div>
+              <div class="gantt-task-who">П. Дмитриев</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar done" style="--s:0;--d:2" data-prog="100"><span>Согласование · 100%</span></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Заготовки / поковки</div>
+              <div class="gantt-task-who">Цех №1</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar done" style="--s:1.5;--d:2.5" data-prog="100"><span>Поковка · 100%</span></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Механическая обработка</div>
+              <div class="gantt-task-who">Цех №2</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar active" style="--s:3.5;--d:4" data-prog="62">
+                <div class="gantt-fill" style="width:62%"></div>
+                <span>Обработка · 62%</span>
+              </div>
+              <div class="gantt-milestone" style="--s:4.5" title="Контрольная сборка"></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Термообработка</div>
+              <div class="gantt-task-who">Цех №3</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar plan" style="--s:7;--d:3" data-prog="0"><span>Термообработка</span></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Балансировка</div>
+              <div class="gantt-task-who">ОТК</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar plan risk" style="--s:10;--d:2" data-prog="0"><span>Балансировка · риск</span></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Контроль и маркировка</div>
+              <div class="gantt-task-who">ОТК</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar plan" style="--s:12;--d:1.5" data-prog="0"><span>ОТК</span></div>
+              <div class="gantt-milestone gold" style="--s:13.5" title="Сертификация"></div>
+            </div>
+          </div>
+
+          <div class="gantt-row">
+            <div class="gantt-task">
+              <div class="gantt-task-name">Упаковка и отгрузка</div>
+              <div class="gantt-task-who">Логистика</div>
+            </div>
+            <div class="gantt-track">
+              <div class="gantt-bar plan" style="--s:14;--d:2" data-prog="0"><span>Отгрузка</span></div>
+            </div>
+          </div>
+
+          <!-- today marker (week 19.5) -->
+          <div class="gantt-today" style="--s:4.8" title="Сегодня"></div>
+        </div>
+
+        <!-- Legend -->
+        <div class="gantt-legend">
+          <span><i class="l done"></i>Завершено</span>
+          <span><i class="l active"></i>В работе</span>
+          <span><i class="l plan"></i>Запланировано</span>
+          <span><i class="l risk"></i>Риск задержки</span>
+          <span><i class="l ms"></i>Веха</span>
+          <span><i class="l today"></i>Сегодня</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================== -->
+  <section id="guide" class="section">
+    <div class="section-head">
+      <span class="num">05</span>
+      <h2>Frontend-гайд</h2>
+      <span class="hint">Токены · темы · правила</span>
+    </div>
+
+    <div class="prose">
+      <h3>Тон и голос бренда</h3>
+      <p>Говорим спокойно, по-инженерному. Конкретно, без маркетингового пафоса. Мы — завод, и это видно и слышно: цифры и артикулы в моноширинном, заголовки в серифе, тело в гротеске.</p>
+
+      <h3>Темы и токены</h3>
+      <p>Все цвета, отступы и тени заданы через CSS-переменные в <code>assets/tokens.css</code>. Темы переключаются атрибутом <code>data-theme="light|dark"</code> на <code>&lt;html&gt;</code>. Режим <code>auto</code> уважает <code>prefers-color-scheme</code>. Состояние сохраняется в <code>localStorage</code>.</p>
+
+      <h3>Анимации</h3>
+      <p>Стандартная длительность — 180–240&nbsp;мс, easing — <code>cubic-bezier(.2,.8,.2,1)</code>. Раскрытия (dropdown, accordion) анимируют <code>max-height</code>+<code>opacity</code>+<code>translateY(-4px)</code>. Всегда уважаем <code>prefers-reduced-motion</code>.</p>
+
+      <h3>Доступность</h3>
+      <ul>
+        <li>Контраст ≥ <b>WCAG AA</b> для обеих тем.</li>
+        <li>Фокус всегда виден: обводка <code>3px rgba(176,138,62,.35)</code>.</li>
+        <li>Минимальный hit-area 44×44&nbsp;px.</li>
+        <li>Иконка без подписи → <code>aria-label</code>.</li>
+      </ul>
+
+      <h3>Как подключить в VS Code</h3>
+      <p>Скачайте директорию <code>assets/</code> и <code>ztz-ui-kit-v2.html</code>. Подключите стили в вашем <code>index.html</code>:</p>
+      <pre class="code"><span class="tok-c">&lt;!-- в head --&gt;</span>
+<span class="tok-k">&lt;link</span> rel=<span class="tok-s">"stylesheet"</span> href=<span class="tok-s">"assets/tokens.css"</span><span class="tok-k">&gt;</span>
+<span class="tok-k">&lt;link</span> rel=<span class="tok-s">"stylesheet"</span> href=<span class="tok-s">"assets/themes.css"</span><span class="tok-k">&gt;</span>
+<span class="tok-k">&lt;link</span> rel=<span class="tok-s">"stylesheet"</span> href=<span class="tok-s">"assets/components.css"</span><span class="tok-k">&gt;</span>
+<span class="tok-k">&lt;link</span> rel=<span class="tok-s">"stylesheet"</span> href=<span class="tok-s">"assets/charts.css"</span><span class="tok-k">&gt;</span>
+<span class="tok-k">&lt;script</span> src=<span class="tok-s">"assets/ui.js"</span> defer<span class="tok-k">&gt;&lt;/script&gt;</span></pre>
+      <p>Подробности — в <code>README.md</code>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="inner">
+    <div>© 2026 · ООО «Завод Турбинных Запчастей» · 197375, Санкт-Петербург, ул. Вербная, 27</div>
+    <div>Design system v&nbsp;2.0 · <a href="mailto:marketing@ztz.spb.ru">marketing@ztz.spb.ru</a></div>
+  </div>
+</footer>
+
+<script src="assets/ui.js" defer></script>
+</body>
+</html>

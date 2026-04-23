@@ -1,0 +1,9 @@
+{
+  "color": {
+    "background": "#1a1a14",
+    "surface": "#252520",
+    "textPrimary": "#f0ece0",
+    "textSecondary": "#9a9688",
+    "border": "#3a3a2e"
+  }
+}
