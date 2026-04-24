@@ -13,6 +13,7 @@
 - REVIEW-01: 6 критических проблем выявлено и исправлено
 - REVIEW-02: подтверждено исправление, выявлено 7 дополнительных проблем (medium/low)
 - **Stage 1 завершён:** добавлены компоненты label, select, table, badge (4 варианта); preview пересобран как Invoice Manager demo page; все 7 validator checks прошли
+- **Stage 2 завершён:** компоненты nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link; preview обновлён до SPA-лейаута; исправлен crash validator на .DS_Store; .gitignore: добавлено исключение !theme-engine/build/
 
 ## Что в процессе
 
@@ -21,7 +22,7 @@ _(нет активных задач)_
 ## Известные проблемы
 
 **Medium:**
-- Validator падает на `.DS_Store` файлах (macOS)
+- ~~Validator падает на `.DS_Store` файлах (macOS)~~ — исправлено
 - Corporate тема: `radius.lg` = 6px, но компоненты используют 2px/4px (несоответствие)
 
 **Low:**
@@ -33,10 +34,8 @@ _(нет активных задач)_
 
 ## Следующие шаги
 
-**Stage 2:**
-- header / navbar
-- page layout (content area, sidebar option)
+**Stage 3:**
+- checkbox, radio, textarea, alert/notification, pagination
 
 **Технический долг:**
-- Инициализировать git-репозиторий
-- Исправить crash validator на .DS_Store
+- Corporate тема: radius.lg несоответствие
