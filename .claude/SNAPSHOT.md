@@ -14,6 +14,7 @@
 - REVIEW-02: подтверждено исправление, выявлено 7 дополнительных проблем (medium/low)
 - **Stage 1 завершён:** добавлены компоненты label, select, table, badge (4 варианта); preview пересобран как Invoice Manager demo page; все 7 validator checks прошли
 - **Stage 2 завершён:** компоненты nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link; preview обновлён до SPA-лейаута; исправлен crash validator на .DS_Store; .gitignore: добавлено исключение !theme-engine/build/
+- **Stage 3 завершён:** компоненты textarea, checkbox/checkbox-label, radio/radio-label, alert (4 варианта), pagination/pagination-item (active/disabled); preview расширен алертами, форм-карточкой, пагинацией
 
 ## Что в процессе
 
@@ -34,8 +35,12 @@ _(нет активных задач)_
 
 ## Следующие шаги
 
-**Stage 3:**
-- checkbox, radio, textarea, alert/notification, pagination
+**Stage 4:**
+- GAS embed story: usage guide, single-file embed (один CSS на тему), пример HTML Service integration
+
+**На подумать:**
+- Типографика: нужна ли шкала размеров (fontSizeLg, fontSizeXl), lineHeight, fontSizeMd, веса для body text
+- Preview: пересмотреть итоговый вид (обсудить отдельно с пользователем)
 
 **Технический долг:**
 - Corporate тема: radius.lg несоответствие
