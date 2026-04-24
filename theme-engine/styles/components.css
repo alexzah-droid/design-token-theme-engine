@@ -181,3 +181,103 @@ section {
   color: var(--layout-sidebar-active-text);
   font-weight: var(--heading-font-weight);
 }
+
+.textarea {
+  background: var(--textarea-bg);
+  color: var(--textarea-text);
+  padding: var(--textarea-padding);
+  border-radius: var(--textarea-radius);
+  border: 1px solid var(--textarea-border);
+  box-shadow: var(--textarea-shadow);
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.checkbox {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  accent-color: var(--checkbox-checked-bg);
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-padding-y);
+  cursor: pointer;
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+}
+
+.radio {
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  accent-color: var(--checkbox-checked-bg);
+  cursor: pointer;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: var(--nav-padding-y);
+  cursor: pointer;
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+}
+
+.alert {
+  border-radius: var(--alert-radius);
+  padding: var(--alert-padding-y) var(--alert-padding-x);
+  margin-bottom: var(--nav-padding-y);
+}
+
+.alert-success {
+  background: var(--alert-success-bg);
+  color: var(--alert-success-text);
+}
+
+.alert-warning {
+  background: var(--alert-warning-bg);
+  color: var(--alert-warning-text);
+}
+
+.alert-error {
+  background: var(--alert-error-bg);
+  color: var(--alert-error-text);
+}
+
+.alert-info {
+  background: var(--alert-info-bg);
+  color: var(--alert-info-text);
+  border: 1px solid var(--alert-info-border);
+}
+
+.pagination {
+  display: flex;
+  gap: var(--pagination-item-padding-x);
+  align-items: center;
+}
+
+.pagination-item {
+  background: var(--pagination-item-bg);
+  color: var(--pagination-item-text);
+  border: 1px solid var(--pagination-item-border);
+  border-radius: var(--pagination-item-radius);
+  padding: var(--pagination-item-padding-y) var(--pagination-item-padding-x);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.pagination-item--active {
+  background: var(--pagination-active-bg);
+  color: var(--pagination-active-text);
+  border-color: var(--pagination-active-border);
+}
+
+.pagination-item:disabled,
+.pagination-item--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

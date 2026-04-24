@@ -89,5 +89,46 @@
     "sidebarBorderColor": "{color.border}",
     "sidebarText": "{color.textPrimary}",
     "sidebarActiveText": "{color.primary}"
+  },
+  "textarea": {
+    "bg": "{color.background}",
+    "text": "{color.textPrimary}",
+    "border": "{color.border}",
+    "radius": "{radius.sm}",
+    "padding": "{spacing.sm}",
+    "shadow": "{shadow.sm}"
+  },
+  "checkbox": {
+    "border": "{color.border}",
+    "checkedBg": "{color.primary}",
+    "checkedBorder": "{color.primary}",
+    "checkColor": "{color.onPrimary}",
+    "radius": "{radius.sm}",
+    "size": "{spacing.md}"
+  },
+  "alert": {
+    "radius": "{radius.sm}",
+    "paddingY": "{spacing.sm}",
+    "paddingX": "{spacing.md}",
+    "successBg": "{color.success}",
+    "successText": "{color.onSuccess}",
+    "warningBg": "{color.warning}",
+    "warningText": "{color.onWarning}",
+    "errorBg": "{color.error}",
+    "errorText": "{color.onError}",
+    "infoBg": "{color.surface}",
+    "infoText": "{color.textPrimary}",
+    "infoBorder": "{color.border}"
+  },
+  "pagination": {
+    "itemBg": "{color.background}",
+    "itemText": "{color.textPrimary}",
+    "itemBorder": "{color.border}",
+    "itemRadius": "{radius.sm}",
+    "itemPaddingY": "{spacing.xs}",
+    "itemPaddingX": "{spacing.sm}",
+    "activeBg": "{color.primary}",
+    "activeText": "{color.onPrimary}",
+    "activeBorder": "{color.primary}"
   }
 }

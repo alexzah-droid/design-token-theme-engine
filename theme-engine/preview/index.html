@@ -160,6 +160,47 @@
         </div>
       </div>
 
+      <!-- Alerts -->
+      <div style="margin-top: 24px;">
+        <div class="alert alert-success">Invoice INV-1042 has been paid successfully.</div>
+        <div class="alert alert-warning">Invoice INV-1046 is due in 3 days.</div>
+        <div class="alert alert-error">Invoice INV-1044 is overdue by 27 days.</div>
+        <div class="alert alert-info">You have 6 invoices this month. Total: $36,930.00</div>
+      </div>
+
+      <!-- Form section -->
+      <div class="card" style="margin-top: 24px;">
+        <div style="margin-bottom: 16px;">
+          <label class="label" style="display:block; margin-bottom:4px;">Note</label>
+          <textarea class="textarea" placeholder="Add a note to this invoice..."></textarea>
+        </div>
+        <div style="display:flex; gap:24px; margin-bottom:16px;">
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox" checked> Send email notification
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" class="checkbox"> Attach PDF
+          </label>
+        </div>
+        <div style="display:flex; gap:24px;">
+          <label class="radio-label">
+            <input type="radio" class="radio" name="priority" checked> Normal priority
+          </label>
+          <label class="radio-label">
+            <input type="radio" class="radio" name="priority"> High priority
+          </label>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination" style="margin-top: 24px;">
+        <a class="pagination-item pagination-item--disabled">← Prev</a>
+        <a class="pagination-item pagination-item--active">1</a>
+        <a class="pagination-item">2</a>
+        <a class="pagination-item">3</a>
+        <a class="pagination-item">→ Next</a>
+      </div>
+
     </main>
   </div>
 
