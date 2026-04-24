@@ -15,10 +15,12 @@
 - **Stage 1 завершён:** добавлены компоненты label, select, table, badge (4 варианта); preview пересобран как Invoice Manager demo page; все 7 validator checks прошли
 - **Stage 2 завершён:** компоненты nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link; preview обновлён до SPA-лейаута; исправлен crash validator на .DS_Store; .gitignore: добавлено исключение !theme-engine/build/
 - **Stage 3 завершён:** компоненты textarea, checkbox/checkbox-label, radio/radio-label, alert (4 варианта), pagination/pagination-item (active/disabled); preview расширен алертами, форм-карточкой, пагинацией
+- **Preview redesign завершён:** из app demo → component explorer; sticky хедер с переключателями тем/режимов, секции 01 Foundations / 02 Components / 03 Live Demo, динамическая загрузка CSS одной темы
 
 ## Что в процессе
 
 _(нет активных задач)_
+
 
 ## Известные проблемы
 
@@ -35,44 +37,7 @@ _(нет активных задач)_
 
 ## Следующие шаги
 
-**Preview redesign (приоритет 1):**
-
-Цель: из «app demo» → полноценный component explorer уровня отраслевого стандарта.
-Референс: структура и интерактивность ztz-ui-kit-v2.html, адаптированная под наши классы/токены.
-
-Принципы:
-- Одна тема одновременно: грузить только активный CSS динамически (script-тег), не хардкодить все 5 файлов
-- Никакого `<select>` для переключения — компактные кнопки-иконки в sticky хедере
-- Структура нумерованными секциями с якорной навигацией
-
-Структура нового preview/index.html:
-
-**01 Foundations**
-- Color tokens: semantic swatches (button-bg, card-bg, badge-success-bg и т.д.) с именем переменной
-- Typography: шкала (heading → label → text → text-secondary) с font-size, weight, letter-spacing
-
-**02 Components** (каждая группа — карточка с заголовком, все варианты и состояния рядом)
-- Buttons: normal / hover-demo / disabled
-- Badges: success / warning / error / neutral
-- Alerts: success / warning / error / info
-- Inputs: input / select / textarea (normal + placeholder + disabled)
-- Checkboxes & Radios: checked / unchecked / группы
-- Table: с данными, header-highlight, row-hover
-- Pagination: все состояния (active / disabled / normal)
-- Nav: nav + nav-brand + nav-actions
-- Layout: page-layout / sidebar / content схема
-
-**03 Live demo**
-- Полноценный Invoice Manager (текущий контент, очищенный)
-- Всё работает в контексте реального приложения
-
-JS-логика:
-- При смене темы: удалить текущий `<link>` с CSS, добавить новый для выбранной темы
-- При смене mode (light/dark): добавлять/убирать `data-mode="dark"` на `<html>`
-- Показывать note если dark не поддерживается (minimal)
-- Sticky хедер с logo + theme switcher + mode toggle + anchor nav
-
-**Stage 4 (после preview):**
+**Stage 5:**
 - GAS embed story: single-file bundle CSS на тему + пример HTML Service integration
 
 **Технический долг:**
