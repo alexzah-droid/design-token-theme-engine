@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Invoice Manager</title>
+  <?!= include('Styles'); ?>
+  <style>
+    body { margin: 0; font-family: var(--typography-font-family, sans-serif); }
+    .summary-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .summary-card { flex: 1; min-width: 120px; }
+    .kpi-label { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+    .kpi-value { font-size: 24px; font-weight: 700; color: var(--heading-color); }
+    .alerts { display: flex; flex-direction: column; gap: 0; margin-bottom: 16px; }
+    .page-content { padding: 16px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <span class="nav-brand">Invoice Manager</span>
+    <div class="nav-actions">
+      <button class="button" onclick="toggleDark()">Toggle Dark</button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="page-content">
+
+    <!-- Summary -->
+    <div class="summary-row">
+      <div class="card summary-card">
+        <div class="kpi-label">Total Invoices</div>
+        <div class="kpi-value">6</div>
+      </div>
+      <div class="card summary-card">
+        <div class="kpi-label">Total Amount</div>
+        <div class="kpi-value">$36,930</div>
+      </div>
+      <div class="card summary-card">
+        <div class="kpi-label">Overdue</div>
+        <div class="kpi-value">1</div>
+      </div>
+    </div>
+
+    <!-- Alerts -->
+    <div class="alerts">
+      <div class="alert alert-success">Invoice INV-1042 has been paid successfully.</div>
+      <div class="alert alert-warning">Invoice INV-1046 is due in 3 days.</div>
+    </div>
+
+    <!-- Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Invoice #</th>
+          <th>Client</th>
+          <th>Amount</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="text">INV-1042</span></td>
+          <td><span class="text">Acme Corp</span></td>
+          <td><span class="text">$4,200.00</span></td>
+          <td><span class="badge badge-success">Paid</span></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1043</span></td>
+          <td><span class="text">TechFlow Ltd</span></td>
+          <td><span class="text">$1,850.00</span></td>
+          <td><span class="badge badge-warning">Pending</span></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1044</span></td>
+          <td><span class="text">Globex Inc</span></td>
+          <td><span class="text">$9,600.00</span></td>
+          <td><span class="badge badge-error">Overdue</span></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1045</span></td>
+          <td><span class="text">Initech</span></td>
+          <td><span class="text">$730.00</span></td>
+          <td><span class="badge badge-success">Paid</span></td>
+        </tr>
+        <tr>
+          <td><span class="text">INV-1046</span></td>
+          <td><span class="text">Umbrella Co</span></td>
+          <td><span class="text">$2,150.00</span></td>
+          <td><span class="badge badge-warning">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Pagination -->
+    <div class="pagination" style="margin-top: 16px;">
+      <a class="pagination-item pagination-item--disabled">&#8592; Prev</a>
+      <a class="pagination-item pagination-item--active">1</a>
+      <a class="pagination-item">2</a>
+      <a class="pagination-item">3</a>
+      <a class="pagination-item">&#8594; Next</a>
+    </div>
+
+  </div><!-- /page-content -->
+
+  <script>
+    function toggleDark() {
+      var html = document.documentElement;
+      if (html.getAttribute('data-mode') === 'dark') {
+        html.removeAttribute('data-mode');
+      } else {
+        html.setAttribute('data-mode', 'dark');
+      }
+    }
+  </script>
+
+</body>
+</html>
