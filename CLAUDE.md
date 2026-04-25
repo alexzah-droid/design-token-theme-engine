@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Token-based theme engine for building consistent UI design systems. Generates scoped CSS custom properties from JSON design tokens. Supports multiple themes and light/dark modes with zero runtime dependencies — pure HTML/CSS/JS.
 
+> Архитектурный источник истины: **`AI_CONTEXT.md`** в корне проекта. Читать перед любыми изменениями архитектуры.
+
 ## Команды
 
 Все команды запускаются из `theme-engine/`:
