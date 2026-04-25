@@ -535,6 +535,64 @@ Which files to read for a given task:
 
 ---
 
+---
+
+## 🗺️ Development Backlog
+
+Ordered by impact. Items below are gaps identified during documentation audit (2026-04-25).
+
+### High priority
+
+**DOC-1. Update `theme-engine/USAGE.md`**
+File is outdated — describes multi-link CSS approach, no dark mode, no bundles, no components. AI agents reading it will make wrong decisions.
+Action: replace content with redirect to `README.md` and `GAS_GUIDE.md`, or delete.
+
+**DOC-2. Token reference table**
+No document lists all semantic tokens with: token name → component → resolved value (corporate default).
+Currently an agent must cross-read `components.css` + `dist/corporate.css` to understand what `--alert-info-border` does.
+Action: generate `theme-engine/TOKEN_REFERENCE.md` — table of all semantic tokens.
+
+**DEV-1. "How to add a component" guide**
+Process (add tokens to `semantic.json` → CSS to `components.css` → preview in `index.html` → run validator) is nowhere documented. Agents guess by analogy.
+Action: add concise step-by-step section to `AI_CONTEXT.md` or separate `CONTRIBUTING.md`.
+
+**DEV-2. "How to add a theme" guide**
+Which keys are required in `themes/name.json`, what must be in `.dark.json`, how to verify a new theme.
+Action: add section to `AI_CONTEXT.md`.
+
+### Medium priority
+
+**DOC-3. Design system CHANGELOG**
+`CHANGELOG.md` in root is the Claude Code Starter framework log, not this design system.
+Token changes, new components, design decisions — none of this is tracked in a dedicated file.
+Action: create `theme-engine/CHANGELOG.md`.
+
+**DOC-4. Archive or convert REVIEW-01.md / REVIEW-02.md**
+Review files sit in root but are disconnected from any current process.
+Action: move to `archive/` or consolidate known issues into `KNOWN_ISSUES.md`.
+
+**DEV-3. Stage 5 definition of done**
+Roadmap says "Validate on Invoice_mngmnt" but does not define what success looks like.
+Action: write concrete acceptance criteria before starting Stage 5.
+
+### Lower priority
+
+**DEV-4. A11y baseline document**
+No documented expectations: contrast ratio (WCAG AA?), `aria-*` requirements, focus ring behavior.
+Agents adding new components don't know the bar.
+Action: add "Accessibility baseline" section to `AI_CONTEXT.md`.
+
+**DEV-5. GAS bundle size limits**
+Bundles grow as tokens and components are added. GAS HTML Service has output size limits.
+No monitoring in place.
+Action: add bundle size check to `validate.js` or document the GAS limit as a constraint.
+
+**DEV-6. Static hover/focus states in preview**
+Preview tells users "hover to see hover state" — states can't be inspected statically.
+Action: add CSS utility class `.is-hover` / `.is-focus` to demonstrate states without interaction.
+
+---
+
 ## 📌 Important
 
 This file must be read BEFORE any code changes.
