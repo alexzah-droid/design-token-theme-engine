@@ -470,6 +470,71 @@ Components ≠ Styles ≠ Theme
 
 ---
 
+---
+
+## 📂 Document Map
+
+### Architectural files (read before coding)
+
+| File | Purpose |
+|------|---------|
+| [`AI_CONTEXT.md`](../AI_CONTEXT.md) | **This file.** Architectural source of truth — token model, component contracts, stages, roadmap |
+| [`CLAUDE.md`](../CLAUDE.md) | Agent operating instructions — autonomy rules, commands, subagent delegation |
+| [`manifest.md`](../manifest.md) | Project metadata: `project_name`, `repo_access` |
+
+### Design system docs
+
+| File | Purpose |
+|------|---------|
+| [`theme-engine/README.md`](theme-engine/README.md) | Theme engine overview: architecture, build output (CSS + bundles), component class list, validator contracts |
+| [`theme-engine/GAS_GUIDE.md`](theme-engine/GAS_GUIDE.md) | GAS HTML Service integration: 4-step guide, bundle usage, sidebar/web app deploy |
+| [`theme-engine/USAGE.md`](theme-engine/USAGE.md) | ⚠️ Outdated general usage guide (pre-bundles, pre-dark-mode). Superseded by `README.md` and `GAS_GUIDE.md` |
+
+### Review history
+
+| File | Purpose |
+|------|---------|
+| [`REVIEW-01.md`](../REVIEW-01.md) | Architecture review session 1 — 6 critical issues found and fixed |
+| [`REVIEW-02.md`](../REVIEW-02.md) | Architecture review session 2 — confirmed fixes, 7 medium/low issues logged |
+
+### Agent operational memory
+
+| File | Purpose |
+|------|---------|
+| [`.claude/SNAPSHOT.md`](.claude/SNAPSHOT.md) | Current project state: what's done, in progress, known issues, next steps |
+| [`.claude/rules/`](.claude/rules/) | Operational rules loaded every session: autonomy, commit policy, delegation, logging |
+| [`.claude/skills/`](.claude/skills/) | Skill definitions: `/start`, `/finish`, `/testing`, `/housekeeping` |
+| [`.claude/agents/`](.claude/agents/) | Subagent role definitions: researcher, implementer, reviewer |
+
+### Reference (not part of this design system)
+
+| File | Purpose |
+|------|---------|
+| [`Invoice_mngmnt/README.md`](../Invoice_mngmnt/README.md) | ЗТЗ UI Kit — separate system, used as reference/inspiration for preview quality bar |
+| [`README.md`](../README.md) | Claude Code Starter v5 framework documentation |
+
+---
+
+## 🗂️ Task → File Index
+
+Which files to read for a given task:
+
+| Task | Files to read |
+|------|--------------|
+| Add a new component | `AI_CONTEXT.md` (Expansion Rules, DoD) → `tokens/semantic.json` → `styles/components.css` → `preview/index.html` → run `validate` |
+| Add a new theme | `AI_CONTEXT.md` (Architecture §3 Themes) → `tokens/base.json` → `themes/` existing files as reference |
+| Add dark mode to a theme | `AI_CONTEXT.md` (Modes section) → existing `*.dark.json` as reference → `tokens/base.json` (which tokens to override) |
+| GAS integration | `GAS_GUIDE.md` → `gas-example/` → run `npm run build` to get bundles |
+| Understand token model | `AI_CONTEXT.md` → `tokens/base.json` → `tokens/semantic.json` → `dist/corporate.css` (resolved output) |
+| Debug component styling | `AI_CONTEXT.md` (Critical Rules) → `styles/components.css` → `dist/{theme}.css` (check resolved vars) |
+| Debug preview | `preview/index.html` → `styles/components.css` → `dist/` |
+| Run build / validate | `theme-engine/README.md` (Commands section) |
+| Understand project state | `.claude/SNAPSHOT.md` → `git log --oneline -10` |
+| Code review | `AI_CONTEXT.md` (Contracts, Expansion Rules) → `REVIEW-01.md`, `REVIEW-02.md` (precedents) |
+| Session start/finish | `CLAUDE.md` → `.claude/SNAPSHOT.md` |
+
+---
+
 ## 📌 Important
 
 This file must be read BEFORE any code changes.
