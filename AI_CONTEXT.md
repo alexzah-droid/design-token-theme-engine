@@ -74,6 +74,7 @@ Responsibilities:
 - merge base + theme (+ dark overrides when applicable)
 - resolve semantic tokens
 - generate CSS variables
+- generate bundle files (tokens + components in one file, for GAS embed)
 
 CSS selectors:
 - light → [data-theme="name"]
@@ -83,17 +84,34 @@ Run via:
 - npm run build
 - npm run validate
 
+**Bundle output** (`*.bundle.css`):
+Each bundle = theme CSS variables + `styles/components.css` concatenated into a single self-contained file. Bundles are auto-generated — do not edit manually. Used for GAS HTML Service integration where external CSS links are not available.
+
 ---
 
 ### 6. Preview
-Location: /preview
+Location: /preview/index.html
 
-- visual testing environment
-- contains primitives:
-  - button
-  - card
-  - input
-  - text
+Component explorer with theme and mode switchers. Sections:
+- **01 Foundations** — color token swatches (live, react to theme switch) + typography scale
+- **02 Components** — all components with all variants and states catalogued in themed cards
+- **03 Live Demo** — Invoice Manager application in a framed container
+
+CSS loading: one theme file loaded at a time (dynamic injection), no multi-theme collisions.
+
+### 7. GAS Embed
+Location: /gas-example/, GAS_GUIDE.md
+
+Integration with Google Apps Script HTML Service.
+GAS cannot load external CSS via `<link>` — styles must be inlined or included via `include()` pattern.
+
+Bundle files solve this: copy `dist/corporate.bundle.css` into `Styles.html` in your GAS project.
+
+Files:
+- `gas-example/Code.gs` — `doGet()` + `include()` helper
+- `gas-example/Page.html` — Invoice Manager template using `<?!= include('Styles'); ?>`
+- `gas-example/Styles.html` — placeholder, paste bundle contents here
+- `GAS_GUIDE.md` — 4-step usage guide
 
 ---
 
@@ -303,28 +321,24 @@ Implemented:
 - contrast system (onPrimary)
 - dark mode: apple + corporate (per-theme .dark.json)
 - mode switching in preview (light / dark toggle)
+- Stage 1: label, select, table, badge (4 variants)
+- Stage 2: nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link
+- Stage 3: textarea, checkbox, radio, alert (4 variants), pagination
+- Preview redesign: component explorer (Foundations / Components / Live Demo sections), dynamic CSS loading
+- Stage 4 (GAS embed): bundle generation (`*.bundle.css`), gas-example/, GAS_GUIDE.md
 
 ---
 
 ## 🆕 Recent Changes
 
-Latest updates:
+Latest updates (Stages 1–4):
 
-- base color tokens were normalized
-- `color.text` was renamed to `color.textPrimary`
-- deprecated color tokens were removed from `base.json`
-- semantic references were aligned with normalized base tokens
-- `corporate.json` and `apple.json` were updated to use `textPrimary`
-- Apple-specific style overrides were converted from hardcoded HEX to CSS variables
-- button state tokens were added:
-  - `button.hoverBg`
-  - `button.disabledBg`
-  - `button.disabledText`
-- preview now includes:
-  - theme switcher
-  - button states
-  - corporate, minimal, and apple themes
-- build diagnostics were removed after verification
+- Added components: label, select, table, badge, nav, page-layout, sidebar, textarea, checkbox, radio, alert, pagination
+- Preview redesigned from app demo into component explorer — sticky header, anchor nav, Foundations / Components / Live Demo sections, dynamic single-theme CSS loading
+- `build-theme.js`: added `buildBundle()` — generates `*.bundle.css` (tokens + components in one file)
+- GAS embed story: `gas-example/` (Code.gs, Page.html, Styles.html) + `GAS_GUIDE.md`
+- Validator fixed: no longer crashes on `.DS_Store` files
+- `.gitignore`: added `!theme-engine/build/` exclusion
 
 ---
 
@@ -378,83 +392,46 @@ look and work like a real product — not by component complexity.
 
 ---
 
-### Stage 1 — Minimum App Kit (CURRENT PRIORITY)
+### Stage 1 — Minimum App Kit ✅ Done
 
-Goal: enough to assemble a real-looking business page
-
-Add:
-
-- label
-- select (native)
-- table (thead, tbody, th, td, tr)
-- badge (status variants: success / warning / error / neutral)
-
-Also:
-
-- Rebuild preview as a realistic demo page (not a component gallery)
-- Demo must look like an actual application screen
-
-Rules:
-
-- use existing tokens only
-- no hardcoded values
-- no theme-specific CSS
-- every component tested in all themes + light/dark
+Added: label, select, table, badge (4 variants). Preview rebuilt as Invoice Manager demo.
 
 ---
 
-### Stage 2 — Page Structure
+### Stage 2 — Page Structure ✅ Done
 
-Goal: make a page feel like a complete product, not a set of fragments
-
-Add:
-
-- header / navbar
-- page layout (content area, sidebar option)
+Added: nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link.
 
 ---
 
-### Stage 3 — Form Completeness
+### Stage 3 — Form Completeness ✅ Done
 
-Goal: support all common form patterns
-
-Add:
-
-- checkbox
-- radio
-- textarea
-- alert / notification
-
-Also:
-
-- pagination
+Added: checkbox, radio, textarea, alert (4 variants), pagination.
 
 ---
 
-### Stage 4 — Embed Story (GAS integration)
+### Stage 4 — Preview Redesign ✅ Done
 
-Goal: connect theme engine to a real GAS project with minimal steps
+Preview rebuilt as component explorer: sticky header with switchers, sections Foundations / Components / Live Demo, dynamic single-theme CSS loading.
 
-Deliverables:
+---
 
-- usage guide: what HTML to write, where to put CSS
-- GAS HTML Service integration example
-- single-file embed (one CSS per theme)
+### Stage 4b — GAS Embed Story ✅ Done
+
+Bundle generation (`*.bundle.css`), `gas-example/` with working Code.gs + Page.html + Styles.html, `GAS_GUIDE.md`.
 
 ---
 
 ### Stage 5 — Validate on Invoice_mngmnt
 
-Goal: proof of concept on a real product
+Goal: proof of concept on a real product.
 
 Connect theme engine to Invoice_mngmnt:
-
 - invoice list (data table + status badges)
 - filters panel (select + label + button)
 - action toolbar
 
-This stage validates that the token system and components
-hold up under real product requirements.
+Validates that token system and components hold up under real product requirements.
 
 ---
 
