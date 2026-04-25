@@ -161,5 +161,35 @@
     "durationSlow": "{motion.dur3}",
     "easeOut": "{motion.easeOut}",
     "easeInOut": "{motion.easeInOut}"
+  },
+  "switch": {
+    "trackBg": "{color.border}",
+    "trackActiveBg": "{color.primary}",
+    "thumbBg": "{color.onPrimary}"
+  },
+  "tab": {
+    "bg": "{color.background}",
+    "text": "{color.textSecondary}",
+    "activeBg": "{color.background}",
+    "activeText": "{color.primary}",
+    "indicatorColor": "{color.primary}",
+    "borderColor": "{color.border}"
+  },
+  "accordion": {
+    "border": "{color.border}",
+    "bg": "{color.surface}",
+    "headBg": "{color.background}",
+    "headText": "{color.textPrimary}"
+  },
+  "dropdown": {
+    "bg": "{color.background}",
+    "border": "{color.border}",
+    "text": "{color.textPrimary}",
+    "itemHoverBg": "{color.surface}"
+  },
+  "progress": {
+    "trackBg": "{color.surface}",
+    "fillColor": "{color.primary}",
+    "radius": "{radius.sm}"
   }
 }

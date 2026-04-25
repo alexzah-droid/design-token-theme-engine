@@ -336,3 +336,58 @@ Corporate theme default values shown.
 | `--animation-duration-slow` | `{motion.dur3}` | `260ms` |
 | `--animation-ease-out` | `{motion.easeOut}` | `cubic-bezier(.2,.8,.2,1)` |
 | `--animation-ease-in-out` | `{motion.easeInOut}` | `cubic-bezier(.4,0,.2,1)` |
+
+---
+
+### Switch
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--switch-track-bg` | `{color.border}` | `#d8d1c2` |
+| `--switch-track-active-bg` | `{color.primary}` | `#17311F` |
+| `--switch-thumb-bg` | `{color.onPrimary}` | `#EFE9D9` |
+
+---
+
+### Tab
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--tab-bg` | `{color.background}` | `#F6F2EA` |
+| `--tab-text` | `{color.textSecondary}` | `#5A5C56` |
+| `--tab-active-bg` | `{color.background}` | `#F6F2EA` |
+| `--tab-active-text` | `{color.primary}` | `#17311F` |
+| `--tab-indicator-color` | `{color.primary}` | `#17311F` |
+| `--tab-border-color` | `{color.border}` | `#d8d1c2` |
+
+---
+
+### Accordion
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--accordion-border` | `{color.border}` | `#d8d1c2` |
+| `--accordion-bg` | `{color.surface}` | `#FFFFFF` |
+| `--accordion-head-bg` | `{color.background}` | `#F6F2EA` |
+| `--accordion-head-text` | `{color.textPrimary}` | `#1B1C19` |
+
+---
+
+### Dropdown
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--dropdown-bg` | `{color.background}` | `#F6F2EA` |
+| `--dropdown-border` | `{color.border}` | `#d8d1c2` |
+| `--dropdown-text` | `{color.textPrimary}` | `#1B1C19` |
+| `--dropdown-item-hover-bg` | `{color.surface}` | `#FFFFFF` |
+
+---
+
+### Progress
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--progress-track-bg` | `{color.surface}` | `#FFFFFF` |
+| `--progress-fill-color` | `{color.primary}` | `#17311F` |
+| `--progress-radius` | `{radius.sm}` | `2px` |

@@ -602,10 +602,10 @@ Extended token system with patterns missing from original system (identified fro
 
 ---
 
-### Stage 6b — New Components (planned)
+### Stage 6b — New Components ✅ Done
 
-To add: Switch/Toggle, Tabs, Accordion, Custom Dropdown, Progress bars (linear/circular/segmented).
-Tokens for each component to be defined in `tokens/semantic.json` before CSS.
+Added: Switch/Toggle, Tabs, Accordion, Custom Dropdown, Progress bars (linear/circular/indeterminate).
+Semantic tokens defined for all 5 components. CSS in `styles/components.css`. Preview cards with interactive demos (accordion toggle, dropdown select). TOKEN_REFERENCE.md updated.
 
 ---
 

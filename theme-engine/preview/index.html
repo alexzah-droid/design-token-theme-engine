@@ -423,6 +423,127 @@
           <p class="pv-hint-text">prefers-reduced-motion: all transitions disabled at OS level</p>
         </div>
 
+        <!-- Switch -->
+        <div class="card">
+          <p class="pv-group-label">Switch / Toggle</p>
+          <div class="pv-row" style="align-items: center; flex-wrap: wrap;">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+              <span class="label">Off</span>
+            </label>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+              <span class="label">On</span>
+            </label>
+            <label class="switch" style="opacity:0.4; pointer-events:none;">
+              <input type="checkbox" disabled>
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+              <span class="label">Disabled</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="card">
+          <p class="pv-group-label">Tabs</p>
+          <div class="tabs">
+            <button class="tab tab--active">Overview</button>
+            <button class="tab">Details</button>
+            <button class="tab">History</button>
+          </div>
+          <div style="padding: 12px 0;">
+            <p class="text-secondary" style="font-size: 13px;">Tab content area</p>
+          </div>
+        </div>
+
+        <!-- Accordion -->
+        <div class="card">
+          <p class="pv-group-label">Accordion</p>
+          <div class="accordion">
+            <div class="accordion-item accordion-item--open" id="pv-acc-1">
+              <button class="accordion-head" onclick="pvToggleAcc('pv-acc-1')" aria-expanded="true">
+                <span>Section 1 (open)</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-body">
+                <p class="text" style="font-size:14px;">Accordion body content. Smooth max-height animation on toggle.</p>
+              </div>
+            </div>
+            <div class="accordion-item" id="pv-acc-2">
+              <button class="accordion-head" onclick="pvToggleAcc('pv-acc-2')" aria-expanded="false">
+                <span>Section 2 (closed)</span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-body">
+                <p class="text" style="font-size:14px;">Hidden content revealed on click.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown -->
+        <div class="card">
+          <p class="pv-group-label">Dropdown</p>
+          <div style="max-width: 260px;">
+            <div class="dropdown" id="pv-dd-1">
+              <div class="dropdown-head" tabindex="0" onclick="pvToggleDropdown('pv-dd-1')" onkeydown="if(event.key==='Enter'||event.key===' ')pvToggleDropdown('pv-dd-1')" role="combobox" aria-expanded="false">
+                <span id="pv-dd-1-val">Select status…</span>
+                <span>▾</span>
+              </div>
+              <div class="dropdown-list" role="listbox">
+                <div class="dropdown-item" role="option" onclick="pvSelectDd('pv-dd-1','Active')">Active</div>
+                <div class="dropdown-item dropdown-item--selected" role="option" onclick="pvSelectDd('pv-dd-1','Pending')">Pending</div>
+                <div class="dropdown-item" role="option" onclick="pvSelectDd('pv-dd-1','Closed')">Closed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="card">
+          <p class="pv-group-label">Progress</p>
+          <div class="pv-row" style="flex-direction: column; gap: 16px; align-items: stretch;">
+            <div>
+              <p class="pv-hint-text">Linear 60%</p>
+              <div class="progress"><div class="progress-fill" style="width: 60%"></div></div>
+            </div>
+            <div>
+              <p class="pv-hint-text">Linear 30%</p>
+              <div class="progress"><div class="progress-fill" style="width: 30%"></div></div>
+            </div>
+            <div>
+              <p class="pv-hint-text">Indeterminate</p>
+              <div class="progress progress--indeterminate"><div class="progress-fill"></div></div>
+            </div>
+            <div style="display:flex; gap:24px; align-items:center;">
+              <div>
+                <p class="pv-hint-text">Circular 75%</p>
+                <div class="progress-circle">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="progress-circle-track" cx="24" cy="24" r="20" stroke-width="4"/>
+                    <circle class="progress-circle-fill" cx="24" cy="24" r="20" stroke-width="4"
+                      stroke-dasharray="125.7"
+                      stroke-dashoffset="31.4"/>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <p class="pv-hint-text">Circular 40%</p>
+                <div class="progress-circle">
+                  <svg width="48" height="48" viewBox="0 0 48 48">
+                    <circle class="progress-circle-track" cx="24" cy="24" r="20" stroke-width="4"/>
+                    <circle class="progress-circle-fill" cx="24" cy="24" r="20" stroke-width="4"
+                      stroke-dasharray="125.7"
+                      stroke-dashoffset="75.4"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Buttons -->
         <div class="card">
           <p class="pv-group-label">Buttons</p>
@@ -869,6 +990,32 @@
     });
     document.querySelectorAll('[data-set-mode]').forEach(btn => {
       btn.addEventListener('click', () => applyTheme(currentTheme, btn.dataset.setMode));
+    });
+
+    function pvToggleAcc(id) {
+      const item = document.getElementById(id);
+      const isOpen = item.classList.contains('accordion-item--open');
+      item.classList.toggle('accordion-item--open', !isOpen);
+      item.querySelector('.accordion-head').setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    function pvToggleDropdown(id) {
+      const dd = document.getElementById(id);
+      const isOpen = dd.classList.contains('dropdown--open');
+      dd.classList.toggle('dropdown--open', !isOpen);
+      dd.querySelector('.dropdown-head').setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    function pvSelectDd(id, value) {
+      document.getElementById(id + '-val').textContent = value;
+      document.getElementById(id).classList.remove('dropdown--open');
+    }
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', function(e) {
+      document.querySelectorAll('.dropdown--open').forEach(function(dd) {
+        if (!dd.contains(e.target)) dd.classList.remove('dropdown--open');
+      });
     });
   </script>
 

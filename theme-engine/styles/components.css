@@ -359,3 +359,276 @@ section {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ── Switch / Toggle ────────────────────────────────────────── */
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--nav-padding-y);
+  cursor: pointer;
+}
+
+.switch input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--switch-track-bg);
+  transition: background var(--animation-duration-fast) var(--animation-ease-out);
+  flex-shrink: 0;
+}
+
+.switch input:checked ~ .switch-track {
+  background: var(--switch-track-active-bg);
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--switch-thumb-bg);
+  transition: transform var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.switch input:checked ~ .switch-track .switch-thumb {
+  transform: translateX(16px);
+}
+
+.switch:focus-within .switch-track {
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Tabs ───────────────────────────────────────────────────── */
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--tab-border-color);
+  gap: 0;
+}
+
+.tab {
+  padding: var(--button-padding-y) var(--button-padding-x);
+  background: var(--tab-bg);
+  color: var(--tab-text);
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  transition: color var(--animation-duration-fast) var(--animation-ease-out),
+              border-color var(--animation-duration-fast) var(--animation-ease-out);
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--tab-active-text);
+}
+
+.tab--active,
+.tab.active {
+  color: var(--tab-active-text);
+  border-bottom-color: var(--tab-indicator-color);
+}
+
+.tab:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Accordion ──────────────────────────────────────────────── */
+
+.accordion {
+  border: 1px solid var(--accordion-border);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--accordion-border);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--button-padding-y) var(--button-padding-x);
+  background: var(--accordion-head-bg);
+  color: var(--accordion-head-text);
+  cursor: pointer;
+  font-weight: var(--heading-font-weight);
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.accordion-head:hover {
+  background: var(--accordion-bg);
+}
+
+.accordion-head:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.accordion-icon {
+  transition: transform var(--animation-duration-normal) var(--animation-ease-out);
+  flex-shrink: 0;
+}
+
+.accordion-item--open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  background: var(--accordion-bg);
+  color: var(--text-primary);
+  padding: 0 var(--button-padding-x);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--animation-duration-slow) var(--animation-ease-out),
+              padding var(--animation-duration-slow) var(--animation-ease-out);
+}
+
+.accordion-item--open .accordion-body {
+  max-height: 500px;
+  padding: var(--button-padding-y) var(--button-padding-x);
+}
+
+/* ── Dropdown ───────────────────────────────────────────────── */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--input-padding);
+  background: var(--dropdown-bg);
+  color: var(--dropdown-text);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--input-radius);
+  cursor: pointer;
+  font-size: var(--label-font-size);
+  transition: border-color var(--animation-duration-fast) var(--animation-ease-out);
+  user-select: none;
+}
+
+.dropdown-head:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.dropdown--open .dropdown-head {
+  border-color: var(--button-bg);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--input-radius);
+  z-index: 100;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity var(--animation-duration-fast) var(--animation-ease-out),
+              transform var(--animation-duration-fast) var(--animation-ease-out);
+  box-shadow: var(--card-shadow);
+}
+
+.dropdown--open .dropdown-list {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  padding: var(--input-padding);
+  color: var(--dropdown-text);
+  cursor: pointer;
+  font-size: var(--label-font-size);
+  transition: background var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.dropdown-item:hover,
+.dropdown-item--focused {
+  background: var(--dropdown-item-hover-bg);
+}
+
+.dropdown-item--selected {
+  color: var(--button-bg);
+  font-weight: var(--heading-font-weight);
+}
+
+/* ── Progress ───────────────────────────────────────────────── */
+
+.progress {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-track-bg);
+  border-radius: var(--progress-radius);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--progress-fill-color);
+  border-radius: var(--progress-radius);
+  transition: width var(--animation-duration-normal) var(--animation-ease-out);
+}
+
+.progress--indeterminate .progress-fill {
+  width: 40%;
+  animation: progress-indeterminate var(--animation-duration-slow) var(--animation-ease-in-out) infinite;
+}
+
+@keyframes progress-indeterminate {
+  0%   { transform: translateX(-150%); }
+  100% { transform: translateX(400%); }
+}
+
+/* Circular progress */
+.progress-circle {
+  display: inline-block;
+  position: relative;
+}
+
+.progress-circle svg {
+  transform: rotate(-90deg);
+}
+
+.progress-circle-track {
+  stroke: var(--progress-track-bg);
+  fill: none;
+}
+
+.progress-circle-fill {
+  stroke: var(--progress-fill-color);
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--animation-duration-slow) var(--animation-ease-out);
+}
