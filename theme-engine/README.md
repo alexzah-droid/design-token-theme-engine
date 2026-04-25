@@ -74,7 +74,9 @@ Bundles are auto-generated — do not edit manually.
 
 `styles/components.css` — component styles using only semantic CSS variables. No hardcoded values.
 
-Available component classes: `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.heading`, `.badge`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`, `.nav`, `.nav-brand`, `.nav-actions`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.sidebar-link--active`, `.table`, `.checkbox`, `.checkbox-label`, `.radio`, `.radio-label`, `.alert`, `.alert-success`, `.alert-warning`, `.alert-error`, `.alert-info`, `.pagination`, `.pagination-item`, `.pagination-item--active`, `.pagination-item--disabled`.
+Available component classes: `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.text-muted`, `.heading`, `.badge`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`, `.nav`, `.nav-brand`, `.nav-actions`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.sidebar-link--active`, `.table`, `.checkbox`, `.checkbox-label`, `.radio`, `.radio-label`, `.alert`, `.alert-success`, `.alert-warning`, `.alert-error`, `.alert-info`, `.pagination`, `.pagination-item`, `.pagination-item--active`, `.pagination-item--disabled`.
+
+Utility classes: `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y).
 
 ---
 
@@ -83,8 +85,8 @@ Available component classes: `.button`, `.card`, `.input`, `.select`, `.textarea
 `preview/index.html` — component explorer with theme/mode switchers.
 
 Sections:
-- **01 Foundations** — color token swatches + typography scale
-- **02 Components** — all components with all variants and states
+- **01 Foundations** — color token swatches (including surface hierarchy, soft-status, chart palette), typography scale, motion tokens with live demo
+- **02 Components** — all components with all variants and states; A11y & Utilities card (skip-link, surface-2/3, prefers-reduced-motion)
 - **03 Live Demo** — Invoice Manager application
 
 ---

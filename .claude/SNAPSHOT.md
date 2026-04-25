@@ -2,8 +2,8 @@
 
 ## Текущее состояние
 
-**Статус:** рабочий прототип, готов к развитию
-**Последнее обновление:** 2026-04-25T15:35:55Z (pre-compaction)
+**Статус:** рабочий прототип, активное развитие
+**Последнее обновление:** 2026-04-26
 
 ## Что сделано
 
@@ -16,13 +16,20 @@
 - **Stage 2 завершён:** компоненты nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link; preview обновлён до SPA-лейаута; исправлен crash validator на .DS_Store; .gitignore: добавлено исключение !theme-engine/build/
 - **Stage 3 завершён:** компоненты textarea, checkbox/checkbox-label, radio/radio-label, alert (4 варианта), pagination/pagination-item (active/disabled); preview расширен алертами, форм-карточкой, пагинацией
 - **Preview redesign завершён:** из app demo → component explorer; sticky хедер с переключателями тем/режимов, секции 01 Foundations / 02 Components / 03 Live Demo, динамическая загрузка CSS одной темы
-- **Stage 5 завершён:** bundle-генерация (5 файлов *.bundle.css = токены + components), gas-example/ (Code.gs, Page.html, Styles.html), GAS_GUIDE.md
-- **Документация приведена в порядок:** AI_CONTEXT.md обновлён (статусы стадий, GAS embed, Preview), добавлены Document Map и Task→File Index, Development Backlog (10 задач), ссылка на AI_CONTEXT в CLAUDE.md, переписан theme-engine/README.md
+- **Stage 4b завершён:** bundle-генерация (5 файлов *.bundle.css = токены + components), gas-example/ (Code.gs, Page.html, Styles.html), GAS_GUIDE.md
+- **Документация приведена в порядок:** AI_CONTEXT.md — Document Map, Task→File Index, Development Backlog (10 задач), гайды "How to add a component/theme", USAGE.md обновлён, TOKEN_REFERENCE.md создан, ссылка на AI_CONTEXT в CLAUDE.md, переписан theme-engine/README.md
+- **Designer brief:** Invoice_mngmnt/DESIGNER_BRIEF.md — анализ v4 vs архитектура, инструкции для дизайнера на v5
+- **Stage 6a завершён:** расширена токен-система (motion, surface2/3, textMuted, soft-статусы, chart-палитра 1–6 + heat, focusRing); components.css — transitions, focus-visible ring, skip-link, prefers-reduced-motion, surface-2/3 utilities, text-muted; все темы обновлены brand-значениями; preview — 13 новых swatches, Motion-карточка с live-демо, A11y & Utilities карточка; TOKEN_REFERENCE.md — 7 новых секций; AI_CONTEXT.md — roadmap Stage 6a–8, DEV-7 в backlog
 
 ## Что в процессе
 
 _(нет активных задач)_
 
+## Следующие шаги
+
+- **Stage 6b** — новые компоненты: Switch/Toggle, Tabs, Accordion, Dropdown, Progress bars (linear/circular/segmented)
+- **Stage 6c** — Data display: KPI-карточки, sortable table, filter chips, typography scale
+- **Stage 7** — Charts subsystem: SVG charts (area/bar/donut/sparkline), heatmap, Gantt
 
 ## Известные проблемы
 
@@ -36,18 +43,4 @@ _(нет активных задач)_
 - Избыточная функция `checkSemantic()` в validate.js
 - Мёртвый код `mode="global"` в build-theme.js
 - Нет `package.json` в корне проекта
-
-## Следующие шаги
-
-**Следующие задачи (из Backlog в AI_CONTEXT.md):**
-- DOC-1: обновить/удалить устаревший `theme-engine/USAGE.md`
-- DOC-2: сгенерировать `TOKEN_REFERENCE.md` — таблица всех семантических токенов
-- DEV-1: гайд "How to add a component" в AI_CONTEXT.md
-- DEV-2: гайд "How to add a theme" в AI_CONTEXT.md
-- Stage 5: Validate on Invoice_mngmnt (сначала написать DoD)
-
-**Технический долг:**
-- corporate тема: radius.lg несоответствие (низкий приоритет)
-
-**Технический долг:**
-- Corporate тема: radius.lg несоответствие
+- DEV-7: `rgba(var(--chart-heat), var(--v))` потребует исключения в validator перед Stage 7
