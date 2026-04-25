@@ -391,3 +391,42 @@ Corporate theme default values shown.
 | `--progress-track-bg` | `{color.surface}` | `#FFFFFF` |
 | `--progress-fill-color` | `{color.primary}` | `#17311F` |
 | `--progress-radius` | `{radius.sm}` | `2px` |
+
+---
+
+### Type Scale
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--type-scale-display-size` | `{typography.fontSizeDisplay}` | `48px` |
+| `--type-scale-h1-size` | `{typography.fontSizeH1}` | `32px` |
+| `--type-scale-h2-size` | `{typography.fontSizeH2}` | `24px` |
+| `--type-scale-h3-size` | `{typography.fontSizeH3}` | `20px` |
+| `--type-scale-lead-size` | `{typography.fontSizeLead}` | `18px` |
+| `--type-scale-small-size` | `{typography.fontSizeSmall}` | `12px` |
+
+---
+
+### KPI
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--kpi-value-size` | `{typography.fontSizeKpiValue}` | `36px` |
+| `--kpi-value-font-weight` | `{typography.headingFontWeight}` | `600` |
+| `--kpi-value-color` | `{color.textPrimary}` | `#1B1C19` |
+| `--kpi-label-color` | `{color.textSecondary}` | `#5A5C56` |
+| `--kpi-delta-up-color` | `{color.success}` | `#34a853` |
+| `--kpi-delta-down-color` | `{color.error}` | `#ea4335` |
+
+---
+
+### Chip
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--chip-bg` | `{color.surface}` | `#FFFFFF` |
+| `--chip-text` | `{color.textSecondary}` | `#5A5C56` |
+| `--chip-border` | `{color.border}` | `#d8d1c2` |
+| `--chip-active-bg` | `{color.primary}` | `#17311F` |
+| `--chip-active-text` | `{color.onPrimary}` | `#EFE9D9` |
+| `--chip-radius` | `{radius.sm}` | `2px` |

@@ -53,7 +53,13 @@
     "headingLetterSpacing": "0px",
     "buttonFontWeight": "600",
     "labelFontWeight": "500",
-    "fontSizeSmall": "12px"
+    "fontSizeSmall": "12px",
+    "fontSizeDisplay": "48px",
+    "fontSizeH1": "32px",
+    "fontSizeH2": "24px",
+    "fontSizeH3": "20px",
+    "fontSizeLead": "18px",
+    "fontSizeKpiValue": "36px"
   },
   "motion": {
     "dur1": "120ms",

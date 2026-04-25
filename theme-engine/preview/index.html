@@ -544,6 +544,102 @@
           </div>
         </div>
 
+        <!-- Typography Scale -->
+        <div class="card">
+          <p class="pv-group-label">Typography Scale</p>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <p class="t-display">Display 48</p>
+            <p class="t-h1">Heading 1 · 32px</p>
+            <p class="t-h2">Heading 2 · 24px</p>
+            <p class="t-h3">Heading 3 · 20px</p>
+            <p class="t-lead">Lead paragraph — slightly larger, secondary color.</p>
+            <p class="text">Body text — base size, primary color.</p>
+            <p class="t-small">Small text · 12px</p>
+            <p class="t-overline">Overline label</p>
+            <p class="t-mono">mono · code · numbers</p>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="card">
+          <p class="pv-group-label">KPI Cards</p>
+          <div class="pv-row" style="flex-wrap: wrap; gap: 24px; align-items: flex-start;">
+            <div class="kpi">
+              <span class="kpi-label">Total Revenue</span>
+              <span class="kpi-value">₽ 2 480 000</span>
+              <span class="kpi-delta kpi-delta--up">↑ 12.4% vs last month</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Invoices Paid</span>
+              <span class="kpi-value">148</span>
+              <span class="kpi-delta kpi-delta--up">↑ 8 this week</span>
+            </div>
+            <div class="kpi">
+              <span class="kpi-label">Overdue</span>
+              <span class="kpi-value">7</span>
+              <span class="kpi-delta kpi-delta--down">↓ needs attention</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Chips -->
+        <div class="card">
+          <p class="pv-group-label">Filter Chips</p>
+          <div class="chips">
+            <button class="chip chip--active">All</button>
+            <button class="chip">Paid</button>
+            <button class="chip">Pending</button>
+            <button class="chip">Overdue</button>
+            <button class="chip">Draft</button>
+          </div>
+        </div>
+
+        <!-- Table: Sortable + Empty State -->
+        <div class="card">
+          <p class="pv-group-label">Table — Sortable Headers</p>
+          <table class="table table-sortable" style="margin-bottom: 16px;">
+            <thead>
+              <tr>
+                <th aria-sort="ascending">Invoice <i class="table-sort-icon">▲</i></th>
+                <th aria-sort="none">Client <i class="table-sort-icon">⇅</i></th>
+                <th aria-sort="none">Amount <i class="table-sort-icon">⇅</i></th>
+                <th aria-sort="none">Status <i class="table-sort-icon">⇅</i></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#1042</td>
+                <td>ООО Ромашка</td>
+                <td>48 000 ₽</td>
+                <td><span class="badge badge-success">Paid</span></td>
+              </tr>
+              <tr>
+                <td>#1041</td>
+                <td>ИП Сидоров</td>
+                <td>12 500 ₽</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="pv-group-label" style="margin-top: 16px;">Table — Empty State</p>
+          <table class="table">
+            <thead>
+              <tr><th>Invoice</th><th>Client</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="3">
+                  <div class="table-empty">
+                    <span class="table-empty-icon">📄</span>
+                    <p class="table-empty-text">No invoices found</p>
+                    <p class="table-empty-hint">Try adjusting your filters</p>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <!-- Buttons -->
         <div class="card">
           <p class="pv-group-label">Buttons</p>

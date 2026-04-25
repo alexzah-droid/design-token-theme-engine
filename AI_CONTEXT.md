@@ -609,10 +609,10 @@ Semantic tokens defined for all 5 components. CSS in `styles/components.css`. Pr
 
 ---
 
-### Stage 6c — Data Display Enhancements (planned)
+### Stage 6c — Data Display Enhancements ✅ Done
 
-To add: KPI cards with sparkline, sortable table headers, table search, filter chips, table empty state.
-Typography utility classes (`.t-display`, `.t-h1..3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`).
+Added: Typography scale classes (`.t-display`, `.t-h1..3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`), KPI cards (`.kpi`, `.kpi-value`, `.kpi-delta--up/down`), filter chips (`.chip`, `.chip--active`), sortable table headers (`aria-sort`, `.table-sort-icon`), table empty state (`.table-empty`).
+New base tokens: `fontSizeDisplay/H1/H2/H3/Lead/KpiValue`. Semantic groups: `typeScale`, `chip`, `kpi`.
 
 ---
 

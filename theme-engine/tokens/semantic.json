@@ -191,5 +191,29 @@
     "trackBg": "{color.surface}",
     "fillColor": "{color.primary}",
     "radius": "{radius.sm}"
+  },
+  "typeScale": {
+    "displaySize": "{typography.fontSizeDisplay}",
+    "h1Size": "{typography.fontSizeH1}",
+    "h2Size": "{typography.fontSizeH2}",
+    "h3Size": "{typography.fontSizeH3}",
+    "leadSize": "{typography.fontSizeLead}",
+    "smallSize": "{typography.fontSizeSmall}"
+  },
+  "chip": {
+    "bg": "{color.surface}",
+    "text": "{color.textSecondary}",
+    "border": "{color.border}",
+    "activeBg": "{color.primary}",
+    "activeText": "{color.onPrimary}",
+    "radius": "{radius.sm}"
+  },
+  "kpi": {
+    "valueSize": "{typography.fontSizeKpiValue}",
+    "valueFontWeight": "{typography.headingFontWeight}",
+    "valueColor": "{color.textPrimary}",
+    "labelColor": "{color.textSecondary}",
+    "deltaUpColor": "{color.success}",
+    "deltaDownColor": "{color.error}"
   }
 }
