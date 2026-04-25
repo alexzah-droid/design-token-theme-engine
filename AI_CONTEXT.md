@@ -294,6 +294,158 @@ We use 3 levels:
 
 ---
 
+## ➕ How to Add a Component
+
+Follow these steps exactly. All steps are required.
+
+### 1. Define semantic tokens
+
+Add a new group to `tokens/semantic.json`:
+
+```json
+"myComponent": {
+  "bg": "{color.surface}",
+  "text": "{color.textPrimary}",
+  "border": "{color.border}"
+}
+```
+
+Rules:
+- Reference only existing base token groups: `color`, `spacing`, `radius`, `typography`, `shadow`
+- Do not hardcode values
+- Group name becomes CSS variable prefix: `myComponent.bg` → `--my-component-bg`
+
+### 2. Add component CSS
+
+Add to `styles/components.css`:
+
+```css
+.my-component {
+  background: var(--my-component-bg);
+  color: var(--my-component-text);
+  border: 1px solid var(--my-component-border);
+}
+```
+
+Rules:
+- Only `var(--semantic-token)` — no hardcoded values, no HEX, no base tokens directly
+- No theme-specific rules
+
+### 3. Add to preview
+
+In `preview/index.html`, Section 02 Components — add a new `.card` group:
+
+```html
+<div class="card">
+  <p class="pv-group-label">My Component</p>
+  <div class="pv-row">
+    <!-- all variants and states here -->
+  </div>
+</div>
+```
+
+### 4. Run validate
+
+```bash
+cd theme-engine && npm run validate
+```
+
+All 7 checks must pass.
+
+### 5. Update TOKEN_REFERENCE.md
+
+Add new component section to `theme-engine/TOKEN_REFERENCE.md`.
+
+### Definition of Done
+
+- [ ] Semantic tokens added to `semantic.json`
+- [ ] CSS added to `components.css` — only `var()`, no hardcoded values
+- [ ] Component shown in preview Section 02 with all variants and states
+- [ ] `npm run validate` passes 7/7
+- [ ] `TOKEN_REFERENCE.md` updated
+
+---
+
+## 🎨 How to Add a Theme
+
+### 1. Create theme file
+
+Create `themes/{name}.json`. Override only base token groups:
+
+```json
+{
+  "color": {
+    "primary": "#...",
+    "primaryHover": "#...",
+    "onPrimary": "#ffffff",
+    "background": "#...",
+    "surface": "#...",
+    "border": "#..."
+  },
+  "typography": {
+    "fontFamily": "..."
+  }
+}
+```
+
+Rules:
+- Only keys from `tokens/base.json` — no new keys
+- Allowed groups: `color`, `spacing`, `radius`, `typography`, `shadow`
+- You don't have to override everything — only what differs from base
+
+### 2. Add dark mode (optional)
+
+Create `themes/{name}.dark.json`:
+
+```json
+{
+  "color": {
+    "background": "#...",
+    "surface": "#...",
+    "textPrimary": "#...",
+    "textSecondary": "#..."
+  }
+}
+```
+
+Rules:
+- Must use same token names as base.json — no new keys
+- Override only mode-sensitive tokens (backgrounds, surfaces, text colors)
+- Brand tokens (primary color, radius, typography) are set by the theme, not the mode
+
+### 3. Build
+
+```bash
+cd theme-engine && npm run build
+```
+
+New theme CSS is auto-generated in `dist/`. Dark variant is auto-detected if `.dark.json` exists.
+
+### 4. Add to preview
+
+In `preview/index.html`:
+- Add theme button in the sticky header switcher
+- Add theme to `themesWithDark` array in JS if it has a dark variant
+- Update `applyTheme()` if needed
+
+### 5. Run validate
+
+```bash
+npm run validate
+```
+
+All 7 checks must pass.
+
+### Definition of Done
+
+- [ ] `themes/{name}.json` created — only base token overrides
+- [ ] `themes/{name}.dark.json` created (if dark supported)
+- [ ] `npm run build` completes without errors
+- [ ] `npm run validate` passes 7/7
+- [ ] Preview header updated with new theme button
+
+---
+
 ## 🎯 Contrast System
 
 We use semantic contrast tokens:
