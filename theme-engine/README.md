@@ -74,9 +74,17 @@ Bundles are auto-generated — do not edit manually.
 
 `styles/components.css` — component styles using only semantic CSS variables. No hardcoded values.
 
-Available component classes: `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.text-muted`, `.heading`, `.badge`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`, `.nav`, `.nav-brand`, `.nav-actions`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.sidebar-link--active`, `.table`, `.checkbox`, `.checkbox-label`, `.radio`, `.radio-label`, `.alert`, `.alert-success`, `.alert-warning`, `.alert-error`, `.alert-info`, `.pagination`, `.pagination-item`, `.pagination-item--active`, `.pagination-item--disabled`.
+**Base:** `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.text-muted`, `.heading`, `.badge`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`, `.nav`, `.nav-brand`, `.nav-actions`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.sidebar-link--active`, `.table`, `.checkbox`, `.checkbox-label`, `.radio`, `.radio-label`, `.alert`, `.alert-success`, `.alert-warning`, `.alert-error`, `.alert-info`, `.pagination`, `.pagination-item`, `.pagination-item--active`, `.pagination-item--disabled`
 
-Utility classes: `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y).
+**Interactive:** `.switch`, `.switch-track`, `.switch-thumb`, `.tabs`, `.tab`, `.tab--active`, `.accordion`, `.accordion-item`, `.accordion-item--open`, `.accordion-head`, `.accordion-body`, `.dropdown`, `.dropdown-head`, `.dropdown-list`, `.dropdown-item`, `.dropdown-item--selected`, `.dropdown--open`
+
+**Progress:** `.progress`, `.progress-fill`, `.progress--indeterminate`, `.progress-circle`, `.progress-circle-track`, `.progress-circle-fill`
+
+**Data display:** `.kpi`, `.kpi-label`, `.kpi-value`, `.kpi-delta`, `.kpi-delta--up`, `.kpi-delta--down`, `.chips`, `.chip`, `.chip--active`, `.table-sortable`, `.table-sort-icon`, `.table-empty`, `.table-empty-text`, `.table-empty-hint`
+
+**Typography scale:** `.t-display`, `.t-h1`, `.t-h2`, `.t-h3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`
+
+**Utilities:** `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y)
 
 ---
 
