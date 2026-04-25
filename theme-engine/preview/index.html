@@ -300,6 +300,58 @@
             <div class="pv-swatch-chip" style="background: var(--badge-neutral-bg); border: 1px solid var(--input-border)"></div>
             <span class="pv-swatch-name">--badge-neutral-bg<br>Badge neutral</span>
           </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--surface-bg2); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--surface-bg2<br>Surface 2</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--surface-bg3); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--surface-bg3<br>Surface 3</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--text-muted)"></div>
+            <span class="pv-swatch-name">--text-muted<br>Text muted</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--status-success-soft); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--status-success-soft<br>Success soft</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--status-warn-soft); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--status-warn-soft<br>Warn soft</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--status-error-soft); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--status-error-soft<br>Error soft</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--status-info-soft); border: 1px solid var(--input-border)"></div>
+            <span class="pv-swatch-name">--status-info-soft<br>Info soft</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color1)"></div>
+            <span class="pv-swatch-name">--chart-color1<br>Chart 1</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color2)"></div>
+            <span class="pv-swatch-name">--chart-color2<br>Chart 2</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color3)"></div>
+            <span class="pv-swatch-name">--chart-color3<br>Chart 3</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color4)"></div>
+            <span class="pv-swatch-name">--chart-color4<br>Chart 4</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color5)"></div>
+            <span class="pv-swatch-name">--chart-color5<br>Chart 5</span>
+          </div>
+          <div class="pv-swatch">
+            <div class="pv-swatch-chip" style="background: var(--chart-color6)"></div>
+            <span class="pv-swatch-name">--chart-color6<br>Chart 6</span>
+          </div>
 
         </div>
       </div>
@@ -323,6 +375,25 @@
           <span class="pv-type-meta">text-secondary · muted</span>
           <p class="text-secondary">Last updated 2026-04-24</p>
         </div>
+        <div class="pv-type-row">
+          <span class="pv-type-meta">text-muted · subdued</span>
+          <p class="text-muted">Draft · Not submitted</p>
+        </div>
+      </div>
+
+      <!-- Motion tokens -->
+      <div class="card">
+        <p class="pv-group-label">Motion</p>
+        <div class="pv-row" style="align-items: center; flex-wrap: wrap; gap: 16px;">
+          <span class="pv-hint-text">--animation-duration-fast: <code>120ms</code></span>
+          <span class="pv-hint-text">--animation-duration-normal: <code>180ms</code></span>
+          <span class="pv-hint-text">--animation-duration-slow: <code>260ms</code></span>
+          <span class="pv-hint-text">--animation-ease-out</span>
+          <span class="pv-hint-text">--animation-ease-in-out</span>
+        </div>
+        <div class="pv-row" style="margin-top: 8px;">
+          <button class="button" style="transition: transform var(--animation-duration-normal) var(--animation-ease-out);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">Hover me (motion)</button>
+        </div>
       </div>
     </section>
 
@@ -338,6 +409,19 @@
       </div>
 
       <div class="pv-groups">
+
+        <!-- A11y / Utilities -->
+        <div class="card">
+          <p class="pv-group-label">A11y &amp; Utilities</p>
+          <div class="pv-row">
+            <a href="#main" class="skip-link" style="position:static; top:auto;">Skip link (a11y)</a>
+          </div>
+          <div class="pv-row" style="margin-top: 8px;">
+            <div class="surface-2 card" style="padding: 8px 12px; font-size: 13px;">surface-2</div>
+            <div class="surface-3 card" style="padding: 8px 12px; font-size: 13px;">surface-3</div>
+          </div>
+          <p class="pv-hint-text">prefers-reduced-motion: all transitions disabled at OS level</p>
+        </div>
 
         <!-- Buttons -->
         <div class="card">

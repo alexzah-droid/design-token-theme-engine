@@ -35,6 +35,28 @@ Corporate theme default values shown.
 | radius | `--radius-lg` | `6px` |
 | shadow | `--shadow-sm` | `none` |
 | shadow | `--shadow-md` | `none` |
+| typography | `--typography-font-family` | `"PT Sans", "Helvetica Neue", Arial, sans-serif` |
+| motion | `--motion-dur1` | `120ms` |
+| motion | `--motion-dur2` | `180ms` |
+| motion | `--motion-dur3` | `260ms` |
+| motion | `--motion-dur4` | `380ms` |
+| motion | `--motion-ease-out` | `cubic-bezier(.2,.8,.2,1)` |
+| motion | `--motion-ease-in-out` | `cubic-bezier(.4,0,.2,1)` |
+| color | `--color-surface2` | `#F0EBE2` |
+| color | `--color-surface3` | `#E8E1D6` |
+| color | `--color-text-muted` | `#9A9590` |
+| color | `--color-success-soft` | `rgba(46,107,62,.15)` |
+| color | `--color-warn-soft` | `rgba(158,122,28,.15)` |
+| color | `--color-error-soft` | `rgba(140,46,46,.15)` |
+| color | `--color-info-soft` | `rgba(43,79,116,.15)` |
+| color | `--color-chart1` | `#3A6B49` |
+| color | `--color-chart2` | `#B08A3E` |
+| color | `--color-chart3` | `#2B4F74` |
+| color | `--color-chart4` | `#8C2E2E` |
+| color | `--color-chart5` | `#9E7A1C` |
+| color | `--color-chart6` | `#7BA78A` |
+| color | `--color-chart-heat` | `176, 138, 62` |
+| color | `--color-focus-ring` | `0 0 0 3px rgba(176,138,62,.35)` |
 
 ---
 
@@ -249,3 +271,68 @@ Corporate theme default values shown.
 | `--pagination-active-bg` | `{color.primary}` | `#17311F` |
 | `--pagination-active-text` | `{color.onPrimary}` | `#ffffff` |
 | `--pagination-active-border` | `{color.primary}` | `#17311F` |
+
+---
+
+### Surface
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--surface-bg` | `{color.surface}` | `#FFFFFF` |
+| `--surface-bg2` | `{color.surface2}` | `#F0EBE2` |
+| `--surface-bg3` | `{color.surface3}` | `#E8E1D6` |
+
+---
+
+### Text (extended)
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--text-primary` | `{color.textPrimary}` | `#1B1C19` |
+| `--text-secondary` | `{color.textSecondary}` | `#5A5C56` |
+| `--text-muted` | `{color.textMuted}` | `#9A9590` |
+
+---
+
+### Status Soft
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--status-success-soft` | `{color.successSoft}` | `rgba(46,107,62,.15)` |
+| `--status-warn-soft` | `{color.warnSoft}` | `rgba(158,122,28,.15)` |
+| `--status-error-soft` | `{color.errorSoft}` | `rgba(140,46,46,.15)` |
+| `--status-info-soft` | `{color.infoSoft}` | `rgba(43,79,116,.15)` |
+
+---
+
+### Chart
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--chart-color1` | `{color.chart1}` | `#3A6B49` |
+| `--chart-color2` | `{color.chart2}` | `#B08A3E` |
+| `--chart-color3` | `{color.chart3}` | `#2B4F74` |
+| `--chart-color4` | `{color.chart4}` | `#8C2E2E` |
+| `--chart-color5` | `{color.chart5}` | `#9E7A1C` |
+| `--chart-color6` | `{color.chart6}` | `#7BA78A` |
+| `--chart-heat` | `{color.chartHeat}` | `176, 138, 62` |
+
+---
+
+### Focus
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--focus-ring` | `{color.focusRing}` | `0 0 0 3px rgba(176,138,62,.35)` |
+
+---
+
+### Animation
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--animation-duration-fast` | `{motion.dur1}` | `120ms` |
+| `--animation-duration-normal` | `{motion.dur2}` | `180ms` |
+| `--animation-duration-slow` | `{motion.dur3}` | `260ms` |
+| `--animation-ease-out` | `{motion.easeOut}` | `cubic-bezier(.2,.8,.2,1)` |
+| `--animation-ease-in-out` | `{motion.easeInOut}` | `cubic-bezier(.4,0,.2,1)` |
