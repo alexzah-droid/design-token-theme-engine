@@ -281,3 +281,81 @@ section {
   opacity: 0.4;
   cursor: not-allowed;
 }
+
+/* ── Transitions ────────────────────────────────────────────── */
+
+.button {
+  transition: background var(--animation-duration-fast) var(--animation-ease-out),
+              color var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.input,
+.select,
+.textarea {
+  transition: border-color var(--animation-duration-fast) var(--animation-ease-out),
+              box-shadow var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.pagination-item {
+  transition: background var(--animation-duration-fast) var(--animation-ease-out),
+              color var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+/* ── Focus ring ─────────────────────────────────────────────── */
+
+.button:focus-visible,
+.input:focus-visible,
+.select:focus-visible,
+.textarea:focus-visible,
+.pagination-item:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Surface hierarchy utilities ────────────────────────────── */
+
+.surface-2 {
+  background: var(--surface-bg2);
+}
+
+.surface-3 {
+  background: var(--surface-bg3);
+}
+
+/* ── Text utilities ─────────────────────────────────────────── */
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* ── Skip link (a11y) ───────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: var(--button-padding-x);
+  background: var(--button-bg);
+  color: var(--button-text);
+  padding: var(--button-padding-y) var(--button-padding-x);
+  border-radius: var(--button-radius);
+  border: none;
+  text-decoration: none;
+  font-weight: var(--button-font-weight);
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  top: var(--button-padding-y);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

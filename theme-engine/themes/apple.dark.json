@@ -2,9 +2,12 @@
   "color": {
     "background": "#000000",
     "surface": "#1c1c1e",
+    "surface2": "#2c2c2e",
+    "surface3": "#3a3a3c",
+    "border": "#38383a",
     "textPrimary": "#ffffff",
     "textSecondary": "#ababab",
-    "border": "#38383a"
+    "textMuted": "#636366"
   },
   "shadow": {
     "sm": "none",

@@ -24,7 +24,13 @@
   },
   "text": {
     "primary": "{color.textPrimary}",
-    "secondary": "{color.textSecondary}"
+    "secondary": "{color.textSecondary}",
+    "muted": "{color.textMuted}"
+  },
+  "surface": {
+    "bg": "{color.surface}",
+    "bg2": "{color.surface2}",
+    "bg3": "{color.surface3}"
   },
   "heading": {
     "color": "{color.textPrimary}",
@@ -130,5 +136,30 @@
     "activeBg": "{color.primary}",
     "activeText": "{color.onPrimary}",
     "activeBorder": "{color.primary}"
+  },
+  "status": {
+    "successSoft": "{color.successSoft}",
+    "warnSoft": "{color.warnSoft}",
+    "errorSoft": "{color.errorSoft}",
+    "infoSoft": "{color.infoSoft}"
+  },
+  "chart": {
+    "color1": "{color.chart1}",
+    "color2": "{color.chart2}",
+    "color3": "{color.chart3}",
+    "color4": "{color.chart4}",
+    "color5": "{color.chart5}",
+    "color6": "{color.chart6}",
+    "heat": "{color.chartHeat}"
+  },
+  "focus": {
+    "ring": "{color.focusRing}"
+  },
+  "animation": {
+    "durationFast": "{motion.dur1}",
+    "durationNormal": "{motion.dur2}",
+    "durationSlow": "{motion.dur3}",
+    "easeOut": "{motion.easeOut}",
+    "easeInOut": "{motion.easeInOut}"
   }
 }

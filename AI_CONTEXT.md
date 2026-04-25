@@ -587,6 +587,50 @@ Validates that token system and components hold up under real product requiremen
 
 ---
 
+### Stage 6a — Token System Expansion + A11y Foundation ✅ Done
+
+Extended token system with patterns missing from original system (identified from Invoice_mngmnt/ztz-ui-kit-v4 reference):
+- **Motion tokens** in `tokens/base.json`: `motion.dur1..4`, `motion.easeOut`, `motion.easeInOut`
+- **Animation semantic tokens**: `animation.durationFast/Normal/Slow`, `animation.easeOut/easeInOut`
+- **Surface hierarchy**: `color.surface2/3` in base + `surface.bg/bg2/bg3` semantic tokens
+- **Text muted**: `color.textMuted` + `text.muted` semantic token
+- **Status soft variants**: `color.successSoft/warnSoft/errorSoft/infoSoft` + `status.*Soft` semantic tokens
+- **Chart palette**: `color.chart1..6`, `color.chartHeat` + `chart.*` semantic tokens (7 tokens)
+- **Focus ring**: `color.focusRing` (theme-overridable via color group) + `focus.ring` semantic token
+- All themes updated with brand-specific values for new tokens
+- **components.css**: skip link (a11y), surface utilities, text-muted utility, transitions on interactive elements, `prefers-reduced-motion` support
+
+---
+
+### Stage 6b — New Components (planned)
+
+To add: Switch/Toggle, Tabs, Accordion, Custom Dropdown, Progress bars (linear/circular/segmented).
+Tokens for each component to be defined in `tokens/semantic.json` before CSS.
+
+---
+
+### Stage 6c — Data Display Enhancements (planned)
+
+To add: KPI cards with sparkline, sortable table headers, table search, filter chips, table empty state.
+Typography utility classes (`.t-display`, `.t-h1..3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`).
+
+---
+
+### Stage 7 — Charts Subsystem (planned)
+
+To add: Area, Bar (stacked), Multi-line, Donut, Sparkline SVG charts; Heatmap; full Gantt diagram.
+All chart components use `--chart-color1..6` and `--chart-heat` semantic tokens.
+Validator update needed: allow `rgba(var(...))` pattern in components.css.
+
+---
+
+### Stage 8 — Developer UX in Preview (planned)
+
+To add: Static component states (`.is-hover`, `.is-focus`, `.is-selected`, `.is-disabled`),
+viewport simulator in preview, CSS grid layout utilities (`.row`, `.grid-2/3/4/6`).
+
+---
+
 ## ⚠️ Expansion Rules
 
 All new UI elements must follow:
@@ -695,20 +739,20 @@ Ordered by impact. Items below are gaps identified during documentation audit (2
 
 ### High priority
 
-**DOC-1. Update `theme-engine/USAGE.md`**
+**DOC-1. Update `theme-engine/USAGE.md`** ✅ Done
 File is outdated — describes multi-link CSS approach, no dark mode, no bundles, no components. AI agents reading it will make wrong decisions.
 Action: replace content with redirect to `README.md` and `GAS_GUIDE.md`, or delete.
 
-**DOC-2. Token reference table**
+**DOC-2. Token reference table** ✅ Done
 No document lists all semantic tokens with: token name → component → resolved value (corporate default).
 Currently an agent must cross-read `components.css` + `dist/corporate.css` to understand what `--alert-info-border` does.
 Action: generate `theme-engine/TOKEN_REFERENCE.md` — table of all semantic tokens.
 
-**DEV-1. "How to add a component" guide**
+**DEV-1. "How to add a component" guide** ✅ Done
 Process (add tokens to `semantic.json` → CSS to `components.css` → preview in `index.html` → run validator) is nowhere documented. Agents guess by analogy.
 Action: add concise step-by-step section to `AI_CONTEXT.md` or separate `CONTRIBUTING.md`.
 
-**DEV-2. "How to add a theme" guide**
+**DEV-2. "How to add a theme" guide** ✅ Done
 Which keys are required in `themes/name.json`, what must be in `.dark.json`, how to verify a new theme.
 Action: add section to `AI_CONTEXT.md`.
 
@@ -742,6 +786,10 @@ Action: add bundle size check to `validate.js` or document the GAS limit as a co
 **DEV-6. Static hover/focus states in preview**
 Preview tells users "hover to see hover state" — states can't be inspected statically.
 Action: add CSS utility class `.is-hover` / `.is-focus` to demonstrate states without interaction.
+
+**DEV-7. Charts validator exception**
+`rgba(var(--chart-heat), var(--v))` is a valid CSS pattern (variable as RGB channel) but currently fails `checkNoHardcodedColors()` in `validate.js`.
+Action: update validator regex to allow `rgba(var(...))` pattern before implementing chart components (Stage 7).
 
 ---
 

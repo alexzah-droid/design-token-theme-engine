@@ -2,10 +2,27 @@
   "color": {
     "primary": "#17311F",
     "primaryHover": "#10231A",
+    "onPrimary": "#EFE9D9",
     "background": "#F6F2EA",
     "surface": "#FFFFFF",
+    "surface2": "#F0EBE2",
+    "surface3": "#E8E1D6",
     "border": "#d8d1c2",
-    "textPrimary": "#1B1C19"
+    "textPrimary": "#1B1C19",
+    "textSecondary": "#5A5C56",
+    "textMuted": "#9A9590",
+    "successSoft": "rgba(46,107,62,.15)",
+    "warnSoft": "rgba(158,122,28,.15)",
+    "errorSoft": "rgba(140,46,46,.15)",
+    "infoSoft": "rgba(43,79,116,.15)",
+    "chart1": "#3A6B49",
+    "chart2": "#B08A3E",
+    "chart3": "#2B4F74",
+    "chart4": "#8C2E2E",
+    "chart5": "#9E7A1C",
+    "chart6": "#7BA78A",
+    "chartHeat": "176, 138, 62",
+    "focusRing": "0 0 0 3px rgba(176,138,62,.35)"
   },
   "radius": {
     "sm": "2px",

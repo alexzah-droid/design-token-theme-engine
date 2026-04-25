@@ -66,7 +66,8 @@ function checkSemantic() {
               !path.startsWith("spacing") &&
               !path.startsWith("radius") &&
               !path.startsWith("typography") &&
-              !path.startsWith("shadow")) {
+              !path.startsWith("shadow") &&
+              !path.startsWith("motion")) {
             fail(`Invalid semantic reference: ${path}`);
           }
         }

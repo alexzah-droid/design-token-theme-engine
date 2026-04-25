@@ -2,8 +2,15 @@
   "color": {
     "background": "#1a1a14",
     "surface": "#252520",
+    "surface2": "#1F2C20",
+    "surface3": "#152919",
+    "border": "#3a3a2e",
     "textPrimary": "#f0ece0",
     "textSecondary": "#9a9688",
-    "border": "#3a3a2e"
+    "textMuted": "#6A7468",
+    "successSoft": "rgba(46,107,62,.22)",
+    "warnSoft": "rgba(176,138,62,.22)",
+    "errorSoft": "rgba(140,46,46,.22)",
+    "infoSoft": "rgba(43,79,116,.22)"
   }
 }
