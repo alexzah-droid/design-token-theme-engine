@@ -13,7 +13,7 @@ Token-based theme engine for building consistent UI design systems. Generates sc
 Все команды запускаются из `theme-engine/`:
 
 ```bash
-npm run build     # генерация dist/*.css из tokens/ + themes/
+npm run build     # генерация dist/*.css + dist/*.bundle.css из tokens/ + themes/
 npm run validate  # проверка архитектурных инвариантов
 ```
 
@@ -35,12 +35,15 @@ themes/{name}.dark.json   → dark-mode переопределения (отде
 2. `resolveToken()` — разрешение `{reference}` ссылок в семантических токенах
 3. `flattenTokens()` — вложенный объект → CSS-переменные в kebab-case
 4. Генерация в `dist/` с селекторами `[data-theme="name"]` / `[data-theme="name"][data-mode="dark"]`
+5. `buildBundle()` — генерация `*.bundle.css` (токены темы + `components.css` в одном файле)
 
 **Переключение тем:** атрибуты `data-theme` и `data-mode` на корневом элементе HTML.
 
 **Текущие темы:** `corporate` (+ dark), `apple` (+ dark), `minimal`.
 
 **Компоненты** (`styles/components.css`): используют исключительно семантические CSS-переменные — никаких прямых значений.
+
+**GAS Embed** (`gas-example/`, `GAS_GUIDE.md`): интеграция с Google Apps Script HTML Service через bundle-файлы. Bundle = токены + компоненты в одном файле, готов к вставке в `Styles.html`. Подробности — `GAS_GUIDE.md`.
 
 ## Контракты
 

@@ -1,124 +1,115 @@
-
 # Theme Engine
 
-A lightweight Theme Engine based on design tokens.
+Token-based theme engine. Generates scoped CSS custom properties from JSON design tokens. Supports multiple themes and light/dark modes. Zero runtime dependencies — pure HTML/CSS/JS.
 
 ---
 
-## 🎯 What is this?
+## Architecture
 
-This project is NOT a UI library.
+3-layer token model:
 
-It is a system to:
-- define design tokens
-- build themes
-- generate CSS variables
-- apply themes dynamically
+```
+tokens/base.json        — primitive values (colors, spacing, typography, shadow)
+tokens/semantic.json    — semantic mappings via {group.key} reference syntax
+themes/{name}.json      — overrides of primitive tokens only
+themes/{name}.dark.json — dark-mode overrides (separate file)
+```
 
----
-
-## 🧩 Architecture
-
-/tokens  
-- base.json (primitive tokens)  
-- semantic.json (meaning layer)
-
-/themes  
-- theme overrides (corporate, minimal, apple)
-
-/styles  
-- shared component styles
-
-/build  
-- generates CSS variables
-
-/preview  
-- visual testing environment
+Theme switching: `data-theme` and `data-mode` attributes on the root HTML element.
 
 ---
 
-## 🔗 How it works
+## Commands
 
-tokens → semantic → theme → build → CSS → styles → UI
+Run from `theme-engine/`:
 
----
+```bash
+npm run build     # generate dist/ CSS files + bundle files
+npm run validate  # check architectural invariants (7 checks)
+```
 
-## 🎨 Themes
-
-Current themes:
-
-- Corporate (real-world extracted)
-- Minimal
-- Apple (HIG-inspired)
+Preview: open `preview/index.html` in a browser.
 
 ---
 
-## ⚙️ Build
+## Build Output
 
-Run:
+`npm run build` generates two sets of files in `dist/`:
 
-node build/build-theme.js
+**Theme CSS** — scoped token variables:
 
-Output:
+| File | Selector |
+|------|----------|
+| `corporate.css` | `[data-theme="corporate"]` |
+| `corporate.dark.css` | `[data-theme="corporate"][data-mode="dark"]` |
+| `apple.css` | `[data-theme="apple"]` |
+| `apple.dark.css` | `[data-theme="apple"][data-mode="dark"]` |
+| `minimal.css` | `[data-theme="minimal"]` |
 
-/dist  
-- corporate.css  
-- minimal.css  
-- apple.css  
+**Bundle CSS** — tokens + component styles in one file (for GAS embed or single-file use):
 
----
+| File | Theme | Mode |
+|------|-------|------|
+| `corporate.bundle.css` | Corporate | Light |
+| `corporate.dark.bundle.css` | Corporate | Dark |
+| `apple.bundle.css` | Apple | Light |
+| `apple.dark.bundle.css` | Apple | Dark |
+| `minimal.bundle.css` | Minimal | Light |
 
-## 🎛️ Theme Switching
-
-Themes are applied via:
-
-[data-theme="themeName"]
-
-Example:
-
-<html data-theme="apple">
-
----
-
-## 📐 Design Principles
-
-- No hardcoded values
-- Tokens are the single source of truth :contentReference[oaicite:1]{index=1}
-- Semantic layer defines meaning
-- Themes only override values
-- Styles never depend on specific themes
+Bundles are auto-generated — do not edit manually.
 
 ---
 
-## 🚧 Roadmap
+## Themes
 
-- Auto contrast system
-- More semantic tokens
-- Export adapters (GAS, web)
-- Theme packaging
-
----
-
-## 🧠 Key Idea
-
-Theme = configuration  
-Styles = implementation  
-Components = structure
+| Theme | Description |
+|-------|-------------|
+| `corporate` | Business, restrained (+ dark mode) |
+| `apple` | Neutral, HIG-inspired (+ dark mode) |
+| `minimal` | Clean, minimal (light only) |
 
 ---
 
-## 📌 Usage
+## Components
 
-This engine can be embedded into:
+`styles/components.css` — component styles using only semantic CSS variables. No hardcoded values.
 
-- Web apps
-- Google Apps Script (GAS)
-- Internal tools
+Available component classes: `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.heading`, `.badge`, `.badge-success`, `.badge-warning`, `.badge-error`, `.badge-neutral`, `.nav`, `.nav-brand`, `.nav-actions`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.sidebar-link--active`, `.table`, `.checkbox`, `.checkbox-label`, `.radio`, `.radio-label`, `.alert`, `.alert-success`, `.alert-warning`, `.alert-error`, `.alert-info`, `.pagination`, `.pagination-item`, `.pagination-item--active`, `.pagination-item--disabled`.
 
 ---
 
-## ⚠️ Important
+## Preview
 
-Before modifying the project, read:
+`preview/index.html` — component explorer with theme/mode switchers.
 
-AI_CONTEXT.md
+Sections:
+- **01 Foundations** — color token swatches + typography scale
+- **02 Components** — all components with all variants and states
+- **03 Live Demo** — Invoice Manager application
+
+---
+
+## GAS Embed
+
+Use bundle files to embed the design system in Google Apps Script HTML Service.
+
+Quick start:
+1. Run `npm run build`
+2. Copy `dist/corporate.bundle.css` into `Styles.html` in your GAS project
+3. Use `<?!= include('Styles'); ?>` in your HTML template
+
+See `gas-example/` for a working example and `GAS_GUIDE.md` for full instructions.
+
+---
+
+## Contracts (Validator)
+
+`npm run validate` checks 7 invariants — all must pass:
+
+1. No hardcoded HEX/rgb/rgba/hsl in `styles/components.css`
+2. No base tokens used directly in components (only semantic tokens)
+3. Semantic tokens reference only existing base token groups
+4. Theme files override only base tokens
+5. Dark themes add no new token names
+6. Build output contains required CSS variables
+7. Component styles use only semantic CSS variables
