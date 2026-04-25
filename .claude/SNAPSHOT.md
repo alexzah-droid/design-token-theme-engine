@@ -16,6 +16,7 @@
 - **Stage 2 завершён:** компоненты nav, nav-brand, nav-actions, page-layout, page-sidebar, page-content, sidebar-link; preview обновлён до SPA-лейаута; исправлен crash validator на .DS_Store; .gitignore: добавлено исключение !theme-engine/build/
 - **Stage 3 завершён:** компоненты textarea, checkbox/checkbox-label, radio/radio-label, alert (4 варианта), pagination/pagination-item (active/disabled); preview расширен алертами, форм-карточкой, пагинацией
 - **Preview redesign завершён:** из app demo → component explorer; sticky хедер с переключателями тем/режимов, секции 01 Foundations / 02 Components / 03 Live Demo, динамическая загрузка CSS одной темы
+- **Stage 5 завершён:** bundle-генерация (5 файлов *.bundle.css = токены + components), gas-example/ (Code.gs, Page.html, Styles.html), GAS_GUIDE.md
 
 ## Что в процессе
 
@@ -37,8 +38,8 @@ _(нет активных задач)_
 
 ## Следующие шаги
 
-**Stage 5:**
-- GAS embed story: single-file bundle CSS на тему + пример HTML Service integration
+**Технический долг (низкий приоритет):**
+- corporate тема: radius.lg несоответствие (низкий приоритет)
 
 **Технический долг:**
 - Corporate тема: radius.lg несоответствие
