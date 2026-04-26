@@ -201,6 +201,7 @@
         <a href="#demo">Demo</a>
         <a href="#charts">Charts</a>
         <a href="#dev-ux">Dev UX</a>
+        <a href="#apple">Apple</a>
       </nav>
 
       <!-- Controls -->
@@ -408,6 +409,22 @@
           <button class="button" style="transition: transform var(--animation-duration-normal) var(--animation-ease-out);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform=''">Hover me (motion)</button>
         </div>
       </div>
+
+          <!-- Glass Effect -->
+          <div class="pv-card">
+            <div class="pv-card-title">Glass Effect</div>
+            <div style="position:relative; border-radius:12px; overflow:hidden; height:120px;
+                        background: linear-gradient(135deg, var(--chart-color1) 0%, var(--chart-color5) 50%, var(--chart-color2) 100%);">
+              <div class="glass card" style="position:absolute; top:16px; left:16px; right:16px; bottom:16px;
+                                              padding:12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div style="font-size:13px; font-weight:600; color:var(--text-primary)">Glass Card</div>
+                <div style="font-size:11px; color:var(--text-secondary)">
+                  <code style="font-size:10px">--glass-bg · --glass-border</code><br>
+                  <code style="font-size:10px">backdrop-filter: blur(20px)</code>
+                </div>
+              </div>
+            </div>
+          </div>
     </section>
 
 
@@ -1305,6 +1322,9 @@
       </div>
     </section>
   </div><!-- /pv-main dev-ux -->
+
+  <!-- Apple theme anchor for nav -->
+  <div id="apple" style="height:0; overflow:hidden"></div>
 
 
   <!-- ══════════════════════════════════════

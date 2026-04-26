@@ -326,6 +326,19 @@ Corporate theme default values shown.
 
 ---
 
+### Glass
+
+Used with `.glass` utility class. Requires a layered background (e.g. gradient) behind the element for `backdrop-filter` to be visible.
+
+| CSS Variable | Maps to | Base value |
+|---|---|---|
+| `--glass-bg` | `{color.glassBg}` | `rgba(255,255,255,0.72)` |
+| `--glass-border` | `{color.glassBorder}` | `rgba(255,255,255,0.30)` |
+
+Apple dark theme overrides: `--glass-bg: rgba(30,30,32,0.82)`, `--glass-border: rgba(255,255,255,0.12)`
+
+---
+
 ### Focus
 
 | CSS Variable | Maps to | Corporate value |

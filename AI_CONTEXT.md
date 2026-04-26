@@ -642,6 +642,18 @@ Added: Static state utility classes, viewport simulator, CSS grid utilities.
 
 **Preview section 05** Dev UX added: Static States card + Grid Utilities card.
 
+### Stage 9 — Apple HIG Refinement ✅ Done
+
+Aligned both Apple themes to Apple HIG 2024 system colors. Added glassmorphism effect. Fixed dark mode shadows and typography.
+
+**Apple light (apple.json)**: Updated to official iOS system colors — `background: #F2F2F7`, `surface2: #E5E5EA`, `border: #C6C6CB`, `textSecondary: #6D6D72`, `textMuted: #A2A2A7`. Radius corrected to HIG spec: `sm=6px`, `md=10px`, `lg=16px`. Spacing: `sm=10px`, `md=20px`, `lg=32px`. Multi-layer shadows. Font: `-apple-system, BlinkMacSystemFont`.
+
+**Apple dark (apple.dark.json)**: Enabled shadows (`sm: 0 2px 8px rgba(0,0,0,.5)`, `md: 0 8px 24px rgba(0,0,0,.6)`). Fixed text: `textSecondary: #98989D`, `textMuted: #7C7C82`. Added glass overrides: `glassBg: rgba(30,30,32,0.82)`, `glassBorder: rgba(255,255,255,0.12)`.
+
+**Glass effect** (new): `color.glassBg` + `color.glassBorder` in `base.json`. Semantic group `glass.bg`/`glass.border` in `semantic.json`. `.glass` utility in `components.css` — `backdrop-filter: blur(20px) saturate(180%)`. All 7 validator invariants pass (blur() is a filter function, not a color). Demo card in Foundations section.
+
+**Animation (base.json)**: `motion.easeOut` → `cubic-bezier(0,0,0.2,1)` (Apple Decelerate curve). `dur2: 200ms`, `dur3: 300ms`, `dur4: 400ms`.
+
 ---
 
 ## ⚠️ Expansion Rules

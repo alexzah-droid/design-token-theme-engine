@@ -29,7 +29,9 @@
     "chart6": "#00bcd4",
     "chartHeat": "66, 133, 244",
     "chartHeatColor": "#4285f4",
-    "focusRing": "0 0 0 3px rgba(26,115,232,.35)"
+    "focusRing": "0 0 0 3px rgba(26,115,232,.35)",
+    "glassBg": "rgba(255,255,255,0.72)",
+    "glassBorder": "rgba(255,255,255,0.30)"
   },
   "spacing": {
     "xs": "4px",
@@ -64,10 +66,10 @@
   },
   "motion": {
     "dur1": "120ms",
-    "dur2": "180ms",
-    "dur3": "260ms",
-    "dur4": "380ms",
-    "easeOut": "cubic-bezier(.2,.8,.2,1)",
+    "dur2": "200ms",
+    "dur3": "300ms",
+    "dur4": "400ms",
+    "easeOut": "cubic-bezier(0,0,0.2,1)",
     "easeInOut": "cubic-bezier(.4,0,.2,1)"
   }
 }

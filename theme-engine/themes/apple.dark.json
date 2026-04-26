@@ -6,11 +6,13 @@
     "surface3": "#3a3a3c",
     "border": "#38383a",
     "textPrimary": "#ffffff",
-    "textSecondary": "#ababab",
-    "textMuted": "#636366"
+    "textSecondary": "#98989D",
+    "textMuted": "#7C7C82",
+    "glassBg": "rgba(30,30,32,0.82)",
+    "glassBorder": "rgba(255,255,255,0.12)"
   },
   "shadow": {
-    "sm": "none",
-    "md": "none"
+    "sm": "0 2px 8px rgba(0,0,0,.5)",
+    "md": "0 8px 24px rgba(0,0,0,.6)"
   }
 }

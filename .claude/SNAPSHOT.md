@@ -25,6 +25,7 @@
 - **Stage 7 завершён:** Charts subsystem — Sparkline, Area, Bar, Stacked Bar, Donut, Heatmap (color-mix), Gantt; новые токены chart.heatColor/grid/axis/padding/gap/radius; DEV-7 resolved через Variant B (color-mix); validator 7/7 ✅; preview секция 04 Charts добавлена
 - **Integrity audit завершён:** исправлен undefined `--on-primary` в .gantt-bar → `--button-text`; TOKEN_REFERENCE базовая таблица дополнена; CHANGELOG v0.3.0 добавлен; package.json 0.2.0→0.3.0
 - **Stage 8 завершён:** static state classes (.is-hover/focus/disabled/selected) на button/input/tab/chip/dropdown; viewport simulator (Desktop/Tablet/Mobile) в demo section; CSS grid utilities (.row, .grid-2/3/4/6); preview секция 05 Dev UX; DEV-6 resolved; validator 7/7 ✅
+- **Stage 9 завершён:** Apple HIG refinement — iOS system colors (background #F2F2F7, border #C6C6CB, HIG radius 6/10/16px), dark mode тени включены, glassmorphism (.glass utility + backdrop-filter), Apple Decelerate easeOut curve (cubic-bezier(0,0,0.2,1)), multi-layer shadows; validator 7/7 ✅; glass demo карточка в preview
 
 ## Что в процессе
 
@@ -32,7 +33,7 @@ _(нет активных задач)_
 
 ## Следующие шаги
 
-- **Stage 9** — (не запланирован, TBD)
+- **Stage 10** — (не запланирован, TBD)
 
 ## Известные проблемы
 

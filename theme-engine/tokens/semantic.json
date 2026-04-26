@@ -158,6 +158,10 @@
     "gap": "{spacing.sm}",
     "radius": "{radius.sm}"
   },
+  "glass": {
+    "bg": "{color.glassBg}",
+    "border": "{color.glassBorder}"
+  },
   "focus": {
     "ring": "{color.focusRing}"
   },
