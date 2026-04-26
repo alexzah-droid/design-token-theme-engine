@@ -7,16 +7,16 @@ CLAUDE.local.md
 # Framework metafiles — for public/shared repos (repo_access=public or private-shared)
 # Uncomment these lines if your project is shared with others:
 # >>> framework-public-ignore
-# .claude/
-# CLAUDE.md
-# manifest.md
-# AGENTS.md
-# experiments/
-# drafts/
-# scratch/
-# analysis/
-# research/
-# notes/
+.claude/
+CLAUDE.md
+manifest.md
+AGENTS.md
+experiments/
+drafts/
+scratch/
+analysis/
+research/
+notes/
 # <<< framework-public-ignore
 
 # Environment
@@ -36,11 +36,23 @@ __pycache__/
 venv/
 
 # Build
-dist/
 dist-release/
 build/
 !theme-engine/build/
+!theme-engine/dist/
 *.egg-info/
+
+# Project-internal files (not part of the published theme engine)
+archive/
+Invoice_mngmnt/
+release-notes/
+scripts/
+init-project.sh
+AI_CONTEXT.md
+CHANGELOG.md
+RELEASING.md
+REVIEW-01.md
+REVIEW-02.md
 
 # Test artifacts
 test-results/

@@ -1,9 +1,11 @@
 {
-  "name": "theme-engine",
+  "name": "design-token-theme-engine",
   "version": "0.4.0",
-  "private": true,
+  "description": "Token-based CSS theme engine. Zero runtime dependencies.",
   "scripts": {
     "build": "node build/build-theme.js",
     "validate": "node build/validate.js"
-  }
+  },
+  "keywords": ["design-tokens", "css", "themes", "dark-mode", "css-variables"],
+  "license": "MIT"
 }

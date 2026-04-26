@@ -1,3 +1,5 @@
+[English](GAS_GUIDE.en.md) | Русский
+
 # GAS Embed Guide
 
 Как использовать Design System Engine 2 в Google Apps Script HTML Service.

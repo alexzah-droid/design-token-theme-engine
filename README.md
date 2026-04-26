@@ -1,209 +1,132 @@
-# Claude Code Starter v5
+[English](README.en.md) | Русский
 
-[![Version](https://img.shields.io/badge/version-v5.0.0-2563eb)](https://github.com/alexeykrol/claude-code-starter)
-[![Status](https://img.shields.io/badge/status-active-16a34a)](https://github.com/alexeykrol/claude-code-starter)
-[![Installer](https://img.shields.io/badge/installer-single--file-f59e0b)](https://github.com/alexeykrol/claude-code-starter/blob/main/init-project.sh)
-[![Shell](https://img.shields.io/badge/shell-bash-111827?logo=gnubash)](https://www.gnu.org/software/bash/)
-[![Git](https://img.shields.io/badge/git-required-f05032?logo=git&logoColor=white)](https://git-scm.com/)
-[![Python](https://img.shields.io/badge/python3-recommended-3776ab?logo=python&logoColor=white)](https://www.python.org/)
-[![Claude Code](https://img.shields.io/badge/Claude_Code-rules%2Bskills%2Bagents%2Bhooks-d97706)](https://www.anthropic.com/claude-code)
+# Design System Engine
 
-`Claude Code Starter` — это готовая управляющая среда для проектов, в которых основной рабочий агент — Claude Code.
+Token-based CSS theme engine: меняешь JSON-файл с токенами — пересобираешь — весь интерфейс обновляется.
 
-Он нужен не для генерации приложения, а для того, чтобы быстро добавить в любой проект:
-- понятный `CLAUDE.md` вместо мегадокумента;
-- модульные `rules`, `skills`, `agents`, `hooks`;
-- устойчивую проектную память через `.claude/SNAPSHOT.md`;
-- единый installer для нового, существующего и legacy-проекта;
-- явный контроль над тем, что framework state делает с git-историей.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Validator](https://img.shields.io/badge/validator-7%2F7-brightgreen)]()
+[![Zero deps](https://img.shields.io/badge/dependencies-zero-brightgreen)]()
 
-## Зачем Это Нужно
+## Что это
 
-Обычно при работе с агентом проект быстро расползается:
-- инструкции живут в одном длинном `CLAUDE.md`;
-- правила смешаны с контекстом проекта;
-- старт нового проекта и миграция старого проекта делаются по-разному;
-- агентная память теряется между сессиями;
-- внутренние framework-файлы случайно попадают в shared/public git history.
+- Генерирует scoped CSS custom properties из JSON design tokens
+- 3 темы (corporate, apple, minimal) с поддержкой тёмного режима
+- 60+ готовых CSS-классов компонентов без зависимостей от фреймворков
+- Встроенный валидатор проверяет 7 архитектурных инвариантов при каждой сборке
 
-`Claude Code Starter` решает эти проблемы:
-- отделяет проектный паспорт от operational logic;
-- даёт стандартную структуру `.claude/`;
-- добавляет reusable workflows через `skills`;
-- добавляет background guardrails через `hooks`;
-- поддерживает single-file installation;
-- вводит `repo_access`, чтобы память агента не утекала туда, где ей не место.
+Подходит для: admin panels, internal tools, white-label продуктов, Google Apps Script приложений.
 
-## Что Устанавливается В Проект
+## Быстрый старт
 
-После установки в хост-проекте появляется такая база:
+**Шаг 1.** Скачайте готовый CSS из `theme-engine/dist/`:
 
-```text
-.claude/
-  rules/
-  skills/
-  agents/
-  hooks/
-  logs/
-  SNAPSHOT.md
-  settings.json
-scripts/
-  framework-state-mode.sh
-  switch-repo-access.sh
-CLAUDE.md
-manifest.md
-.gitignore
+```
+corporate.bundle.css      — Corporate тема (токены + компоненты в одном файле)
+apple.bundle.css          — Apple HIG-inspired тема
+minimal.bundle.css        — Minimal тема
+corporate.dark.bundle.css — Corporate, тёмный режим
 ```
 
-Ключевые файлы:
-- `CLAUDE.md` — паспорт проекта;
-- `manifest.md` — `project_name` и `repo_access`;
-- `.claude/SNAPSHOT.md` — текущая память проекта;
-- `.claude/rules/` — постоянные operational правила;
-- `.claude/skills/` — стандартные workflows;
-- `.claude/agents/` — типовые subagent roles;
-- `.claude/hooks/` — фоновые guardrails;
-- `scripts/switch-repo-access.sh` — безопасное переключение между `private-solo`, `private-shared`, `public`.
+**Шаг 2.** Подключите файл в HTML:
 
-## Требования
+```html
+<link rel="stylesheet" href="corporate.bundle.css">
+```
 
-Обязательно:
-- `bash`
-- `git`
-- Claude Code с поддержкой:
-  - `.claude/rules/`
-  - `.claude/skills/`
-  - `.claude/agents/`
-  - `.claude/hooks/`
+**Шаг 3.** Установите атрибут темы на корневом элементе и используйте классы компонентов:
 
-Рекомендуется:
-- `python3`
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<body>
 
-Опционально:
-- `node` / `npm`
-- `pytest`
-- `sqlite3`
-- `psql`
-- `supabase`
+  <button class="button">Сохранить</button>
 
-`python3` нужен не для bootstrap, а для безопасного merge `settings.json` в migration flow.
+  <div class="card">
+    <p class="heading">Заголовок</p>
+    <p class="text">Текст карточки</p>
+    <span class="badge badge-success">Активен</span>
+  </div>
 
-## Установка
+  <table class="table">
+    <thead><tr><th>Имя</th><th>Статус</th></tr></thead>
+    <tbody><tr><td>Иван</td><td>Активен</td></tr></tbody>
+  </table>
 
-### Вариант 1. Один файл
+</body>
+</html>
+```
 
-Возьми root installer `init-project.sh`, положи его в корень целевого проекта и запусти:
+Для тёмного режима добавьте `data-mode="dark"`:
+
+```html
+<html data-theme="corporate" data-mode="dark">
+```
+
+## Архитектура
+
+3-слойная модель токенов:
+
+```
+tokens/base.json          — примитивные значения: цвета, отступы, типографика, тени
+tokens/semantic.json      — смысловые маппинги через {group.key} синтаксис ссылок
+themes/{name}.json        — переопределения только примитивных токенов
+themes/{name}.dark.json   — dark-mode переопределения (отдельный файл)
+```
+
+Переключение темы: атрибуты `data-theme` и `data-mode` на корневом HTML-элементе. Смена атрибута мгновенно применяет другой набор CSS custom properties без перезагрузки страницы и без JavaScript.
+
+`npm run build` генерирует `dist/` из `tokens/` и `themes/` через пайплайн: deepMerge → resolveToken → flattenTokens → emit CSS.
+
+## Темы
+
+| Тема | Описание | Тёмный режим |
+|------|----------|:---:|
+| `corporate` | Деловая, сдержанная | да |
+| `apple` | Нейтральная, вдохновлена Apple HIG | да |
+| `minimal` | Чистая, минималистичная | — |
+
+## Компоненты
+
+60+ классов: кнопки, карточки, формы, навигация, таблицы, badges, переключатели, вкладки, аккордеоны, дропдауны, прогресс-бары, KPI, чипы, графики (sparkline, area, bar, donut, heatmap, gantt) и утилиты типографики.
+
+Все компоненты используют только семантические CSS custom properties — никаких hardcoded значений. Валидатор это гарантирует.
+
+Полный список классов и примеры использования: [`theme-engine/README.md`](theme-engine/README.md)
+
+## Google Apps Script
+
+Bundle-файлы готовы к встраиванию в GAS HTML Service — без CDN и npm в production:
+
+1. Скопируйте содержимое `dist/corporate.bundle.css` в файл `Styles.html` вашего GAS-проекта
+2. Подключите через `<?!= include('Styles'); ?>` в HTML-шаблоне
+3. Используйте CSS-классы компонентов в разметке как обычно
+
+Полная инструкция с рабочим примером: [`theme-engine/GAS_GUIDE.md`](theme-engine/GAS_GUIDE.md)
+
+## Разработка
+
+Все команды запускаются из `theme-engine/`:
 
 ```bash
-chmod +x init-project.sh
-./init-project.sh
+npm install       # установить зависимости сборщика (только dev)
+npm run build     # сгенерировать dist/*.css и dist/*.bundle.css
+npm run validate  # проверить 7 архитектурных инвариантов
 ```
 
-Этот launcher сам определит сценарий:
-- `new` — новый проект;
-- `existing` — существующий проект без framework;
-- `legacy` — старый framework;
-- `upgrade` — частично установленный `v5`.
+Предпросмотр компонентов: открыть `theme-engine/preview/index.html` в браузере.
 
-### Вариант 2. Из локального checkout
+Что проверяет валидатор (7 проверок):
 
-```bash
-cd /path/to/your/project
-bash /absolute/path/to/claude-code-starter/init-project.sh
-```
+1. Нет hardcoded значений (HEX/rgb/hsl) в компонентах
+2. Компоненты не используют base-токены напрямую — только семантические
+3. Семантические токены ссылаются только на существующие base-группы
+4. Файлы тем переопределяют только base-токены
+5. Dark-файлы не добавляют новых имён токенов
+6. Build output содержит требуемые CSS-переменные
+7. Компоненты используют только семантические CSS custom properties
 
-### Полезные параметры
+## Лицензия
 
-```bash
-./init-project.sh --name "My Project"
-./init-project.sh --mode init
-./init-project.sh --mode migrate
-./init-project.sh --template /path/to/local/framework
-```
-
-Поддерживаются:
-- `--name` — имя проекта для свежего bootstrap;
-- `--mode init` — принудительный bootstrap;
-- `--mode migrate` — принудительная migration/integration;
-- `--template` — использовать локальный checkout framework вместо download.
-
-## Что Делать После Установки
-
-1. Заполнить `CLAUDE.md` под конкретный проект.
-2. Проверить `manifest.md`.
-3. Если проект shared/public, переключить режим до первого framework commit:
-
-```bash
-scripts/switch-repo-access.sh public --commit
-```
-
-или
-
-```bash
-scripts/switch-repo-access.sh private-shared --commit
-```
-
-4. Открыть проект в Claude Code и запустить `/start`.
-
-## Repo Access
-
-`repo_access` задаётся в `manifest.md`.
-
-Режимы:
-- `private-solo` — framework files можно хранить в git;
-- `private-shared` — framework files должны оставаться локальными;
-- `public` — framework files должны оставаться локальными.
-
-Практический смысл:
-- если репозиторий личный, можно хранить framework state в истории;
-- если репозиторий общий или публичный, память агента не должна попадать в branch history.
-
-Если framework state уже успел попасть в remote history, одного `.gitignore` недостаточно. Для таких случаев и существует `scripts/switch-repo-access.sh`.
-
-## Как Устроен Этот Репозиторий
-
-Публичный вход:
-- [init-project.sh](init-project.sh) — единственный installer entrypoint
-
-Внутренний payload:
-- [scripts/init-project.sh](scripts/init-project.sh) — bootstrap payload
-- [scripts/migrate.sh](scripts/migrate.sh) — migration payload
-- [scripts/framework-state-mode.sh](scripts/framework-state-mode.sh) — логика `repo_access`
-- [scripts/switch-repo-access.sh](scripts/switch-repo-access.sh) — safe mode switch
-
-Документация:
-- [CHANGELOG.md](CHANGELOG.md) — история версий и изменений
-- [RELEASING.md](RELEASING.md) — как собирать и публиковать релиз
-- [release-notes/v5.0.0.md](release-notes/v5.0.0.md) — notes для текущего release
-- [release-notes/GITHUB_RELEASE_v5.0.0.md](release-notes/GITHUB_RELEASE_v5.0.0.md) — готовый body для GitHub Release
-
-Архив:
-- [archive/V4_ARCHIVE_NOTE.md](archive/V4_ARCHIVE_NOTE.md) — что именно сохранено от `v4`
-- [archive/v4-working-tree](archive/v4-working-tree) — архивное дерево `v4`
-
-## Ограничения
-
-1. `switch-repo-access.sh` не переписывает git history.
-2. `migrate.sh` зависит от `python3`, если нужен безопасный merge `.claude/settings.json`.
-3. Standalone installer лучше всего работает через GitHub Release assets.
-4. Hooks здесь — это guardrails, а не абсолютный enforcement layer.
-
-## Быстрые Ссылки
-
-- Установить framework: [init-project.sh](init-project.sh)
-- Прочитать историю версий: [CHANGELOG.md](CHANGELOG.md)
-- Собрать release: [RELEASING.md](RELEASING.md)
-- Посмотреть notes текущего релиза: [release-notes/v5.0.0.md](release-notes/v5.0.0.md)
-- Взять текст GitHub Release: [release-notes/GITHUB_RELEASE_v5.0.0.md](release-notes/GITHUB_RELEASE_v5.0.0.md)
-
-## v4 vs v5
-
-| Тема | v4 | v5 |
-|------|----|----|
-| Installer UX | installer + старый runtime слой | один публичный `init-project.sh` |
-| Основная модель | commands + protocols + adapters | rules + skills + agents + hooks |
-| Проектная память | shared state, но тяжёлый operational overhead | компактный `CLAUDE.md` + `SNAPSHOT.md` |
-| Работа с git | менее явная модель framework state | явный `repo_access` и mode switching |
-| Текущий статус | архивирован внутри repo | основная активная версия |
-
-Подробности по эволюции версий смотри в [CHANGELOG.md](CHANGELOG.md).
+MIT

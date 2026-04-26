@@ -1,9 +1,9 @@
-[English](USAGE.en.md) | Русский
+English | [Русский](USAGE.md)
 
 # Theme Engine — Usage Guide
 
 > For architecture details see [`README.md`](../README.md).
-> For GAS integration see [`GAS_GUIDE.md`](GAS_GUIDE.md).
+> For GAS integration see [`GAS_GUIDE.en.md`](GAS_GUIDE.en.md).
 > For component reference see [`README.md`](README.md).
 
 ## Quick start — web project
@@ -85,7 +85,7 @@ See `README.md` for the full list of component classes.
 
 Cannot use `<link>` for external CSS. Use bundle files via `include()` pattern.
 
-See `GAS_GUIDE.md` for step-by-step instructions and `gas-example/` for a working example.
+See `GAS_GUIDE.en.md` for step-by-step instructions and `gas-example/` for a working example.
 
 ## Validate
 
