@@ -84,6 +84,8 @@ Bundles are auto-generated — do not edit manually.
 
 **Typography scale:** `.t-display`, `.t-h1`, `.t-h2`, `.t-h3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`
 
+**Charts:** `.chart-card`, `.chart-title`, `.chart-svg`, `.chart-legend`, `.chart-legend-item`, `.chart-legend-dot`, `.sparkline`, `.sparkline-line`, `.sparkline-area`, `.sparkline-dot`, `.area-chart-line`, `.bar-chart-bar`, `.donut-chart`, `.donut-segment`, `.donut-label`, `.donut-sublabel`, `.donut-legend`, `.heatmap`, `.heatmap-cell`, `.heatmap-label`, `.gantt`, `.gantt-header`, `.gantt-header-cell`, `.gantt-row`, `.gantt-row-label`, `.gantt-track`, `.gantt-bar`, `.gantt-bar--1..6`
+
 **Utilities:** `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y)
 
 ---
@@ -96,6 +98,7 @@ Sections:
 - **01 Foundations** — color token swatches (including surface hierarchy, soft-status, chart palette), typography scale, motion tokens with live demo
 - **02 Components** — all components with all variants and states; A11y & Utilities card (skip-link, surface-2/3, prefers-reduced-motion)
 - **03 Live Demo** — Invoice Manager application
+- **04 Charts** — Sparkline, Area, Bar, Stacked Bar, Donut, Heatmap, Gantt demos
 
 ---
 

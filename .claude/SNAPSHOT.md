@@ -23,6 +23,7 @@
 - **Stage 6b завершён:** Switch/Toggle, Tabs, Accordion, Dropdown, Progress (linear/circular/indeterminate) — semantic tokens, CSS, preview cards с интерактивными демо, TOKEN_REFERENCE.md обновлён
 - **Stage 6a завершён:** расширена токен-система (motion, surface2/3, textMuted, soft-статусы, chart-палитра 1–6 + heat, focusRing); components.css — transitions, focus-visible ring, skip-link, prefers-reduced-motion, surface-2/3 utilities, text-muted; все темы обновлены brand-значениями; preview — 13 новых swatches, Motion-карточка с live-демо, A11y & Utilities карточка; TOKEN_REFERENCE.md — 7 новых секций; AI_CONTEXT.md — roadmap Stage 6a–8, DEV-7 в backlog
 - **Stage 7 завершён:** Charts subsystem — Sparkline, Area, Bar, Stacked Bar, Donut, Heatmap (color-mix), Gantt; новые токены chart.heatColor/grid/axis/padding/gap/radius; DEV-7 resolved через Variant B (color-mix); validator 7/7 ✅; preview секция 04 Charts добавлена
+- **Integrity audit завершён:** исправлен undefined `--on-primary` в .gantt-bar → `--button-text`; TOKEN_REFERENCE базовая таблица дополнена; CHANGELOG v0.3.0 добавлен; package.json 0.2.0→0.3.0
 
 ## Что в процессе
 
