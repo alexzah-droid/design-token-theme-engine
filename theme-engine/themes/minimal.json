@@ -3,12 +3,23 @@
     "primary": "#000000",
     "primaryHover": "#333333",
     "surface": "#f8f8f8",
-    "border": "#d9d9d9"
+    "border": "#d9d9d9",
+    "focusRing": "0 0 0 3px rgba(0,0,0,.25)",
+    "chart1": "#1a1a1a",
+    "chart2": "#404040",
+    "chart3": "#666666",
+    "chart4": "#8c8c8c",
+    "chart5": "#b3b3b3",
+    "chart6": "#d9d9d9",
+    "chartHeat": "0, 0, 0",
+    "chartHeatColor": "#000000"
   },
   "radius": {
-    "md": "2px"
+    "sm": "0px",
+    "md": "2px",
+    "lg": "4px"
   },
   "typography": {
-    "fontFamily": "Arial, sans-serif"
+    "fontFamily": "system-ui, -apple-system, sans-serif"
   }
 }
