@@ -299,3 +299,262 @@ function toggleDark() {
 ---
 
 *Промпт самодостаточен — агент справится без доступа к документации.*
+
+---
+
+## Все темы с переключателем
+
+Если нужно дать пользователю возможность менять тему прямо в интерфейсе — встрой все темы сразу.
+
+### Как это работает
+
+Каждая тема хранит свои CSS-переменные в scoped-блоке:
+
+```css
+[data-theme="corporate"] { --button-bg: #17311F; ... }
+[data-theme="apple"]     { --button-bg: #007aff; ... }
+[data-theme="minimal"]   { --button-bg: #222222; ... }
+```
+
+Переключатель просто меняет атрибут `data-theme` на `<html>` — никаких перезагрузок.
+
+### Структура GAS-проекта
+
+```
+Code.gs          — серверный код
+Page.html        — шаблон страницы с переключателем
+StylesCorporate.html  — corporate.bundle.css
+StylesApple.html      — apple.bundle.css
+StylesMinimal.html    — minimal.bundle.css
+```
+
+Тёмные варианты (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) включены в светлые bundle-файлы — отдельные файлы не нужны.
+
+### Code.gs
+
+```javascript
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('My App');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+```
+
+### Page.html
+
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <!-- Переключатель тем -->
+  <nav class="nav">
+    <span class="nav-brand">My App</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  <!-- Контент -->
+  <div class="card">
+    <p class="heading">Заголовок</p>
+    <p class="text">Текст карточки</p>
+  </div>
+
+  <script>
+    // Загрузить сохранённые настройки
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      // minimal не поддерживает dark — сбросить если нужно
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return; // minimal только light
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      // Скрыть кнопку Dark для minimal
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+```
+
+> **Почему `<?!= include(...); ?>` три раза?**
+> GAS HTML Service требует отдельный файл для каждого CSS. Все три подключаются в `<head>` — браузер применяет только тот блок, чей `data-theme` совпадает с текущим атрибутом.
+
+---
+
+## Промпт для AI-агента: все темы с переключателем
+
+Если в проекте работает AI-агент (Claude Code или другой), скопируй этот промпт — он содержит всё необходимое для встраивания всех тем с переключателем:
+
+---
+
+```
+Интегрируй Design System Engine 2 в этот GAS-проект со всеми темами и переключателем.
+
+## Что такое Design System Engine 2
+
+Token-based CSS theme engine. Темы — scoped CSS-блоки на основе атрибута data-theme.
+Переключение темы = смена атрибута на <html>. Без перезагрузки. Без npm.
+
+## Файлы для встраивания
+
+В папке design-token-theme-engine/theme-engine/dist/:
+
+- corporate.bundle.css      — корпоративная тема (light + dark в одном файле)
+- apple.bundle.css          — Apple HIG-inspired (light + dark в одном файле)
+- minimal.bundle.css        — минималистичная (только light)
+
+Каждый bundle = токены темы + компонентные стили.
+
+## Структура GAS-проекта
+
+Создать файлы:
+
+Code.gs               — серверный код
+Page.html             — основная страница
+StylesCorporate.html  — содержимое corporate.bundle.css внутри <style>...</style>
+StylesApple.html      — содержимое apple.bundle.css внутри <style>...</style>
+StylesMinimal.html    — содержимое minimal.bundle.css внутри <style>...</style>
+
+## Code.gs
+
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('Название приложения');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+## Page.html — полная структура
+
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-brand">Название приложения</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  [существующий контент страницы]
+
+  <script>
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return;
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+
+## Применить классы к существующей разметке
+
+Кнопки:        class="button"
+Карточки:      class="card"
+Поля ввода:    class="input"
+Выпадающие:    class="select"
+Текст. поля:   class="textarea"
+Таблицы:       class="table"
+Бейджи:        class="badge badge-success" / badge-warning / badge-error / badge-neutral
+Алерты:        class="alert alert-success" / alert-warning / alert-error / alert-info
+Навигация:     class="nav" > class="nav-brand" + class="nav-actions"
+Заголовки:     class="heading"
+Текст:         class="text" / class="text-secondary"
+
+## Правила
+
+- НЕ писать inline-стили с цветами — только классы системы
+- НЕ переопределять CSS custom properties вручную
+- localStorage сохраняет выбор темы между сессиями
+- minimal не поддерживает dark mode — кнопку скрыть
+
+## Preview всех компонентов
+
+https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/
+```
+
+---
+
+*Промпт самодостаточен — агент встроит все темы с переключателем без доступа к документации.*

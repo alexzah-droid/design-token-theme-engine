@@ -299,3 +299,263 @@ See gas-example/ in the design-token-theme-engine repository:
 ---
 
 *The prompt is self-contained — the agent can complete the integration without access to the full documentation.*
+
+---
+
+## All themes with a switcher
+
+If you want users to switch themes inside the app — embed all themes at once.
+
+### How it works
+
+Each theme scopes its CSS variables under a matching attribute:
+
+```css
+[data-theme="corporate"] { --button-bg: #17311F; ... }
+[data-theme="apple"]     { --button-bg: #007aff; ... }
+[data-theme="minimal"]   { --button-bg: #222222; ... }
+```
+
+The switcher just changes `data-theme` on `<html>` — no page reload required.
+
+### GAS project structure
+
+```
+Code.gs               — server-side code
+Page.html             — page template with switcher
+StylesCorporate.html  — corporate.bundle.css
+StylesApple.html      — apple.bundle.css
+StylesMinimal.html    — minimal.bundle.css
+```
+
+Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already included inside the light bundle files — no extra files needed.
+
+### Code.gs
+
+```javascript
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('My App');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+```
+
+### Page.html
+
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <!-- Theme switcher -->
+  <nav class="nav">
+    <span class="nav-brand">My App</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="card">
+    <p class="heading">Title</p>
+    <p class="text">Card content</p>
+  </div>
+
+  <script>
+    // Restore saved settings
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      // minimal has no dark mode — reset if needed
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return; // minimal is light only
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      // Hide Dark button for minimal
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+```
+
+> **Why three `<?!= include(...); ?>` calls?**
+> GAS HTML Service requires a separate file per CSS block. All three are loaded into `<head>` — the browser activates only the block whose `data-theme` matches the current attribute.
+
+---
+
+## AI agent prompt: all themes with switcher
+
+Copy this prompt for your AI agent — it contains everything needed to embed all themes with a working switcher:
+
+---
+
+```
+Integrate Design System Engine 2 into this GAS project with all themes and a theme switcher.
+
+## What is Design System Engine 2
+
+Token-based CSS theme engine. Themes are scoped CSS blocks keyed on the data-theme attribute.
+Switching themes = changing that attribute on <html>. No reload. No npm.
+
+## Files to embed
+
+From design-token-theme-engine/theme-engine/dist/:
+
+- corporate.bundle.css  — corporate theme (light + dark in one file)
+- apple.bundle.css      — Apple HIG-inspired (light + dark in one file)
+- minimal.bundle.css    — minimalist (light only)
+
+Each bundle = theme tokens + component styles.
+
+## GAS project structure
+
+Create these files:
+
+Code.gs               — server-side code
+Page.html             — main page
+StylesCorporate.html  — contents of corporate.bundle.css inside <style>...</style>
+StylesApple.html      — contents of apple.bundle.css inside <style>...</style>
+StylesMinimal.html    — contents of minimal.bundle.css inside <style>...</style>
+
+## Code.gs
+
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('App name');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+
+## Page.html — full structure
+
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-brand">App name</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  [existing page content]
+
+  <script>
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return;
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+
+## Apply component classes to existing markup
+
+Buttons:       class="button"
+Cards:         class="card"
+Text inputs:   class="input"
+Dropdowns:     class="select"
+Textareas:     class="textarea"
+Tables:        class="table"
+Badges:        class="badge badge-success" / badge-warning / badge-error / badge-neutral
+Alerts:        class="alert alert-success" / alert-warning / alert-error / alert-info
+Navigation:    class="nav" > class="nav-brand" + class="nav-actions"
+Headings:      class="heading"
+Body text:     class="text" / class="text-secondary"
+
+## Rules
+
+- Do NOT write inline styles with color values — use system classes only
+- Do NOT override CSS custom properties manually
+- localStorage persists the user's theme choice between sessions
+- minimal does not support dark mode — hide the dark button for it
+
+## Live preview of all components
+
+https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/
+```
+
+---
+
+*The prompt is self-contained — the agent can embed all themes with a switcher without access to the full documentation.*
