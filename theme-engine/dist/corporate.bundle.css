@@ -17,11 +17,11 @@
   --color-text-primary: #1B1C19;
   --color-text-secondary: #5A5C56;
   --color-text-muted: #6E6B65;
-  --color-success: #34a853;
+  --color-success: #1e7e34;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
   --color-on-warning: #1f1f1f;
-  --color-error: #ea4335;
+  --color-error: #d32f2f;
   --color-on-error: #ffffff;
   --color-success-soft: rgba(46,107,62,.15);
   --color-warn-soft: rgba(158,122,28,.15);
@@ -119,11 +119,11 @@
   --badge-padding-x: 8px;
   --badge-font-size: 12px;
   --badge-font-weight: 500;
-  --badge-success-bg: #34a853;
+  --badge-success-bg: #1e7e34;
   --badge-success-text: #ffffff;
   --badge-warning-bg: #f9ab00;
   --badge-warning-text: #1f1f1f;
-  --badge-error-bg: #ea4335;
+  --badge-error-bg: #d32f2f;
   --badge-error-text: #ffffff;
   --badge-neutral-bg: #FFFFFF;
   --badge-neutral-text: #5A5C56;
@@ -153,11 +153,11 @@
   --alert-radius: 2px;
   --alert-padding-y: 8px;
   --alert-padding-x: 16px;
-  --alert-success-bg: #34a853;
+  --alert-success-bg: #1e7e34;
   --alert-success-text: #ffffff;
   --alert-warning-bg: #f9ab00;
   --alert-warning-text: #1f1f1f;
-  --alert-error-bg: #ea4335;
+  --alert-error-bg: #d32f2f;
   --alert-error-text: #ffffff;
   --alert-info-bg: #FFFFFF;
   --alert-info-text: #1B1C19;
@@ -202,7 +202,7 @@
   --tab-bg: #F6F2EA;
   --tab-text: #5A5C56;
   --tab-active-bg: #F6F2EA;
-  --tab-active-text: #17311F;
+  --tab-active-text: #1B1C19;
   --tab-indicator-color: #17311F;
   --tab-border-color: #d8d1c2;
   --accordion-border: #d8d1c2;
@@ -232,8 +232,8 @@
   --kpi-value-font-weight: 600;
   --kpi-value-color: #1B1C19;
   --kpi-label-color: #5A5C56;
-  --kpi-delta-up-color: #34a853;
-  --kpi-delta-down-color: #ea4335;
+  --kpi-delta-up-color: #1e7e34;
+  --kpi-delta-down-color: #d32f2f;
 }
 
 /* ── Component styles ─────────────────────────────────────── */

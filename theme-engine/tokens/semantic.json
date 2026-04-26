@@ -181,7 +181,7 @@
     "bg": "{color.background}",
     "text": "{color.textSecondary}",
     "activeBg": "{color.background}",
-    "activeText": "{color.primary}",
+    "activeText": "{color.textPrimary}",
     "indicatorColor": "{color.primary}",
     "borderColor": "{color.border}"
   },

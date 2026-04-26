@@ -1,6 +1,6 @@
 [data-theme="apple"][data-mode="dark"] {
   --color-primary: #0070f0;
-  --color-primary-hover: #0a84ff;
+  --color-primary-hover: #006ee8;
   --color-on-primary: #ffffff;
   --color-background: #000000;
   --color-surface: #1c1c1e;
@@ -10,11 +10,11 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #98989D;
   --color-text-muted: #898990;
-  --color-success: #34a853;
+  --color-success: #1e7e34;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
   --color-on-warning: #1f1f1f;
-  --color-error: #ea4335;
+  --color-error: #d32f2f;
   --color-on-error: #ffffff;
   --color-success-soft: rgba(52,199,89,.12);
   --color-warn-soft: rgba(255,159,10,.12);
@@ -64,7 +64,7 @@
   --page-section-gap: 32px;
   --button-bg: #0070f0;
   --button-text: #ffffff;
-  --button-hover-bg: #0a84ff;
+  --button-hover-bg: #006ee8;
   --button-disabled-bg: #1c1c1e;
   --button-disabled-text: #98989D;
   --button-radius: 10px;
@@ -112,11 +112,11 @@
   --badge-padding-x: 10px;
   --badge-font-size: 12px;
   --badge-font-weight: 500;
-  --badge-success-bg: #34a853;
+  --badge-success-bg: #1e7e34;
   --badge-success-text: #ffffff;
   --badge-warning-bg: #f9ab00;
   --badge-warning-text: #1f1f1f;
-  --badge-error-bg: #ea4335;
+  --badge-error-bg: #d32f2f;
   --badge-error-text: #ffffff;
   --badge-neutral-bg: #1c1c1e;
   --badge-neutral-text: #98989D;
@@ -146,11 +146,11 @@
   --alert-radius: 6px;
   --alert-padding-y: 10px;
   --alert-padding-x: 20px;
-  --alert-success-bg: #34a853;
+  --alert-success-bg: #1e7e34;
   --alert-success-text: #ffffff;
   --alert-warning-bg: #f9ab00;
   --alert-warning-text: #1f1f1f;
-  --alert-error-bg: #ea4335;
+  --alert-error-bg: #d32f2f;
   --alert-error-text: #ffffff;
   --alert-info-bg: #1c1c1e;
   --alert-info-text: #ffffff;
@@ -195,7 +195,7 @@
   --tab-bg: #000000;
   --tab-text: #98989D;
   --tab-active-bg: #000000;
-  --tab-active-text: #0070f0;
+  --tab-active-text: #ffffff;
   --tab-indicator-color: #0070f0;
   --tab-border-color: #38383a;
   --accordion-border: #38383a;
@@ -225,6 +225,6 @@
   --kpi-value-font-weight: 600;
   --kpi-value-color: #ffffff;
   --kpi-label-color: #98989D;
-  --kpi-delta-up-color: #34a853;
-  --kpi-delta-down-color: #ea4335;
+  --kpi-delta-up-color: #1e7e34;
+  --kpi-delta-down-color: #d32f2f;
 }
