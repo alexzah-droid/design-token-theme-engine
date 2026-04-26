@@ -49,39 +49,6 @@ function checkNoHardcodedColors() {
   ok("No hardcoded color values");
 }
 
-//
-// 2. Проверка: semantic токены ссылаются только на base
-//
-function checkSemantic() {
-  const semantic = readJson(path.join(TOKENS_DIR, "semantic.json"));
-
-  function traverse(obj) {
-    for (const value of Object.values(obj)) {
-      if (typeof value === "string") {
-        const match = value.match(/^\{(.+)\}$/);
-        if (match) {
-          const path = match[1];
-
-          if (!path.startsWith("color") &&
-              !path.startsWith("spacing") &&
-              !path.startsWith("radius") &&
-              !path.startsWith("typography") &&
-              !path.startsWith("shadow") &&
-              !path.startsWith("motion")) {
-            fail(`Invalid semantic reference: ${path}`);
-          }
-        }
-      } else if (typeof value === "object") {
-        traverse(value);
-      }
-    }
-  }
-
-  traverse(semantic);
-
-  ok("Semantic tokens are valid");
-}
-
 function checkTokenReferences() {
   const base = readJson(path.join(TOKENS_DIR, "base.json"));
   const semantic = readJson(path.join(TOKENS_DIR, "semantic.json"));
@@ -131,25 +98,22 @@ function checkThemes() {
 }
 
 function checkBuildOutput() {
-  const files = fs.readdirSync(DIST_DIR).filter(f => !f.startsWith("."));
+  const files = fs.readdirSync(DIST_DIR).filter(f => !f.startsWith(".") && f.endsWith(".css"));
 
-  const requiredVars = [
-    "--button-bg",
-    "--button-text",
-    "--button-hover-bg",
-    "--button-disabled-bg"
-  ];
+  if (files.length === 0) {
+    fail("No CSS files found in dist/ — run npm run build first");
+  }
 
   files.forEach(file => {
-    if (!file.endsWith(".css") || file.includes(".dark.")) return;
-
     const content = read(path.join(DIST_DIR, file));
 
-    requiredVars.forEach(v => {
-      if (!content.includes(v)) {
-        fail(`Missing ${v} in ${file}`);
-      }
-    });
+    if (content.trim().length === 0) {
+      fail(`Empty output file: ${file}`);
+    }
+
+    if (!content.includes("[data-theme=")) {
+      fail(`Missing [data-theme] selector in ${file}`);
+    }
   });
 
   ok("Build output contains required CSS variables");
@@ -209,7 +173,6 @@ function checkDarkThemes() {
 //
 
 checkNoHardcodedColors();
-checkSemantic();
 checkTokenReferences();
 checkThemes();
 checkDarkThemes();

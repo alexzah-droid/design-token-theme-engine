@@ -28,7 +28,7 @@
   "radius": {
     "sm": "2px",
     "md": "4px",
-    "lg": "6px"
+    "lg": "8px"
   },
   "spacing": {
     "sm": "8px",
