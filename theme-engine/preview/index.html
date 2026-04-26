@@ -170,6 +170,17 @@
       border-radius: 8px;
       overflow: hidden;
     }
+
+    /* ── Viewport simulator ── */
+    .pv-viewport-bar { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; }
+    .pv-vp-label { font-size: 11px; color: #888; margin-right: 4px; }
+    .pv-vp-btn {
+      font-size: 11px; padding: 3px 10px;
+      border: 1px solid #444; border-radius: 4px;
+      background: #2a2a2a; color: #aaa; cursor: pointer;
+    }
+    .pv-vp-btn.pv-vp-btn--active { background: #555; color: #fff; border-color: #666; }
+    .pv-demo-frame { transition: max-width 0.3s ease; }
   </style>
 </head>
 
@@ -189,6 +200,7 @@
         <a href="#components">Components</a>
         <a href="#demo">Demo</a>
         <a href="#charts">Charts</a>
+        <a href="#dev-ux">Dev UX</a>
       </nav>
 
       <!-- Controls -->
@@ -843,6 +855,12 @@
         <span class="pv-hint">Invoice Manager application</span>
       </div>
 
+      <div class="pv-viewport-bar">
+        <span class="pv-vp-label">Viewport:</span>
+        <button class="pv-vp-btn pv-vp-btn--active" data-vp-width="">Desktop</button>
+        <button class="pv-vp-btn" data-vp-width="768px">Tablet 768</button>
+        <button class="pv-vp-btn" data-vp-width="375px">Mobile 375</button>
+      </div>
       <div class="pv-demo-frame">
 
         <!-- App nav -->
@@ -1218,6 +1236,76 @@
     </section>
   </div><!-- /pv-main charts -->
 
+  <!-- ══════════════════════════════════════
+       SECTION 05 · DEV UX
+  ══════════════════════════════════════ -->
+  <div class="pv-main" style="padding-top:0" id="dev-ux">
+    <section class="pv-section">
+      <div class="pv-section-head">
+        <span class="pv-num">05</span>
+        <h2>Dev UX</h2>
+        <span class="pv-hint">Static States · Grid Utilities</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:24px;">
+
+        <!-- Static States card -->
+        <div class="card">
+          <p class="label" style="margin-bottom:12px">Static States (.is-hover / .is-focus / .is-disabled / .is-selected)</p>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">Button</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;">
+            <button class="button">Default</button>
+            <button class="button is-hover">is-hover</button>
+            <button class="button is-focus">is-focus</button>
+            <button class="button is-disabled">is-disabled</button>
+          </div>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">Chip</p>
+          <div class="chips" style="margin-bottom:16px;">
+            <span class="chip">Default</span>
+            <span class="chip is-hover">is-hover</span>
+            <span class="chip is-selected">is-selected</span>
+            <span class="chip is-focus">is-focus</span>
+          </div>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">Input</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <input class="input" type="text" placeholder="Default" style="width:100%">
+            <input class="input is-focus" type="text" placeholder="is-focus (focus ring)" style="width:100%">
+            <input class="input is-disabled" type="text" placeholder="is-disabled" style="width:100%">
+          </div>
+        </div>
+
+        <!-- Grid Utilities card -->
+        <div class="card">
+          <p class="label" style="margin-bottom:12px">Grid Utilities (.grid-2 / .grid-3 / .row)</p>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">.grid-2</p>
+          <div class="grid-2" style="margin-bottom:16px;">
+            <div class="card" style="padding:8px; text-align:center; font-size:12px;">Col 1</div>
+            <div class="card" style="padding:8px; text-align:center; font-size:12px;">Col 2</div>
+          </div>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">.grid-3</p>
+          <div class="grid-3" style="margin-bottom:16px;">
+            <div class="card" style="padding:8px; text-align:center; font-size:12px;">A</div>
+            <div class="card" style="padding:8px; text-align:center; font-size:12px;">B</div>
+            <div class="card" style="padding:8px; text-align:center; font-size:12px;">C</div>
+          </div>
+
+          <p class="label" style="margin-bottom:6px; opacity:.6">.row (flex)</p>
+          <div class="row">
+            <span class="badge">Item 1</span>
+            <span class="badge">Item 2</span>
+            <span class="badge badge-success">Item 3</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div><!-- /pv-main dev-ux -->
+
 
   <!-- ══════════════════════════════════════
        JS: Theme & mode switching
@@ -1308,6 +1396,16 @@
     document.addEventListener('click', function(e) {
       document.querySelectorAll('.dropdown--open').forEach(function(dd) {
         if (!dd.contains(e.target)) dd.classList.remove('dropdown--open');
+      });
+    });
+
+    // Viewport simulator
+    document.querySelectorAll('.pv-vp-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pv-vp-btn').forEach(b => b.classList.remove('pv-vp-btn--active'));
+        btn.classList.add('pv-vp-btn--active');
+        const frame = document.querySelector('.pv-demo-frame');
+        if (frame) frame.style.maxWidth = btn.dataset.vpWidth || '';
       });
     });
   </script>

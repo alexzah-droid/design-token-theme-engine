@@ -630,10 +630,17 @@ Preview section 04 added: 7 chart demo cards.
 
 ---
 
-### Stage 8 — Developer UX in Preview (planned)
+### Stage 8 — Developer UX in Preview ✅
 
-To add: Static component states (`.is-hover`, `.is-focus`, `.is-selected`, `.is-disabled`),
-viewport simulator in preview, CSS grid layout utilities (`.row`, `.grid-2/3/4/6`).
+Added: Static state utility classes, viewport simulator, CSS grid utilities.
+
+**Static state classes** (DEV-6 resolved): `.is-hover`, `.is-focus`, `.is-disabled`, `.is-selected` — mirror existing pseudo-classes (`:hover`, `:focus-visible`, `:disabled`) via extended selectors. Applied to: button, input, select, textarea, tab, chip, dropdown-item, pagination-item. No new tokens.
+
+**Viewport simulator**: Desktop / Tablet (768px) / Mobile (375px) width presets in the Demo section toolbar. Pure JS, sets `max-width` on `.pv-demo-frame`.
+
+**CSS grid utilities**: `.row` (flex), `.grid-2/3/4/6` (CSS grid). Gap uses existing `var(--page-section-gap)`.
+
+**Preview section 05** Dev UX added: Static States card + Grid Utilities card.
 
 ---
 

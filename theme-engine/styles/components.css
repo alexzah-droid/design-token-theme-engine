@@ -18,11 +18,13 @@ section {
   font-weight: var(--button-font-weight);
 }
 
-.button:hover {
+.button:hover,
+.button.is-hover {
   background: var(--button-hover-bg);
 }
 
-.button:disabled {
+.button:disabled,
+.button.is-disabled {
   background: var(--button-disabled-bg);
   color: var(--button-disabled-text);
   cursor: not-allowed;
@@ -303,13 +305,37 @@ section {
 
 /* ── Focus ring ─────────────────────────────────────────────── */
 
-.button:focus-visible,
-.input:focus-visible,
-.select:focus-visible,
-.textarea:focus-visible,
-.pagination-item:focus-visible {
+.button:focus-visible, .button.is-focus,
+.input:focus-visible, .input.is-focus,
+.select:focus-visible, .select.is-focus,
+.textarea:focus-visible, .textarea.is-focus,
+.pagination-item:focus-visible, .pagination-item.is-focus {
   outline: none;
   box-shadow: var(--focus-ring);
+}
+
+/* ── Static state utilities (.is-*) ────────────────────────── */
+
+/* Disabled form fields (mirrors :disabled behaviour) */
+.input.is-disabled,
+.select.is-disabled,
+.textarea.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-text);
+}
+
+/* Selected state (mirrors --active modifier classes) */
+.tab.is-selected {
+  color: var(--tab-active-text);
+  border-bottom-color: var(--tab-indicator-color);
+}
+
+.chip.is-selected {
+  background: var(--chip-active-bg);
+  color: var(--chip-active-text);
+  border-color: var(--chip-active-bg);
 }
 
 /* ── Surface hierarchy utilities ────────────────────────────── */
@@ -431,7 +457,8 @@ section {
   margin-bottom: -1px;
 }
 
-.tab:hover {
+.tab:hover,
+.tab.is-hover {
   color: var(--tab-active-text);
 }
 
@@ -441,7 +468,8 @@ section {
   border-bottom-color: var(--tab-indicator-color);
 }
 
-.tab:focus-visible {
+.tab:focus-visible,
+.tab.is-focus {
   outline: none;
   box-shadow: var(--focus-ring);
 }
@@ -575,7 +603,8 @@ section {
 }
 
 .dropdown-item:hover,
-.dropdown-item--focused {
+.dropdown-item--focused,
+.dropdown-item.is-hover {
   background: var(--dropdown-item-hover-bg);
 }
 
@@ -752,7 +781,8 @@ section {
   user-select: none;
 }
 
-.chip:hover {
+.chip:hover,
+.chip.is-hover {
   border-color: var(--button-bg);
   color: var(--text-primary);
 }
@@ -764,7 +794,8 @@ section {
   border-color: var(--chip-active-bg);
 }
 
-.chip:focus-visible {
+.chip:focus-visible,
+.chip.is-focus {
   outline: none;
   box-shadow: var(--focus-ring);
 }
@@ -1087,3 +1118,18 @@ th[aria-sort="descending"] .table-sort-icon {
 .gantt-bar--4 { background: var(--chart-color4); }
 .gantt-bar--5 { background: var(--chart-color5); }
 .gantt-bar--6 { background: var(--chart-color6); }
+
+/* ============================================================
+   LAYOUT UTILITIES — Stage 8
+   ============================================================ */
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--page-section-gap);
+}
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--page-section-gap); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--page-section-gap); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--page-section-gap); }
+.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--page-section-gap); }
