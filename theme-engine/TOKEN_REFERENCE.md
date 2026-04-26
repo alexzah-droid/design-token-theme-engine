@@ -8,7 +8,7 @@ Corporate theme default values shown.
 
 ---
 
-## Base token values (corporate theme)
+## Base token values (base theme defaults)
 
 | Group | Token | Value |
 |-------|-------|-------|
@@ -55,8 +55,9 @@ Corporate theme default values shown.
 | color | `--color-chart4` | `#8C2E2E` |
 | color | `--color-chart5` | `#9E7A1C` |
 | color | `--color-chart6` | `#7BA78A` |
-| color | `--color-chart-heat` | `176, 138, 62` |
-| color | `--color-focus-ring` | `0 0 0 3px rgba(176,138,62,.35)` |
+| color | `--color-chart-heat` | `66, 133, 244` |
+| color | `--color-chart-heat-color` | `#4285f4` |
+| color | `--color-focus-ring` | `0 0 0 3px rgba(66,133,244,.35)` |
 
 ---
 

@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.0] — 2026-04-26
+
+### Added
+- **Charts subsystem** — 7 SVG chart components: Sparkline, Area, Bar (grouped), Stacked Bar, Donut, Heatmap, Gantt
+- **`color.chartHeatColor`** base token (hex) — proper color value for heatmap intensity via `color-mix()`
+- **Semantic chart tokens**: `chart.heatColor`, `chart.grid`, `chart.axis`, `chart.padding`, `chart.gap`, `chart.radius`
+- **Heatmap intensity** via `color-mix(in srgb, var(--chart-heat-color) calc(var(--v, 0) * 100%), transparent)` — per-cell `--v` (0..1) inline var
+- **Preview section 04** — Charts with 7 demo cards (Gantt spans full width)
+
+### Fixed
+- **DEV-7** — Heatmap pattern `rgba(var(--chart-heat), var(--v))` blocked by validator. Resolved via `color-mix()` + proper hex token. No validator changes needed.
+- **`.gantt-bar`** — `var(--on-primary)` (undefined) → `var(--button-text)` (valid semantic token)
+
+### Changed
+- All themes (`corporate`, `apple`) updated with `color.chartHeatColor` brand value
+- `TOKEN_REFERENCE.md` — added `--color-chart-heat-color` to base table; corrected table header; added 7 new chart semantic token rows
+
+---
+
 ## [0.2.0] — 2026-04-26
 
 ### Added

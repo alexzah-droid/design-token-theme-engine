@@ -1072,7 +1072,7 @@ th[aria-sort="descending"] .table-sort-icon {
   font-size: 11px;
   white-space: nowrap;
   overflow: hidden;
-  color: var(--on-primary);
+  color: var(--button-text);
   background: var(--button-bg);
   transition: opacity var(--animation-duration-fast) var(--animation-ease-out);
 }
