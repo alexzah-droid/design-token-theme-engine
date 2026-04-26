@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.5.0] — 2026-04-26
+
+### Added
+- **Glass effect** — `.glass` utility class with `backdrop-filter: blur(20px) saturate(180%)`. New tokens: `color.glassBg`, `color.glassBorder` in `base.json`; semantic group `glass.bg`/`glass.border`
+- **Apple dark glass overrides** — `apple.dark.json` overrides `glassBg: rgba(30,30,32,0.82)`, `glassBorder: rgba(255,255,255,0.12)`
+- **Glass demo card** in Preview Foundations section
+- **Glass section** in `TOKEN_REFERENCE.md`
+- **Pre-built `dist/` CSS** committed to repo — 10 files (themes × light/dark × bundle variants). No `npm install` needed to use the engine.
+- **Bilingual docs** — `README.md` (RU), `README.en.md` (EN), `GAS_GUIDE.en.md`, `USAGE.en.md`. Language switcher links in all files.
+- **MIT LICENSE**
+- **GitHub Pages workflow** — `.github/workflows/pages.yml` auto-publishes preview on push to main
+
+### Changed
+- **Apple light theme** (`apple.json`) — iOS HIG 2024 system colors: `background: #F2F2F7`, `surface2: #E5E5EA`, `border: #C6C6CB`, `textSecondary: #6D6D72`, `textMuted: #A2A2A7`. Radius corrected to HIG spec: `sm=6px`, `md=10px`, `lg=16px`. Spacing: `sm=10px`, `md=20px`, `lg=32px`. Multi-layer shadows. Font: `-apple-system, BlinkMacSystemFont`
+- **Apple dark theme** (`apple.dark.json`) — shadows enabled (`sm: 0 2px 8px rgba(0,0,0,.5)`, `md: 0 8px 24px rgba(0,0,0,.6)`). Text fixed: `textSecondary: #98989D`, `textMuted: #7C7C82`
+- **Animation** (`base.json`) — `motion.easeOut` → Apple Decelerate `cubic-bezier(0,0,0.2,1)`. `dur2: 200ms`, `dur3: 300ms`, `dur4: 400ms`
+- **`package.json`** — removed `private: true`, added description, keywords, license. Name: `design-token-theme-engine`
+- **`USAGE.md`** — language switcher added; removed `AI_CONTEXT.md` reference (internal file)
+- **`GAS_GUIDE.md`** — language switcher added
+
+---
+
 ## [0.4.0] — 2026-04-26
 
 ### Added
