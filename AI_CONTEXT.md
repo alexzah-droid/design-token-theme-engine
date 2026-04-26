@@ -616,11 +616,17 @@ New base tokens: `fontSizeDisplay/H1/H2/H3/Lead/KpiValue`. Semantic groups: `typ
 
 ---
 
-### Stage 7 — Charts Subsystem (planned)
+### Stage 7 — Charts Subsystem ✅
 
-To add: Area, Bar (stacked), Multi-line, Donut, Sparkline SVG charts; Heatmap; full Gantt diagram.
-All chart components use `--chart-color1..6` and `--chart-heat` semantic tokens.
-Validator update needed: allow `rgba(var(...))` pattern in components.css.
+Added: Sparkline, Area, Bar (grouped), Stacked Bar, Donut, Heatmap, Gantt SVG chart components.
+
+All chart CSS uses only semantic tokens (`--chart-color1..6`, `--chart-heat-color`, `--chart-grid`, `--chart-axis`, `--chart-padding`, `--chart-gap`, `--chart-radius`). Validator 7/7 ✅ — no validator changes needed.
+
+DEV-7 resolved: Heatmap intensity uses `color-mix(in srgb, var(--chart-heat-color) calc(var(--v, 0) * 100%), transparent)` instead of `rgba(var(--chart-heat), ...)`. New base token `color.chartHeatColor` holds hex value; `color.chartHeat` (RGB channel string) preserved for backward compat.
+
+New semantic tokens: `chart.heatColor`, `chart.grid`, `chart.axis`, `chart.padding`, `chart.gap`, `chart.radius`.
+
+Preview section 04 added: 7 chart demo cards.
 
 ---
 
@@ -787,9 +793,8 @@ Action: add bundle size check to `validate.js` or document the GAS limit as a co
 Preview tells users "hover to see hover state" — states can't be inspected statically.
 Action: add CSS utility class `.is-hover` / `.is-focus` to demonstrate states without interaction.
 
-**DEV-7. Charts validator exception**
-`rgba(var(--chart-heat), var(--v))` is a valid CSS pattern (variable as RGB channel) but currently fails `checkNoHardcodedColors()` in `validate.js`.
-Action: update validator regex to allow `rgba(var(...))` pattern before implementing chart components (Stage 7).
+**DEV-7. Charts validator exception** ✅ RESOLVED
+`rgba(var(--chart-heat), var(--v))` would fail `checkNoHardcodedColors()`. Resolved without validator changes by switching heatmap to `color-mix(in srgb, var(--chart-heat-color) calc(var(--v,0)*100%), transparent)`. New base token `color.chartHeatColor` holds proper hex; `color.chartHeat` (RGB channel) retained for backward compat.
 
 ---
 

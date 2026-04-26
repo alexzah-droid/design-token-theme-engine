@@ -188,6 +188,7 @@
         <a href="#foundations">Foundations</a>
         <a href="#components">Components</a>
         <a href="#demo">Demo</a>
+        <a href="#charts">Charts</a>
       </nav>
 
       <!-- Controls -->
@@ -1020,6 +1021,202 @@
     </section>
 
   </div><!-- /pv-main -->
+
+  <!-- ══════════════════════════════════════
+       SECTION 04 · CHARTS
+  ══════════════════════════════════════ -->
+  <div class="pv-main" style="padding-top:0">
+    <section class="pv-section" id="charts">
+      <div class="pv-section-head">
+        <span class="pv-num">04</span>
+        <h2>Charts</h2>
+        <span class="pv-hint">Sparkline · Area · Bar · Stacked Bar · Donut · Heatmap · Gantt</span>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px,1fr)); gap:24px;">
+
+        <!-- Sparkline -->
+        <div class="chart-card">
+          <div class="chart-title">Sparkline</div>
+          <svg class="chart-svg sparkline" viewBox="0 0 200 60" height="60">
+            <polyline class="sparkline-area" points="0,50 30,40 60,45 90,20 120,30 150,15 200,25 200,60 0,60" />
+            <polyline class="sparkline-line" points="0,50 30,40 60,45 90,20 120,30 150,15 200,25" />
+            <circle class="sparkline-dot" cx="200" cy="25" r="3" />
+          </svg>
+        </div>
+
+        <!-- Area Chart -->
+        <div class="chart-card">
+          <div class="chart-title">Area Chart</div>
+          <svg class="chart-svg" viewBox="0 0 240 80" height="80">
+            <defs>
+              <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--chart-color1)" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="var(--chart-color1)" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--chart-color2)" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="var(--chart-color2)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <polygon fill="url(#grad1)" points="0,70 40,50 80,55 120,25 160,35 200,20 240,30 240,80 0,80"/>
+            <polyline class="area-chart-line" stroke="var(--chart-color1)" points="0,70 40,50 80,55 120,25 160,35 200,20 240,30"/>
+            <polygon fill="url(#grad2)" points="0,75 40,65 80,60 120,70 160,50 200,55 240,45 240,80 0,80"/>
+            <polyline class="area-chart-line" stroke="var(--chart-color2)" points="0,75 40,65 80,60 120,70 160,50 200,55 240,45"/>
+          </svg>
+          <div class="chart-legend">
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color1)"></div>Series A</div>
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color2)"></div>Series B</div>
+          </div>
+        </div>
+
+        <!-- Bar Chart (grouped) -->
+        <div class="chart-card">
+          <div class="chart-title">Bar Chart</div>
+          <svg class="chart-svg" viewBox="0 0 240 80" height="80">
+            <rect class="bar-chart-bar" x="10"  y="30" width="16" height="50" fill="var(--chart-color1)"/>
+            <rect class="bar-chart-bar" x="28"  y="50" width="16" height="30" fill="var(--chart-color2)"/>
+            <rect class="bar-chart-bar" x="58"  y="20" width="16" height="60" fill="var(--chart-color1)"/>
+            <rect class="bar-chart-bar" x="76"  y="40" width="16" height="40" fill="var(--chart-color2)"/>
+            <rect class="bar-chart-bar" x="106" y="35" width="16" height="45" fill="var(--chart-color1)"/>
+            <rect class="bar-chart-bar" x="124" y="55" width="16" height="25" fill="var(--chart-color2)"/>
+            <rect class="bar-chart-bar" x="154" y="15" width="16" height="65" fill="var(--chart-color1)"/>
+            <rect class="bar-chart-bar" x="172" y="45" width="16" height="35" fill="var(--chart-color2)"/>
+            <rect class="bar-chart-bar" x="202" y="25" width="16" height="55" fill="var(--chart-color1)"/>
+            <rect class="bar-chart-bar" x="220" y="60" width="16" height="20" fill="var(--chart-color2)"/>
+          </svg>
+          <div class="chart-legend">
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color1)"></div>Series A</div>
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color2)"></div>Series B</div>
+          </div>
+        </div>
+
+        <!-- Stacked Bar -->
+        <div class="chart-card">
+          <div class="chart-title">Stacked Bar</div>
+          <svg class="chart-svg" viewBox="0 0 240 80" height="80">
+            <rect x="15"  y="20" width="28" height="30" fill="var(--chart-color1)"/>
+            <rect x="15"  y="50" width="28" height="20" fill="var(--chart-color2)"/>
+            <rect x="15"  y="70" width="28" height="10" fill="var(--chart-color3)"/>
+            <rect x="58"  y="15" width="28" height="35" fill="var(--chart-color1)"/>
+            <rect x="58"  y="50" width="28" height="15" fill="var(--chart-color2)"/>
+            <rect x="58"  y="65" width="28" height="15" fill="var(--chart-color3)"/>
+            <rect x="101" y="25" width="28" height="25" fill="var(--chart-color1)"/>
+            <rect x="101" y="50" width="28" height="20" fill="var(--chart-color2)"/>
+            <rect x="101" y="70" width="28" height="10" fill="var(--chart-color3)"/>
+            <rect x="144" y="10" width="28" height="40" fill="var(--chart-color1)"/>
+            <rect x="144" y="50" width="28" height="15" fill="var(--chart-color2)"/>
+            <rect x="144" y="65" width="28" height="15" fill="var(--chart-color3)"/>
+            <rect x="187" y="30" width="28" height="20" fill="var(--chart-color1)"/>
+            <rect x="187" y="50" width="28" height="25" fill="var(--chart-color2)"/>
+            <rect x="187" y="75" width="28" height="5"  fill="var(--chart-color3)"/>
+          </svg>
+          <div class="chart-legend">
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color1)"></div>Q1</div>
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color2)"></div>Q2</div>
+            <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color3)"></div>Q3</div>
+          </div>
+        </div>
+
+        <!-- Donut -->
+        <div class="chart-card">
+          <div class="chart-title">Donut Chart</div>
+          <div class="donut-chart">
+            <svg class="donut-svg" viewBox="0 0 80 80" width="80" height="80">
+              <circle class="donut-segment" cx="40" cy="40" r="30" stroke="var(--chart-color1)"
+                stroke-dasharray="113 188" stroke-dashoffset="0" transform="rotate(-90 40 40)"/>
+              <circle class="donut-segment" cx="40" cy="40" r="30" stroke="var(--chart-color2)"
+                stroke-dasharray="56 188" stroke-dashoffset="-113" transform="rotate(-90 40 40)"/>
+              <circle class="donut-segment" cx="40" cy="40" r="30" stroke="var(--chart-color3)"
+                stroke-dasharray="19 188" stroke-dashoffset="-169" transform="rotate(-90 40 40)"/>
+              <text class="donut-label" x="40" y="38">60%</text>
+              <text class="donut-sublabel" x="40" y="52">target</text>
+            </svg>
+            <div class="donut-legend">
+              <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color1)"></div>Primary 60%</div>
+              <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color2)"></div>Secondary 30%</div>
+              <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--chart-color3)"></div>Other 10%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Heatmap -->
+        <div class="chart-card">
+          <div class="chart-title">Heatmap (color-mix intensity)</div>
+          <div class="heatmap" style="grid-template-columns:repeat(7,1fr); max-width:200px;">
+            <div class="heatmap-cell" style="--v:0.1"></div>
+            <div class="heatmap-cell" style="--v:0.3"></div>
+            <div class="heatmap-cell" style="--v:0.6"></div>
+            <div class="heatmap-cell" style="--v:0.2"></div>
+            <div class="heatmap-cell" style="--v:0.8"></div>
+            <div class="heatmap-cell" style="--v:0.4"></div>
+            <div class="heatmap-cell" style="--v:0.0"></div>
+            <div class="heatmap-cell" style="--v:0.5"></div>
+            <div class="heatmap-cell" style="--v:0.9"></div>
+            <div class="heatmap-cell" style="--v:0.3"></div>
+            <div class="heatmap-cell" style="--v:1.0"></div>
+            <div class="heatmap-cell" style="--v:0.7"></div>
+            <div class="heatmap-cell" style="--v:0.2"></div>
+            <div class="heatmap-cell" style="--v:0.5"></div>
+            <div class="heatmap-cell" style="--v:0.0"></div>
+            <div class="heatmap-cell" style="--v:0.4"></div>
+            <div class="heatmap-cell" style="--v:0.8"></div>
+            <div class="heatmap-cell" style="--v:0.6"></div>
+            <div class="heatmap-cell" style="--v:0.9"></div>
+            <div class="heatmap-cell" style="--v:0.3"></div>
+            <div class="heatmap-cell" style="--v:0.1"></div>
+            <div class="heatmap-cell" style="--v:0.7"></div>
+            <div class="heatmap-cell" style="--v:0.5"></div>
+            <div class="heatmap-cell" style="--v:0.2"></div>
+            <div class="heatmap-cell" style="--v:0.4"></div>
+            <div class="heatmap-cell" style="--v:1.0"></div>
+            <div class="heatmap-cell" style="--v:0.6"></div>
+            <div class="heatmap-cell" style="--v:0.0"></div>
+          </div>
+          <div class="heatmap-label" style="max-width:200px">Mon → Sun · 4 weeks</div>
+        </div>
+
+        <!-- Gantt -->
+        <div class="chart-card" style="grid-column:1/-1">
+          <div class="chart-title">Gantt Chart</div>
+          <div class="gantt" style="--gantt-cols:8">
+            <div class="gantt-header">
+              <div style="width:120px;flex-shrink:0"></div>
+              <div class="gantt-header-cell">W1</div>
+              <div class="gantt-header-cell">W2</div>
+              <div class="gantt-header-cell">W3</div>
+              <div class="gantt-header-cell">W4</div>
+              <div class="gantt-header-cell">W5</div>
+              <div class="gantt-header-cell">W6</div>
+              <div class="gantt-header-cell">W7</div>
+              <div class="gantt-header-cell">W8</div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-row-label">Discovery</div>
+              <div class="gantt-track"><div class="gantt-bar gantt-bar--1" style="--s:0;--d:2">Discovery</div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-row-label">Design</div>
+              <div class="gantt-track"><div class="gantt-bar gantt-bar--2" style="--s:1;--d:3">Design</div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-row-label">Development</div>
+              <div class="gantt-track"><div class="gantt-bar gantt-bar--3" style="--s:3;--d:4">Development</div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-row-label">Testing</div>
+              <div class="gantt-track"><div class="gantt-bar gantt-bar--4" style="--s:5;--d:2">Testing</div></div>
+            </div>
+            <div class="gantt-row">
+              <div class="gantt-row-label">Launch</div>
+              <div class="gantt-track"><div class="gantt-bar gantt-bar--5" style="--s:7;--d:1">Launch</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /chart-grid -->
+    </section>
+  </div><!-- /pv-main charts -->
 
 
   <!-- ══════════════════════════════════════

@@ -817,3 +817,273 @@ th[aria-sort="descending"] .table-sort-icon {
   font-size: var(--type-scale-small-size);
   color: var(--text-muted);
 }
+
+/* ============================================================
+   CHARTS SUBSYSTEM — Stage 7
+   All colors via semantic vars; no hardcoded values.
+   ============================================================ */
+
+/* -- Shared chart utilities --------------------------------- */
+
+.chart-card {
+  background: var(--surface-bg);
+  border: 1px solid var(--chart-grid);
+  border-radius: var(--card-radius);
+  padding: var(--chart-padding);
+  overflow: hidden;
+}
+
+.chart-title {
+  font-size: var(--type-scale-small-size);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--chart-gap);
+}
+
+.chart-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.chart-grid line {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+}
+
+.chart-axis text {
+  fill: var(--chart-axis);
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.chart-axis line,
+.chart-axis path {
+  stroke: var(--chart-grid);
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px var(--chart-padding);
+  margin-top: var(--chart-gap);
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.chart-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* -- Sparkline ---------------------------------------------- */
+
+.sparkline {
+  display: block;
+  width: 100%;
+}
+
+.sparkline-line {
+  fill: none;
+  stroke: var(--chart-color1);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.sparkline-area {
+  fill: var(--chart-color1);
+  opacity: 0.12;
+}
+
+.sparkline-dot {
+  fill: var(--chart-color1);
+}
+
+/* -- Area chart -------------------------------------------- */
+
+.area-chart {}
+
+.area-chart-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.area-chart-fill {
+  opacity: 0.15;
+}
+
+/* -- Bar chart --------------------------------------------- */
+
+.bar-chart {}
+
+.bar-chart-bar {
+  transition: opacity var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.bar-chart-bar:hover {
+  opacity: 0.8;
+}
+
+/* -- Donut chart ------------------------------------------- */
+
+.donut-chart {
+  display: flex;
+  align-items: center;
+  gap: var(--chart-padding);
+}
+
+.donut-svg {
+  flex-shrink: 0;
+}
+
+.donut-segment {
+  fill: none;
+  stroke-width: 20;
+  transition: stroke-dashoffset var(--animation-duration-normal) var(--animation-ease-out);
+}
+
+.donut-label {
+  fill: var(--text-primary);
+  font-size: 18px;
+  font-weight: 700;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.donut-sublabel {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* -- Heatmap chart ----------------------------------------- */
+
+.heatmap {
+  display: grid;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  border-radius: var(--chart-radius);
+  aspect-ratio: 1;
+  background: color-mix(in srgb, var(--chart-heat-color) calc(var(--v, 0) * 100%), transparent);
+  transition: background var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.heatmap-cell:hover {
+  outline: 2px solid var(--chart-heat-color);
+  outline-offset: 1px;
+}
+
+.heatmap-label {
+  font-size: 10px;
+  color: var(--chart-axis);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.heatmap-row-label {
+  font-size: 10px;
+  color: var(--chart-axis);
+  display: flex;
+  align-items: center;
+}
+
+/* -- Gantt chart ------------------------------------------- */
+
+.gantt {
+  overflow-x: auto;
+}
+
+.gantt-grid {
+  display: grid;
+  position: relative;
+  border-top: 1px solid var(--chart-grid);
+}
+
+.gantt-header {
+  display: flex;
+  border-bottom: 1px solid var(--chart-grid);
+  margin-bottom: 4px;
+}
+
+.gantt-header-cell {
+  font-size: 11px;
+  color: var(--chart-axis);
+  text-align: center;
+  padding: 2px 4px;
+  border-right: 1px solid var(--chart-grid);
+  flex: 1;
+}
+
+.gantt-row {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--chart-grid);
+  min-height: 32px;
+  position: relative;
+}
+
+.gantt-row-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  padding-right: var(--chart-gap);
+  width: 120px;
+}
+
+.gantt-track {
+  flex: 1;
+  position: relative;
+  height: 32px;
+  --gantt-col-w: calc(100% / var(--gantt-cols, 12));
+}
+
+.gantt-bar {
+  position: absolute;
+  height: 20px;
+  top: 6px;
+  border-radius: var(--chart-radius);
+  left: calc(var(--gantt-col-w) * var(--s, 0));
+  width: calc(var(--gantt-col-w) * var(--d, 1));
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--on-primary);
+  background: var(--button-bg);
+  transition: opacity var(--animation-duration-fast) var(--animation-ease-out);
+}
+
+.gantt-bar:hover {
+  opacity: 0.85;
+}
+
+.gantt-bar--1 { background: var(--chart-color1); }
+.gantt-bar--2 { background: var(--chart-color2); }
+.gantt-bar--3 { background: var(--chart-color3); }
+.gantt-bar--4 { background: var(--chart-color4); }
+.gantt-bar--5 { background: var(--chart-color5); }
+.gantt-bar--6 { background: var(--chart-color6); }

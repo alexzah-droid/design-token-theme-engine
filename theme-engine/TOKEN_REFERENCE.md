@@ -316,6 +316,12 @@ Corporate theme default values shown.
 | `--chart-color5` | `{color.chart5}` | `#9E7A1C` |
 | `--chart-color6` | `{color.chart6}` | `#7BA78A` |
 | `--chart-heat` | `{color.chartHeat}` | `176, 138, 62` |
+| `--chart-heat-color` | `{color.chartHeatColor}` | `#B08A3E` |
+| `--chart-grid` | `{color.border}` | `#d8d1c2` |
+| `--chart-axis` | `{color.textMuted}` | `#9A9590` |
+| `--chart-padding` | `{spacing.md}` | `16px` |
+| `--chart-gap` | `{spacing.sm}` | `8px` |
+| `--chart-radius` | `{radius.sm}` | `2px` |
 
 ---
 

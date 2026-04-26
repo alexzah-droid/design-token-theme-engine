@@ -150,7 +150,13 @@
     "color4": "{color.chart4}",
     "color5": "{color.chart5}",
     "color6": "{color.chart6}",
-    "heat": "{color.chartHeat}"
+    "heat": "{color.chartHeat}",
+    "heatColor": "{color.chartHeatColor}",
+    "grid": "{color.border}",
+    "axis": "{color.textMuted}",
+    "padding": "{spacing.md}",
+    "gap": "{spacing.sm}",
+    "radius": "{radius.sm}"
   },
   "focus": {
     "ring": "{color.focusRing}"

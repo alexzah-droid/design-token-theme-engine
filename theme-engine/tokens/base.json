@@ -28,6 +28,7 @@
     "chart5": "#9c27b0",
     "chart6": "#00bcd4",
     "chartHeat": "66, 133, 244",
+    "chartHeatColor": "#4285f4",
     "focusRing": "0 0 0 3px rgba(26,115,232,.35)"
   },
   "spacing": {

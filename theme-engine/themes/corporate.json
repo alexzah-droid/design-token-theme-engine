@@ -22,6 +22,7 @@
     "chart5": "#9E7A1C",
     "chart6": "#7BA78A",
     "chartHeat": "176, 138, 62",
+    "chartHeatColor": "#B08A3E",
     "focusRing": "0 0 0 3px rgba(176,138,62,.35)"
   },
   "radius": {
