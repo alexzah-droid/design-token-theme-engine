@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.4.0] — 2026-04-26
+
+### Added
+- **Static state classes** — `.is-hover`, `.is-focus`, `.is-disabled`, `.is-selected` on button, input, select, textarea, tab, chip, dropdown-item, pagination-item (DEV-6 resolved)
+- **CSS grid utilities** — `.row` (flex), `.grid-2`, `.grid-3`, `.grid-4`, `.grid-6` using `var(--page-section-gap)` gap
+- **Viewport simulator** in preview — Desktop / Tablet (768px) / Mobile (375px) presets for the Demo frame
+- **Preview section 05** — Dev UX: Static States card + Grid Utilities card
+
+---
+
 ## [0.3.0] — 2026-04-26
 
 ### Added

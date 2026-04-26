@@ -86,6 +86,10 @@ Bundles are auto-generated — do not edit manually.
 
 **Charts:** `.chart-card`, `.chart-title`, `.chart-svg`, `.chart-legend`, `.chart-legend-item`, `.chart-legend-dot`, `.sparkline`, `.sparkline-line`, `.sparkline-area`, `.sparkline-dot`, `.area-chart-line`, `.bar-chart-bar`, `.donut-chart`, `.donut-segment`, `.donut-label`, `.donut-sublabel`, `.donut-legend`, `.heatmap`, `.heatmap-cell`, `.heatmap-label`, `.gantt`, `.gantt-header`, `.gantt-header-cell`, `.gantt-row`, `.gantt-row-label`, `.gantt-track`, `.gantt-bar`, `.gantt-bar--1..6`
 
+**Static states:** `.is-hover`, `.is-focus`, `.is-disabled`, `.is-selected` — apply to button, input, select, textarea, tab, chip, dropdown-item, pagination-item
+
+**Layout utilities:** `.row` (flex wrap), `.grid-2`, `.grid-3`, `.grid-4`, `.grid-6` (CSS grid columns)
+
 **Utilities:** `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y)
 
 ---
@@ -99,6 +103,7 @@ Sections:
 - **02 Components** — all components with all variants and states; A11y & Utilities card (skip-link, surface-2/3, prefers-reduced-motion)
 - **03 Live Demo** — Invoice Manager application
 - **04 Charts** — Sparkline, Area, Bar, Stacked Bar, Donut, Heatmap, Gantt demos
+- **05 Dev UX** — Static states demo + Grid utilities demo
 
 ---
 
