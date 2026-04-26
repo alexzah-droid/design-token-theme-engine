@@ -16,7 +16,7 @@
   --color-border: #d8d1c2;
   --color-text-primary: #1B1C19;
   --color-text-secondary: #5A5C56;
-  --color-text-muted: #9A9590;
+  --color-text-muted: #6E6B65;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -86,7 +86,7 @@
   --card-shadow: none;
   --text-primary: #1B1C19;
   --text-secondary: #5A5C56;
-  --text-muted: #9A9590;
+  --text-muted: #6E6B65;
   --surface-bg: #FFFFFF;
   --surface-bg2: #F0EBE2;
   --surface-bg3: #E8E1D6;
@@ -184,7 +184,7 @@
   --chart-heat: 176, 138, 62;
   --chart-heat-color: #B08A3E;
   --chart-grid: #d8d1c2;
-  --chart-axis: #9A9590;
+  --chart-axis: #6E6B65;
   --chart-padding: 16px;
   --chart-gap: 8px;
   --chart-radius: 2px;
@@ -248,7 +248,7 @@
   --color-border: #3a3a2e;
   --color-text-primary: #f0ece0;
   --color-text-secondary: #9a9688;
-  --color-text-muted: #6A7468;
+  --color-text-muted: #8C9489;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -318,7 +318,7 @@
   --card-shadow: none;
   --text-primary: #f0ece0;
   --text-secondary: #9a9688;
-  --text-muted: #6A7468;
+  --text-muted: #8C9489;
   --surface-bg: #252520;
   --surface-bg2: #1F2C20;
   --surface-bg3: #152919;
@@ -416,7 +416,7 @@
   --chart-heat: 176, 138, 62;
   --chart-heat-color: #B08A3E;
   --chart-grid: #3a3a2e;
-  --chart-axis: #6A7468;
+  --chart-axis: #8C9489;
   --chart-padding: 16px;
   --chart-gap: 8px;
   --chart-radius: 2px;
