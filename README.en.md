@@ -150,7 +150,7 @@ npm run validate  # check 7 architectural invariants
 npm run wcag      # check WCAG AA contrast and design integrity across all themes
 ```
 
-Preview components: open `theme-engine/preview/index.html` in a browser.
+Preview components: [open online](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/) or locally — `theme-engine/preview/index.html`.
 
 What the validator checks (7 checks):
 

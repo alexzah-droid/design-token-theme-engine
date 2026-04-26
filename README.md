@@ -150,7 +150,7 @@ npm run validate  # проверить 7 архитектурных инвари
 npm run wcag      # проверить WCAG AA контраст и design integrity всех тем
 ```
 
-Предпросмотр компонентов: открыть `theme-engine/preview/index.html` в браузере.
+Предпросмотр компонентов: [открыть онлайн](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/) или локально — `theme-engine/preview/index.html`.
 
 Что проверяет валидатор (7 проверок):
 
