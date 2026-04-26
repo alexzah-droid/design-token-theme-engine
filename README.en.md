@@ -14,6 +14,7 @@ Token-based CSS theme engine: edit one JSON file, rebuild, and the entire UI upd
 - 3 themes (corporate, apple, minimal) with dark mode support
 - 60+ ready-to-use CSS component classes with zero framework dependencies
 - Built-in validator enforces 7 architectural invariants on every build
+- WCAG AA checker automatically verifies contrast ratios across all themes on every token change
 
 Built for: admin panels, internal tools, white-label products, Google Apps Script applications.
 
