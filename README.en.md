@@ -78,14 +78,22 @@ themes/{name}.dark.json   — dark-mode overrides (separate file)
 How a token travels from JSON to the browser:
 
 ```
-base.json                    semantic.json                    CSS output
-─────────────────────        ─────────────────────────────    ──────────────────────────
-color.primary = "#1a73e8"    button.bg = "{color.primary}"    --button-bg: #1a73e8;
-radius.md = "8px"        →   button.radius = "{radius.md}" →  --button-radius: 8px;
-shadow.sm = "0 1px 3px…"     button.shadow = "{shadow.sm}"    --button-shadow: 0 1px…;
+┌─────────────────────┐     ┌──────────────────────────┐     ┌──────────────────────┐
+│  base.json          │────▶│  semantic.json           │────▶│  dist/*.css          │
+├─────────────────────┤     ├──────────────────────────┤     ├──────────────────────┤
+│ color.primary       │     │ button.bg                │     │ --button-bg:         │
+│   "#1a73e8"         │     │   "{color.primary}"      │     │   #1a73e8;           │
+│ radius.md           │     │ button.radius            │     │ --button-radius:     │
+│   "8px"             │     │   "{radius.md}"          │     │   8px;               │
+│ shadow.sm           │     │ button.shadow            │     │ --button-shadow:     │
+│   "0 1px 3px…"      │     │   "{shadow.sm}"          │     │   0 1px 3px…;        │
+└─────────────────────┘     └──────────────────────────┘     └──────────────────────┘
+         ▲
+  theme.json overrides
+  only this layer
 ```
 
-A theme overrides only `base.json` values — semantics and components stay unchanged. To create a new brand, you only need one JSON file with the primitive overrides you want.
+To create a new brand, you only need one `theme.json` with the primitive overrides you want — semantics and components stay unchanged.
 
 Theme switching works via `data-theme` and `data-mode` attributes on the root HTML element. Changing an attribute instantly applies a different set of CSS custom properties — no page reload, no JavaScript required.
 

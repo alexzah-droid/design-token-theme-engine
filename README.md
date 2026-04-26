@@ -78,14 +78,22 @@ themes/{name}.dark.json   — dark-mode переопределения (отде
 Как токен проходит путь от JSON до браузера:
 
 ```
-base.json                    semantic.json                    CSS output
-─────────────────────        ─────────────────────────────    ──────────────────────────
-color.primary = "#1a73e8"    button.bg = "{color.primary}"    --button-bg: #1a73e8;
-radius.md = "8px"        →   button.radius = "{radius.md}" →  --button-radius: 8px;
-shadow.sm = "0 1px 3px…"     button.shadow = "{shadow.sm}"    --button-shadow: 0 1px…;
+┌─────────────────────┐     ┌──────────────────────────┐     ┌──────────────────────┐
+│  base.json          │────▶│  semantic.json           │────▶│  dist/*.css          │
+├─────────────────────┤     ├──────────────────────────┤     ├──────────────────────┤
+│ color.primary       │     │ button.bg                │     │ --button-bg:         │
+│   "#1a73e8"         │     │   "{color.primary}"      │     │   #1a73e8;           │
+│ radius.md           │     │ button.radius            │     │ --button-radius:     │
+│   "8px"             │     │   "{radius.md}"          │     │   8px;               │
+│ shadow.sm           │     │ button.shadow            │     │ --button-shadow:     │
+│   "0 1px 3px…"      │     │   "{shadow.sm}"          │     │   0 1px 3px…;        │
+└─────────────────────┘     └──────────────────────────┘     └──────────────────────┘
+         ▲
+  theme.json переопределяет
+  только этот слой
 ```
 
-Тема переопределяет только `base.json`-значения — семантика и компоненты не меняются. Чтобы сделать новый бренд, достаточно одного JSON-файла с переопределениями нужных примитивов.
+Чтобы сделать новый бренд, достаточно одного `theme.json` с переопределениями нужных примитивов — семантика и компоненты не меняются.
 
 Переключение темы: атрибуты `data-theme` и `data-mode` на корневом HTML-элементе. Смена атрибута мгновенно применяет другой набор CSS custom properties — без перезагрузки страницы, без JavaScript.
 
