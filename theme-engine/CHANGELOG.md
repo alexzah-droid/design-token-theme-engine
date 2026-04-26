@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.5.3] — 2026-04-27
+
+### Fixed
+- `minimal.json`: `radius` шкала исправлена — sm=0px / md=2px / lg=4px (было только md=2px, sm наследовал 4px из base → иерархия sm > md была сломана)
+- `minimal.json`: `focusRing` заменён с синего Google на чёрный `rgba(0,0,0,.25)` — соответствует монохромному primary #000000
+- `minimal.json`: chart-палитра заменена с Google-brand цветов на монохромную шкалу (#1a1a1a → #d9d9d9); `chartHeat`/`chartHeatColor` — чёрные
+- `minimal.json`: `fontFamily` заменён с `Arial` на `system-ui, -apple-system, sans-serif`
+
+---
+
 ## [0.5.2] — 2026-04-27
 
 ### Fixed
