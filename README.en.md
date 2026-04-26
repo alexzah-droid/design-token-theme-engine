@@ -75,9 +75,34 @@ themes/{name}.json        — overrides of primitive tokens only
 themes/{name}.dark.json   — dark-mode overrides (separate file)
 ```
 
+How a token travels from JSON to the browser:
+
+```
+base.json                    semantic.json                    CSS output
+─────────────────────        ─────────────────────────────    ──────────────────────────
+color.primary = "#1a73e8"    button.bg = "{color.primary}"    --button-bg: #1a73e8;
+radius.md = "8px"        →   button.radius = "{radius.md}" →  --button-radius: 8px;
+shadow.sm = "0 1px 3px…"     button.shadow = "{shadow.sm}"    --button-shadow: 0 1px…;
+```
+
+A theme overrides only `base.json` values — semantics and components stay unchanged. To create a new brand, you only need one JSON file with the primitive overrides you want.
+
 Theme switching works via `data-theme` and `data-mode` attributes on the root HTML element. Changing an attribute instantly applies a different set of CSS custom properties — no page reload, no JavaScript required.
 
 `npm run build` generates `dist/` from `tokens/` and `themes/` through a pipeline: deepMerge → resolveToken → flattenTokens → emit CSS.
+
+## Who It's For
+
+**Good fit if you:**
+- Build plain HTML/CSS interfaces without a bundler — admin panels, internal tools, dashboards
+- Use Google Apps Script HTML Service — CDN and npm are unavailable in GAS production
+- Need multiple brands or themes on a shared component codebase (white-label)
+- Want an architectural contract — the validator prevents developers from accidentally hardcoding a color value into a component
+
+**Not a good fit if you:**
+- Already use React, Vue, or another component framework — CSS Modules, CSS-in-JS, or utility classes integrate better there
+- Need a utility-first (atomic) CSS model — Tailwind CSS handles that more effectively
+- Require SSR or complex CSS tree-shaking
 
 ## Themes
 

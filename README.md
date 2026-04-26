@@ -75,9 +75,34 @@ themes/{name}.json        — переопределения только при
 themes/{name}.dark.json   — dark-mode переопределения (отдельный файл)
 ```
 
-Переключение темы: атрибуты `data-theme` и `data-mode` на корневом HTML-элементе. Смена атрибута мгновенно применяет другой набор CSS custom properties без перезагрузки страницы и без JavaScript.
+Как токен проходит путь от JSON до браузера:
+
+```
+base.json                    semantic.json                    CSS output
+─────────────────────        ─────────────────────────────    ──────────────────────────
+color.primary = "#1a73e8"    button.bg = "{color.primary}"    --button-bg: #1a73e8;
+radius.md = "8px"        →   button.radius = "{radius.md}" →  --button-radius: 8px;
+shadow.sm = "0 1px 3px…"     button.shadow = "{shadow.sm}"    --button-shadow: 0 1px…;
+```
+
+Тема переопределяет только `base.json`-значения — семантика и компоненты не меняются. Чтобы сделать новый бренд, достаточно одного JSON-файла с переопределениями нужных примитивов.
+
+Переключение темы: атрибуты `data-theme` и `data-mode` на корневом HTML-элементе. Смена атрибута мгновенно применяет другой набор CSS custom properties — без перезагрузки страницы, без JavaScript.
 
 `npm run build` генерирует `dist/` из `tokens/` и `themes/` через пайплайн: deepMerge → resolveToken → flattenTokens → emit CSS.
+
+## Для кого подходит
+
+**Подходит, если:**
+- Строите plain HTML/CSS интерфейс без сборщика (admin panel, internal tool, dashboard)
+- Используете Google Apps Script HTML Service — CDN и npm там недоступны в production
+- Нужно несколько брендов/тем на одной кодовой базе компонентов (white-label)
+- Хотите архитектурный контракт — валидатор не даст разработчику случайно захардкодить цвет в компонент
+
+**Не подходит, если:**
+- Уже используете React, Vue или другой компонентный фреймворк — там лучше работают CSS Modules, CSS-in-JS или утилитарные классы
+- Нужна утилитарная (атомарная) CSS-модель — Tailwind CSS решит задачу эффективнее
+- Проект требует SSR или сложного tree-shaking CSS
 
 ## Темы
 
