@@ -5,6 +5,28 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.6.0] — 2026-04-26
+
+### Added
+- **WCAG AA checker** (`build/check-wcag.js`, `npm run wcag`) — автоматическая проверка контраста и design integrity всех тем из `dist/`:
+  - 30+ контрастных пар: text, heading, label, button (default + hover), input, select, nav, badge ×4, alert ×4, pagination, chip, tab, table header, secondary surfaces
+  - Проверка визуальной иерархии текста: text-primary > text-secondary > text-muted
+  - Проверка монотонности радиусов: sm ≤ md ≤ lg
+  - Severity: `error` (primary surfaces) → exit 1; `warn` (secondary) → build passes
+  - Новые темы подхватываются автоматически без изменений в checker
+
+### Fixed
+- **WCAG AA — все темы:** `text-muted` и `text-secondary` не проходили 4.5:1 на primary surfaces
+  - corporate light: textMuted `#9A9590`→`#6E6B65`; corporate dark: textMuted `#6A7468`→`#8C9489`
+  - apple light: textMuted `#A2A2A7`→`#606063`; apple dark: textMuted `#7C7C82`→`#898990`
+  - minimal: textSecondary `#8e8e93`→`#636366` (via base.json); textMuted `#b0b0b8`→`#696969`
+- **WCAG AA — base colors:** success/error слишком светлые для белого текста в badge и alert
+  - `color.success` `#34a853`→`#1e7e34` (3.06:1→5.14:1); `color.error` `#ea4335`→`#d32f2f` (3.92:1→4.98:1)
+- **WCAG AA — apple button:** primary `#007aff`→`#0070f0` (4.02:1→4.59:1); primaryHover `#0a84ff`→`#006ee8` (3.65:1→4.78:1)
+- **Semantic — tab.activeText:** `{color.primary}`→`{color.textPrimary}` — primary был невидим в corporate dark (1.24:1) и не проходил в apple light (4.11:1); visual active state сохранён через tab.indicatorColor
+
+---
+
 ## [0.5.3] — 2026-04-27
 
 ### Fixed

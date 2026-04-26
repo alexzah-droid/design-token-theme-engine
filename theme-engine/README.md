@@ -26,6 +26,7 @@ Run from `theme-engine/`:
 ```bash
 npm run build     # generate dist/ CSS files + bundle files
 npm run validate  # check architectural invariants (7 checks)
+npm run wcag      # check WCAG AA contrast and design integrity across all themes
 ```
 
 Preview: open `preview/index.html` in a browser.
@@ -131,3 +132,15 @@ See `gas-example/` for a working example and `GAS_GUIDE.md` for full instruction
 5. Dark themes add no new token names
 6. Build output contains required CSS variables
 7. Component styles use only semantic CSS variables
+
+## WCAG AA Checker
+
+`npm run wcag` (`build/check-wcag.js`) reads all `dist/*.css` files automatically — no configuration needed when adding new themes.
+
+**Contrast pairs (4.5:1):** text-primary/secondary/muted/heading/label on page-bg and card-bg; input, select, button (default + hover), nav, badge ×4, alert ×4, pagination-active, chip-active, tab-active, table-header. Secondary surfaces (surface-bg2/3) checked as `warn`.
+
+**Design integrity:** text hierarchy (primary > secondary > muted by contrast ratio); radius monotonicity (sm ≤ md ≤ lg).
+
+**Severity:** `error` → exits with code 1, blocks shipping. `warn` → build passes, review recommended.
+
+**Extending:** add a row to `PAIRS` in `build/check-wcag.js` to check new token pairs.

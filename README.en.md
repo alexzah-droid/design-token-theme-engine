@@ -147,6 +147,7 @@ All commands run from `theme-engine/`:
 npm install       # install build dependencies (dev only)
 npm run build     # generate dist/*.css and dist/*.bundle.css
 npm run validate  # check 7 architectural invariants
+npm run wcag      # check WCAG AA contrast and design integrity across all themes
 ```
 
 Preview components: open `theme-engine/preview/index.html` in a browser.
@@ -160,6 +161,14 @@ What the validator checks (7 checks):
 5. Dark theme files add no new token names
 6. Build output contains required CSS variables
 7. Component styles use only semantic CSS custom properties
+
+What the WCAG AA checker checks (`npm run wcag`):
+
+- Text contrast (4.5:1) — text-primary/secondary/muted, heading, label on page-bg and card-bg
+- Interactive component contrast — button (default + hover), input, select, nav, badge ×4, alert ×4, pagination, chip, tab, table header
+- Visual hierarchy — text-primary > text-secondary > text-muted by contrast ratio
+- Radius monotonicity — radius-sm ≤ radius-md ≤ radius-lg
+- Severity: `error` (primary surfaces) exits with code 1; `warn` (secondary surfaces) reports only
 
 ## License
 

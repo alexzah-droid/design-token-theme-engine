@@ -147,6 +147,7 @@ Bundle-файлы готовы к встраиванию в GAS HTML Service —
 npm install       # установить зависимости сборщика (только dev)
 npm run build     # сгенерировать dist/*.css и dist/*.bundle.css
 npm run validate  # проверить 7 архитектурных инвариантов
+npm run wcag      # проверить WCAG AA контраст и design integrity всех тем
 ```
 
 Предпросмотр компонентов: открыть `theme-engine/preview/index.html` в браузере.
@@ -160,6 +161,14 @@ npm run validate  # проверить 7 архитектурных инвари
 5. Dark-файлы не добавляют новых имён токенов
 6. Build output содержит требуемые CSS-переменные
 7. Компоненты используют только семантические CSS custom properties
+
+Что проверяет WCAG AA checker (`npm run wcag`):
+
+- Контраст текста на фоне (4.5:1) — text-primary/secondary/muted, heading, label на page-bg и card-bg
+- Контраст интерактивных компонентов — button (default + hover), input, select, nav, badge ×4, alert ×4, pagination, chip, tab, table header
+- Визуальная иерархия — text-primary > text-secondary > text-muted по контрасту
+- Монотонность радиусов — radius-sm ≤ radius-md ≤ radius-lg
+- Severity: `error` (primary surfaces) завершает билд с exit 1; `warn` (secondary surfaces) только сообщает
 
 ## Лицензия
 
