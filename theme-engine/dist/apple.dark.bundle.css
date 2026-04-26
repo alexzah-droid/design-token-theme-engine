@@ -16,7 +16,7 @@
   --color-border: #C6C6CB;
   --color-text-primary: #1c1c1e;
   --color-text-secondary: #6D6D72;
-  --color-text-muted: #A2A2A7;
+  --color-text-muted: #606063;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -86,7 +86,7 @@
   --card-shadow: 0 4px 12px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06);
   --text-primary: #1c1c1e;
   --text-secondary: #6D6D72;
-  --text-muted: #A2A2A7;
+  --text-muted: #606063;
   --surface-bg: #ffffff;
   --surface-bg2: #E5E5EA;
   --surface-bg3: #dddde0;
@@ -184,7 +184,7 @@
   --chart-heat: 0, 122, 255;
   --chart-heat-color: #007aff;
   --chart-grid: #C6C6CB;
-  --chart-axis: #A2A2A7;
+  --chart-axis: #606063;
   --chart-padding: 20px;
   --chart-gap: 10px;
   --chart-radius: 6px;
@@ -248,7 +248,7 @@
   --color-border: #38383a;
   --color-text-primary: #ffffff;
   --color-text-secondary: #98989D;
-  --color-text-muted: #7C7C82;
+  --color-text-muted: #898990;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -318,7 +318,7 @@
   --card-shadow: 0 8px 24px rgba(0,0,0,.6);
   --text-primary: #ffffff;
   --text-secondary: #98989D;
-  --text-muted: #7C7C82;
+  --text-muted: #898990;
   --surface-bg: #1c1c1e;
   --surface-bg2: #2c2c2e;
   --surface-bg3: #3a3a3c;
@@ -416,7 +416,7 @@
   --chart-heat: 0, 122, 255;
   --chart-heat-color: #007aff;
   --chart-grid: #38383a;
-  --chart-axis: #7C7C82;
+  --chart-axis: #898990;
   --chart-padding: 20px;
   --chart-gap: 10px;
   --chart-radius: 6px;

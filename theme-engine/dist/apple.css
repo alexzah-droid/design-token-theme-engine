@@ -9,7 +9,7 @@
   --color-border: #C6C6CB;
   --color-text-primary: #1c1c1e;
   --color-text-secondary: #6D6D72;
-  --color-text-muted: #A2A2A7;
+  --color-text-muted: #606063;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -79,7 +79,7 @@
   --card-shadow: 0 4px 12px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06);
   --text-primary: #1c1c1e;
   --text-secondary: #6D6D72;
-  --text-muted: #A2A2A7;
+  --text-muted: #606063;
   --surface-bg: #ffffff;
   --surface-bg2: #E5E5EA;
   --surface-bg3: #dddde0;
@@ -177,7 +177,7 @@
   --chart-heat: 0, 122, 255;
   --chart-heat-color: #007aff;
   --chart-grid: #C6C6CB;
-  --chart-axis: #A2A2A7;
+  --chart-axis: #606063;
   --chart-padding: 20px;
   --chart-gap: 10px;
   --chart-radius: 6px;

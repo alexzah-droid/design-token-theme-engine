@@ -15,8 +15,8 @@
   --color-surface3: #dfe0e0;
   --color-border: #d9d9d9;
   --color-text-primary: #1f1f1f;
-  --color-text-secondary: #8e8e93;
-  --color-text-muted: #b0b0b8;
+  --color-text-secondary: #636366;
+  --color-text-muted: #696969;
   --color-success: #34a853;
   --color-on-success: #ffffff;
   --color-warning: #f9ab00;
@@ -73,7 +73,7 @@
   --button-text: #ffffff;
   --button-hover-bg: #333333;
   --button-disabled-bg: #f8f8f8;
-  --button-disabled-text: #8e8e93;
+  --button-disabled-text: #636366;
   --button-radius: 2px;
   --button-padding-y: 8px;
   --button-padding-x: 16px;
@@ -85,8 +85,8 @@
   --card-border-color: #d9d9d9;
   --card-shadow: none;
   --text-primary: #1f1f1f;
-  --text-secondary: #8e8e93;
-  --text-muted: #b0b0b8;
+  --text-secondary: #636366;
+  --text-muted: #696969;
   --surface-bg: #f8f8f8;
   --surface-bg2: #ebebeb;
   --surface-bg3: #dfe0e0;
@@ -126,7 +126,7 @@
   --badge-error-bg: #ea4335;
   --badge-error-text: #ffffff;
   --badge-neutral-bg: #f8f8f8;
-  --badge-neutral-text: #8e8e93;
+  --badge-neutral-text: #636366;
   --nav-bg: #f8f8f8;
   --nav-text: #1f1f1f;
   --nav-brand-color: #000000;
@@ -184,7 +184,7 @@
   --chart-heat: 0, 0, 0;
   --chart-heat-color: #000000;
   --chart-grid: #d9d9d9;
-  --chart-axis: #b0b0b8;
+  --chart-axis: #696969;
   --chart-padding: 16px;
   --chart-gap: 8px;
   --chart-radius: 0px;
@@ -200,7 +200,7 @@
   --switch-track-active-bg: #000000;
   --switch-thumb-bg: #ffffff;
   --tab-bg: #ffffff;
-  --tab-text: #8e8e93;
+  --tab-text: #636366;
   --tab-active-bg: #ffffff;
   --tab-active-text: #000000;
   --tab-indicator-color: #000000;
@@ -223,7 +223,7 @@
   --type-scale-lead-size: 18px;
   --type-scale-small-size: 12px;
   --chip-bg: #f8f8f8;
-  --chip-text: #8e8e93;
+  --chip-text: #636366;
   --chip-border: #d9d9d9;
   --chip-active-bg: #000000;
   --chip-active-text: #ffffff;
@@ -231,7 +231,7 @@
   --kpi-value-size: 36px;
   --kpi-value-font-weight: 600;
   --kpi-value-color: #1f1f1f;
-  --kpi-label-color: #8e8e93;
+  --kpi-label-color: #636366;
   --kpi-delta-up-color: #34a853;
   --kpi-delta-down-color: #ea4335;
 }
