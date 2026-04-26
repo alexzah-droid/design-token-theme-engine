@@ -1,5 +1,5 @@
 [data-theme="apple"][data-mode="dark"] {
-  --color-primary: #007aff;
+  --color-primary: #0070f0;
   --color-primary-hover: #0a84ff;
   --color-on-primary: #ffffff;
   --color-background: #000000;
@@ -62,7 +62,7 @@
   --motion-ease-in-out: cubic-bezier(.4,0,.2,1);
   --page-bg: #000000;
   --page-section-gap: 32px;
-  --button-bg: #007aff;
+  --button-bg: #0070f0;
   --button-text: #ffffff;
   --button-hover-bg: #0a84ff;
   --button-disabled-bg: #1c1c1e;
@@ -122,7 +122,7 @@
   --badge-neutral-text: #98989D;
   --nav-bg: #1c1c1e;
   --nav-text: #ffffff;
-  --nav-brand-color: #007aff;
+  --nav-brand-color: #0070f0;
   --nav-border-color: #38383a;
   --nav-padding-y: 10px;
   --nav-padding-x: 20px;
@@ -130,7 +130,7 @@
   --layout-sidebar-bg: #1c1c1e;
   --layout-sidebar-border-color: #38383a;
   --layout-sidebar-text: #ffffff;
-  --layout-sidebar-active-text: #007aff;
+  --layout-sidebar-active-text: #0070f0;
   --textarea-bg: #000000;
   --textarea-text: #ffffff;
   --textarea-border: #38383a;
@@ -138,8 +138,8 @@
   --textarea-padding: 10px;
   --textarea-shadow: 0 2px 8px rgba(0,0,0,.5);
   --checkbox-border: #38383a;
-  --checkbox-checked-bg: #007aff;
-  --checkbox-checked-border: #007aff;
+  --checkbox-checked-bg: #0070f0;
+  --checkbox-checked-border: #0070f0;
   --checkbox-check-color: #ffffff;
   --checkbox-radius: 6px;
   --checkbox-size: 20px;
@@ -161,9 +161,9 @@
   --pagination-item-radius: 6px;
   --pagination-item-padding-y: 4px;
   --pagination-item-padding-x: 10px;
-  --pagination-active-bg: #007aff;
+  --pagination-active-bg: #0070f0;
   --pagination-active-text: #ffffff;
-  --pagination-active-border: #007aff;
+  --pagination-active-border: #0070f0;
   --status-success-soft: rgba(52,199,89,.12);
   --status-warn-soft: rgba(255,159,10,.12);
   --status-error-soft: rgba(255,59,48,.12);
@@ -190,13 +190,13 @@
   --animation-ease-out: cubic-bezier(0,0,0.2,1);
   --animation-ease-in-out: cubic-bezier(.4,0,.2,1);
   --switch-track-bg: #38383a;
-  --switch-track-active-bg: #007aff;
+  --switch-track-active-bg: #0070f0;
   --switch-thumb-bg: #ffffff;
   --tab-bg: #000000;
   --tab-text: #98989D;
   --tab-active-bg: #000000;
-  --tab-active-text: #007aff;
-  --tab-indicator-color: #007aff;
+  --tab-active-text: #0070f0;
+  --tab-indicator-color: #0070f0;
   --tab-border-color: #38383a;
   --accordion-border: #38383a;
   --accordion-bg: #1c1c1e;
@@ -207,7 +207,7 @@
   --dropdown-text: #ffffff;
   --dropdown-item-hover-bg: #1c1c1e;
   --progress-track-bg: #1c1c1e;
-  --progress-fill-color: #007aff;
+  --progress-fill-color: #0070f0;
   --progress-radius: 6px;
   --type-scale-display-size: 48px;
   --type-scale-h1-size: 32px;
@@ -218,7 +218,7 @@
   --chip-bg: #1c1c1e;
   --chip-text: #98989D;
   --chip-border: #38383a;
-  --chip-active-bg: #007aff;
+  --chip-active-bg: #0070f0;
   --chip-active-text: #ffffff;
   --chip-radius: 6px;
   --kpi-value-size: 36px;

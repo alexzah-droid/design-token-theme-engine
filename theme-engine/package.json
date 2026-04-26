@@ -4,7 +4,8 @@
   "description": "Token-based CSS theme engine. Zero runtime dependencies.",
   "scripts": {
     "build": "node build/build-theme.js",
-    "validate": "node build/validate.js"
+    "validate": "node build/validate.js",
+    "wcag": "node build/check-wcag.js"
   },
   "keywords": ["design-tokens", "css", "themes", "dark-mode", "css-variables"],
   "license": "MIT"
