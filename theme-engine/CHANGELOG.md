@@ -5,6 +5,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.5.2] — 2026-04-27
+
+### Fixed
+- `corporate.json`: `radius.lg` 6px → 8px — восстановлена прогрессивная шкала (sm=2 / md=4 / lg=8)
+- `validate.js`: удалена избыточная `checkSemantic()` — её функцию полностью покрывает `checkTokenReferences()`
+- `validate.js`: `checkBuildOutput()` переписана с хрупкой проверки конкретных имён переменных на структурную (наличие `[data-theme]` селектора + непустой файл)
+
+### Added
+- GitHub Pages workflow (`.github/workflows/pages.yml`) — auto-deploy preview на push в main
+
+---
+
 ## [0.5.1] — 2026-04-26
 
 ### Changed
