@@ -6,6 +6,35 @@ How to use Design System Engine 2 in Google Apps Script HTML Service.
 
 ---
 
+## Preparation: get the files
+
+Before running a prompt, make the bundle files available to the agent. Two options:
+
+**A. Download ZIP**
+
+1. Go to [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
+2. Click **Code → Download ZIP** → unzip
+3. Copy the `theme-engine/dist/` folder into the working directory of your other project
+
+**B. Clone the repository**
+
+```bash
+git clone https://github.com/alexzah-droid/design-token-theme-engine.git
+```
+
+The `theme-engine/dist/` folder will be available locally.
+
+**What the agent needs from dist/:**
+
+| Task | Files |
+|------|-------|
+| Single theme | `[name].bundle.css` (e.g. `corporate.bundle.css`) |
+| All themes with switcher | `corporate.bundle.css`, `apple.bundle.css`, `minimal.bundle.css` |
+
+The agent will find these files on its own if they are in the project or in the adjacent `design-token-theme-engine/` folder.
+
+---
+
 ## AI agent prompts
 
 Copy the prompt you need and give it to the AI agent in your other project — it will handle the integration on its own.

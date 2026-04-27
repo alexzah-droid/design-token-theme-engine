@@ -6,6 +6,35 @@
 
 ---
 
+## Подготовка: получить файлы
+
+Перед запуском промпта нужно передать агенту bundle-файлы. Есть два способа:
+
+**A. Скачать ZIP**
+
+1. Открыть [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
+2. Нажать **Code → Download ZIP** → распаковать
+3. Папку `theme-engine/dist/` скопировать в рабочую директорию другого проекта
+
+**B. Клонировать репозиторий**
+
+```bash
+git clone https://github.com/alexzah-droid/design-token-theme-engine.git
+```
+
+Папка `theme-engine/dist/` будет доступна локально.
+
+**Что нужно агенту из dist/:**
+
+| Задача | Файлы |
+|--------|-------|
+| Одна тема | `[название].bundle.css` (например `corporate.bundle.css`) |
+| Все темы с переключателем | `corporate.bundle.css`, `apple.bundle.css`, `minimal.bundle.css` |
+
+Агент найдёт эти файлы сам, если они лежат в проекте или в соседней папке `design-token-theme-engine/`.
+
+---
+
 ## Промпты для AI-агента
 
 Скопируй нужный промпт и передай AI-агенту другого проекта — он выполнит интеграцию самостоятельно.
