@@ -6,184 +6,13 @@ How to use Design System Engine 2 in Google Apps Script HTML Service.
 
 ---
 
-## Step 1 — Get the files
+## AI agent prompts
 
-Choose one of three options:
-
-**A. Download ZIP from GitHub (recommended)**
-
-1. Go to [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
-2. Click **Code → Download ZIP**
-3. Unzip — you need the `theme-engine/dist/` folder
-
-**B. Download only the CSS file you need**
-
-Direct links to pre-built bundles (right-click → Save as):
-
-| Theme | File |
-|-------|------|
-| Corporate light | `theme-engine/dist/corporate.bundle.css` |
-| Corporate dark  | `theme-engine/dist/corporate.dark.bundle.css` |
-| Apple light     | `theme-engine/dist/apple.bundle.css` |
-| Apple dark      | `theme-engine/dist/apple.dark.bundle.css` |
-| Minimal         | `theme-engine/dist/minimal.bundle.css` |
-
-On GitHub: navigate to the file → click **Raw** → save the page.
-
-**C. Clone the repository**
-
-```bash
-git clone https://github.com/alexzah-droid/design-token-theme-engine.git
-```
-
-Pre-built CSS is already in `theme-engine/dist/` — no need to run `npm run build`.
+Copy the prompt you need and give it to the AI agent in your other project — it will handle the integration on its own.
 
 ---
 
-## Step 2 — GAS project structure
-
-Minimum file structure in [script.google.com](https://script.google.com):
-
-```
-Code.gs       — server-side code (doGet, include, data functions)
-Page.html     — main page template
-Styles.html   — CSS only (bundle goes here)
-```
-
----
-
-## Step 3 — Insert the CSS
-
-Open `dist/corporate.bundle.css` and copy its full contents.
-
-`Styles.html`:
-```html
-<style>
-/* paste the full contents of corporate.bundle.css here */
-</style>
-```
-
-`Page.html` — include styles and set the theme:
-```html
-<!DOCTYPE html>
-<html data-theme="corporate">
-<head>
-  <meta charset="UTF-8">
-  <?!= include('Styles'); ?>
-</head>
-<body>
-  <!-- components use classes: .button .card .input .table .badge ... -->
-</body>
-</html>
-```
-
-`Code.gs` — the include function is required:
-```javascript
-function doGet() {
-  return HtmlService.createTemplateFromFile('Page')
-    .evaluate()
-    .setTitle('My App');
-}
-
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
-}
-```
-
----
-
-## Step 4 — Switch themes
-
-The theme is set via the `data-theme` attribute on `<html>`:
-
-| Value | Theme |
-|-------|-------|
-| `corporate` | Formal, restrained (dark mode available) |
-| `apple` | Neutral, modern (dark mode available) |
-| `minimal` | Minimalist (light only) |
-
-Dark mode — add `data-mode="dark"`:
-
-```html
-<!-- light -->
-<html data-theme="corporate">
-
-<!-- dark -->
-<html data-theme="corporate" data-mode="dark">
-```
-
-Toggle via JS:
-```javascript
-function toggleDark() {
-  var html = document.documentElement;
-  html.setAttribute('data-mode',
-    html.getAttribute('data-mode') === 'dark' ? '' : 'dark');
-}
-```
-
----
-
-## Step 5 — Deploy
-
-**Web App:**
-- Deploy → New deployment → Web app
-- Execute as: Me
-- Who has access: Anyone with Google Account
-
-**Sidebar / Add-on:**
-```javascript
-function openSidebar() {
-  var html = HtmlService.createTemplateFromFile('Page').evaluate()
-    .setTitle('My App');
-  SpreadsheetApp.getUi().showSidebar(html);
-}
-```
-
----
-
-## Available components
-
-Full class list with live examples:
-**[→ Preview online](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
-
-Key classes:
-
-| Class | Element |
-|-------|---------|
-| `.button` | Button |
-| `.card` | Card |
-| `.input`, `.select`, `.textarea` | Form fields |
-| `.label` | Field label |
-| `.table` | Table |
-| `.badge-success/warning/error/neutral` | Status badges |
-| `.alert-success/warning/error/info` | Alerts |
-| `.nav`, `.nav-brand` | Navigation |
-| `.heading`, `.text`, `.text-secondary` | Typography |
-| `.pagination`, `.pagination-item` | Pagination |
-| `.tabs`, `.tab`, `.tab--active` | Tabs |
-| `.switch`, `.switch-track`, `.switch-thumb` | Toggle switch |
-| `.chip`, `.chip--active` | Filter chips |
-
----
-
-## Bundle structure
-
-Bundle = theme tokens + component styles in one file:
-
-```
-[data-theme="corporate"] { --button-bg: #17311F; ... }   ← CSS custom property tokens
-.button { background: var(--button-bg); ... }              ← components consume var()
-```
-
-Do not edit the bundle manually — it is overwritten on every `npm run build`.
-
----
-
-## AI agent prompt for another project
-
-If your project uses an AI agent (Claude Code or another), copy this prompt — it contains everything the agent needs to integrate the design system independently:
-
----
+### Prompt 1 — Single theme
 
 ```
 Integrate Design System Engine 2 into this GAS project.
@@ -298,135 +127,7 @@ See gas-example/ in the design-token-theme-engine repository:
 
 ---
 
-*The prompt is self-contained — the agent can complete the integration without access to the full documentation.*
-
----
-
-## All themes with a switcher
-
-If you want users to switch themes inside the app — embed all themes at once.
-
-### How it works
-
-Each theme scopes its CSS variables under a matching attribute:
-
-```css
-[data-theme="corporate"] { --button-bg: #17311F; ... }
-[data-theme="apple"]     { --button-bg: #007aff; ... }
-[data-theme="minimal"]   { --button-bg: #222222; ... }
-```
-
-The switcher just changes `data-theme` on `<html>` — no page reload required.
-
-### GAS project structure
-
-```
-Code.gs               — server-side code
-Page.html             — page template with switcher
-StylesCorporate.html  — corporate.bundle.css
-StylesApple.html      — apple.bundle.css
-StylesMinimal.html    — minimal.bundle.css
-```
-
-Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already included inside the light bundle files — no extra files needed.
-
-### Code.gs
-
-```javascript
-function doGet() {
-  return HtmlService.createTemplateFromFile('Page')
-    .evaluate()
-    .setTitle('My App');
-}
-
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
-}
-```
-
-### Page.html
-
-```html
-<!DOCTYPE html>
-<html data-theme="corporate">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?!= include('StylesCorporate'); ?>
-  <?!= include('StylesApple'); ?>
-  <?!= include('StylesMinimal'); ?>
-</head>
-<body>
-
-  <!-- Theme switcher -->
-  <nav class="nav">
-    <span class="nav-brand">My App</span>
-    <div class="nav-actions">
-      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
-        <option value="corporate">Corporate</option>
-        <option value="apple">Apple</option>
-        <option value="minimal">Minimal</option>
-      </select>
-      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
-    </div>
-  </nav>
-
-  <!-- Content -->
-  <div class="card">
-    <p class="heading">Title</p>
-    <p class="text">Card content</p>
-  </div>
-
-  <script>
-    // Restore saved settings
-    (function init() {
-      var theme = localStorage.getItem('theme') || 'corporate';
-      var mode  = localStorage.getItem('mode')  || '';
-      if (theme === 'minimal') mode = '';
-      applyTheme(theme, mode);
-      document.getElementById('themeSelect').value = theme;
-      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-    })();
-
-    function setTheme(theme) {
-      var mode = document.documentElement.getAttribute('data-mode') || '';
-      // minimal has no dark mode — reset if needed
-      if (theme === 'minimal') mode = '';
-      applyTheme(theme, mode);
-    }
-
-    function toggleDark() {
-      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
-      if (theme === 'minimal') return; // minimal is light only
-      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
-      applyTheme(theme, mode);
-    }
-
-    function applyTheme(theme, mode) {
-      document.documentElement.setAttribute('data-theme', theme);
-      document.documentElement.setAttribute('data-mode', mode);
-      localStorage.setItem('theme', theme);
-      localStorage.setItem('mode', mode);
-      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-      // Hide Dark button for minimal
-      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
-    }
-  </script>
-
-</body>
-</html>
-```
-
-> **Why three `<?!= include(...); ?>` calls?**
-> GAS HTML Service requires a separate file per CSS block. All three are loaded into `<head>` — the browser activates only the block whose `data-theme` matches the current attribute.
-
----
-
-## AI agent prompt: all themes with switcher
-
-Copy this prompt for your AI agent — it contains everything needed to embed all themes with a working switcher:
-
----
+### Prompt 2 — All themes with a switcher
 
 ```
 Integrate Design System Engine 2 into this GAS project with all themes and a theme switcher.
@@ -558,4 +259,257 @@ https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/
 
 ---
 
-*The prompt is self-contained — the agent can embed all themes with a switcher without access to the full documentation.*
+## Manual integration
+
+### Step 1 — Get the files
+
+Choose one of three options:
+
+**A. Download ZIP from GitHub (recommended)**
+
+1. Go to [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
+2. Click **Code → Download ZIP**
+3. Unzip — you need the `theme-engine/dist/` folder
+
+**B. Download only the CSS file you need**
+
+Direct links to pre-built bundles (right-click → Save as):
+
+| Theme | File |
+|-------|------|
+| Corporate light | `theme-engine/dist/corporate.bundle.css` |
+| Corporate dark  | `theme-engine/dist/corporate.dark.bundle.css` |
+| Apple light     | `theme-engine/dist/apple.bundle.css` |
+| Apple dark      | `theme-engine/dist/apple.dark.bundle.css` |
+| Minimal         | `theme-engine/dist/minimal.bundle.css` |
+
+On GitHub: navigate to the file → click **Raw** → save the page.
+
+**C. Clone the repository**
+
+```bash
+git clone https://github.com/alexzah-droid/design-token-theme-engine.git
+```
+
+Pre-built CSS is already in `theme-engine/dist/` — no need to run `npm run build`.
+
+---
+
+### Step 2 — GAS project structure
+
+Minimum file structure in [script.google.com](https://script.google.com):
+
+```
+Code.gs       — server-side code (doGet, include, data functions)
+Page.html     — main page template
+Styles.html   — CSS only (bundle goes here)
+```
+
+---
+
+### Step 3 — Insert the CSS
+
+Open `dist/corporate.bundle.css` and copy its full contents.
+
+`Styles.html`:
+```html
+<style>
+/* paste the full contents of corporate.bundle.css here */
+</style>
+```
+
+`Page.html` — include styles and set the theme:
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <?!= include('Styles'); ?>
+</head>
+<body>
+  <!-- components use classes: .button .card .input .table .badge ... -->
+</body>
+</html>
+```
+
+`Code.gs` — the include function is required:
+```javascript
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('My App');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+```
+
+---
+
+### Step 4 — Switch themes
+
+The theme is set via the `data-theme` attribute on `<html>`:
+
+| Value | Theme |
+|-------|-------|
+| `corporate` | Formal, restrained (dark mode available) |
+| `apple` | Neutral, modern (dark mode available) |
+| `minimal` | Minimalist (light only) |
+
+Dark mode — add `data-mode="dark"`:
+
+```html
+<!-- light -->
+<html data-theme="corporate">
+
+<!-- dark -->
+<html data-theme="corporate" data-mode="dark">
+```
+
+Toggle via JS:
+```javascript
+function toggleDark() {
+  var html = document.documentElement;
+  html.setAttribute('data-mode',
+    html.getAttribute('data-mode') === 'dark' ? '' : 'dark');
+}
+```
+
+---
+
+### Step 5 — Deploy
+
+**Web App:**
+- Deploy → New deployment → Web app
+- Execute as: Me
+- Who has access: Anyone with Google Account
+
+**Sidebar / Add-on:**
+```javascript
+function openSidebar() {
+  var html = HtmlService.createTemplateFromFile('Page').evaluate()
+    .setTitle('My App');
+  SpreadsheetApp.getUi().showSidebar(html);
+}
+```
+
+---
+
+### All themes with a switcher — manually
+
+To embed all themes without an AI agent:
+
+**Project structure:**
+
+```
+Code.gs               — server-side code
+Page.html             — page template with switcher
+StylesCorporate.html  — corporate.bundle.css
+StylesApple.html      — apple.bundle.css
+StylesMinimal.html    — minimal.bundle.css
+```
+
+Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already included inside the light bundle files — no extra files needed.
+
+`Page.html`:
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-brand">My App</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  <script>
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return;
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+```
+
+> **Why three `<?!= include(...); ?>` calls?**
+> GAS HTML Service requires a separate file per CSS block. All three are loaded into `<head>` — the browser activates only the block whose `data-theme` matches the current attribute.
+
+---
+
+## Available components
+
+Full class list with live examples:
+**[→ Preview online](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
+
+Key classes:
+
+| Class | Element |
+|-------|---------|
+| `.button` | Button |
+| `.card` | Card |
+| `.input`, `.select`, `.textarea` | Form fields |
+| `.label` | Field label |
+| `.table` | Table |
+| `.badge-success/warning/error/neutral` | Status badges |
+| `.alert-success/warning/error/info` | Alerts |
+| `.nav`, `.nav-brand` | Navigation |
+| `.heading`, `.text`, `.text-secondary` | Typography |
+| `.pagination`, `.pagination-item` | Pagination |
+| `.tabs`, `.tab`, `.tab--active` | Tabs |
+| `.switch`, `.switch-track`, `.switch-thumb` | Toggle switch |
+| `.chip`, `.chip--active` | Filter chips |
+
+---
+
+## Bundle structure
+
+Bundle = theme tokens + component styles in one file:
+
+```
+[data-theme="corporate"] { --button-bg: #17311F; ... }   ← CSS custom property tokens
+.button { background: var(--button-bg); ... }              ← components consume var()
+```
+
+Do not edit the bundle manually — it is overwritten on every `npm run build`.

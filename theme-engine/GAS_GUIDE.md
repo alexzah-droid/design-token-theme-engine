@@ -6,184 +6,13 @@
 
 ---
 
-## Шаг 1 — Получить файлы
+## Промпты для AI-агента
 
-Есть три способа — выбрать один:
-
-**A. Скачать ZIP с GitHub (рекомендуется)**
-
-1. Открыть [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
-2. Нажать **Code → Download ZIP**
-3. Распаковать — нужна папка `theme-engine/dist/`
-
-**B. Скачать только нужный CSS-файл**
-
-Прямая ссылка на готовый bundle (правой кнопкой → «Сохранить как»):
-
-| Тема | Ссылка |
-|------|--------|
-| Corporate light | `theme-engine/dist/corporate.bundle.css` |
-| Corporate dark  | `theme-engine/dist/corporate.dark.bundle.css` |
-| Apple light     | `theme-engine/dist/apple.bundle.css` |
-| Apple dark      | `theme-engine/dist/apple.dark.bundle.css` |
-| Minimal         | `theme-engine/dist/minimal.bundle.css` |
-
-На GitHub: перейти в файл → нажать **Raw** → сохранить страницу.
-
-**C. Клонировать репозиторий**
-
-```bash
-git clone https://github.com/alexzah-droid/design-token-theme-engine.git
-```
-
-Готовые CSS уже в `theme-engine/dist/` — `npm run build` запускать не нужно.
+Скопируй нужный промпт и передай AI-агенту другого проекта — он выполнит интеграцию самостоятельно.
 
 ---
 
-## Шаг 2 — Структура GAS-проекта
-
-Минимальная структура файлов в [script.google.com](https://script.google.com):
-
-```
-Code.gs       — серверный код (doGet, include, функции данных)
-Page.html     — основной шаблон страницы
-Styles.html   — только CSS (bundle вставляется сюда)
-```
-
----
-
-## Шаг 3 — Вставить CSS
-
-Открыть `dist/corporate.bundle.css` и скопировать всё содержимое.
-
-`Styles.html`:
-```html
-<style>
-/* вставить полное содержимое corporate.bundle.css */
-</style>
-```
-
-`Page.html` — подключить стили и задать тему:
-```html
-<!DOCTYPE html>
-<html data-theme="corporate">
-<head>
-  <meta charset="UTF-8">
-  <?!= include('Styles'); ?>
-</head>
-<body>
-  <!-- компоненты используют классы: .button .card .input .table .badge ... -->
-</body>
-</html>
-```
-
-`Code.gs` — функция include обязательна:
-```javascript
-function doGet() {
-  return HtmlService.createTemplateFromFile('Page')
-    .evaluate()
-    .setTitle('My App');
-}
-
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
-}
-```
-
----
-
-## Шаг 4 — Смена темы
-
-Тема задаётся атрибутом `data-theme` на `<html>`:
-
-| Значение | Тема |
-|----------|------|
-| `corporate` | Деловая, сдержанная (есть dark) |
-| `apple` | Нейтральная, современная (есть dark) |
-| `minimal` | Минималистичная (только light) |
-
-Dark mode — добавить `data-mode="dark"`:
-
-```html
-<!-- светлая -->
-<html data-theme="corporate">
-
-<!-- тёмная -->
-<html data-theme="corporate" data-mode="dark">
-```
-
-Переключение через JS:
-```javascript
-function toggleDark() {
-  var html = document.documentElement;
-  html.setAttribute('data-mode',
-    html.getAttribute('data-mode') === 'dark' ? '' : 'dark');
-}
-```
-
----
-
-## Шаг 5 — Деплой
-
-**Web App:**
-- Deploy → New deployment → Web app
-- Execute as: Me
-- Who has access: Anyone with Google Account
-
-**Sidebar / Add-on:**
-```javascript
-function openSidebar() {
-  var html = HtmlService.createTemplateFromFile('Page').evaluate()
-    .setTitle('My App');
-  SpreadsheetApp.getUi().showSidebar(html);
-}
-```
-
----
-
-## Доступные компоненты
-
-Полный список классов с живыми примерами:
-**[→ Preview онлайн](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
-
-Основные классы:
-
-| Класс | Элемент |
-|-------|---------|
-| `.button` | Кнопка |
-| `.card` | Карточка |
-| `.input`, `.select`, `.textarea` | Поля формы |
-| `.label` | Подпись поля |
-| `.table` | Таблица |
-| `.badge-success/warning/error/neutral` | Статусные бейджи |
-| `.alert-success/warning/error/info` | Алерты |
-| `.nav`, `.nav-brand` | Навигация |
-| `.heading`, `.text`, `.text-secondary` | Типографика |
-| `.pagination`, `.pagination-item` | Пагинация |
-| `.tabs`, `.tab`, `.tab--active` | Вкладки |
-| `.switch`, `.switch-track`, `.switch-thumb` | Переключатель |
-| `.chip`, `.chip--active` | Фильтр-чипы |
-
----
-
-## Структура bundle
-
-Bundle = токены темы + компонентные стили в одном файле:
-
-```
-[data-theme="corporate"] { --button-bg: #17311F; ... }   ← CSS-переменные токенов
-.button { background: var(--button-bg); ... }              ← компоненты используют var()
-```
-
-Не редактировать bundle вручную — он перезаписывается при `npm run build`.
-
----
-
-## Промпт для AI-агента в другом проекте
-
-Если в проекте работает AI-агент (Claude Code или другой), скопируй этот промпт — он содержит всё необходимое для самостоятельной интеграции:
-
----
+### Промпт 1 — Одна тема
 
 ```
 Интегрируй Design System Engine 2 в этот GAS-проект.
@@ -298,134 +127,7 @@ function toggleDark() {
 
 ---
 
-*Промпт самодостаточен — агент справится без доступа к документации.*
-
----
-
-## Все темы с переключателем
-
-Если нужно дать пользователю возможность менять тему прямо в интерфейсе — встрой все темы сразу.
-
-### Как это работает
-
-Каждая тема хранит свои CSS-переменные в scoped-блоке:
-
-```css
-[data-theme="corporate"] { --button-bg: #17311F; ... }
-[data-theme="apple"]     { --button-bg: #007aff; ... }
-[data-theme="minimal"]   { --button-bg: #222222; ... }
-```
-
-Переключатель просто меняет атрибут `data-theme` на `<html>` — никаких перезагрузок.
-
-### Структура GAS-проекта
-
-```
-Code.gs          — серверный код
-Page.html        — шаблон страницы с переключателем
-StylesCorporate.html  — corporate.bundle.css
-StylesApple.html      — apple.bundle.css
-StylesMinimal.html    — minimal.bundle.css
-```
-
-Тёмные варианты (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) включены в светлые bundle-файлы — отдельные файлы не нужны.
-
-### Code.gs
-
-```javascript
-function doGet() {
-  return HtmlService.createTemplateFromFile('Page')
-    .evaluate()
-    .setTitle('My App');
-}
-
-function include(filename) {
-  return HtmlService.createHtmlOutputFromFile(filename).getContent();
-}
-```
-
-### Page.html
-
-```html
-<!DOCTYPE html>
-<html data-theme="corporate">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <?!= include('StylesCorporate'); ?>
-  <?!= include('StylesApple'); ?>
-  <?!= include('StylesMinimal'); ?>
-</head>
-<body>
-
-  <!-- Переключатель тем -->
-  <nav class="nav">
-    <span class="nav-brand">My App</span>
-    <div class="nav-actions">
-      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
-        <option value="corporate">Corporate</option>
-        <option value="apple">Apple</option>
-        <option value="minimal">Minimal</option>
-      </select>
-      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
-    </div>
-  </nav>
-
-  <!-- Контент -->
-  <div class="card">
-    <p class="heading">Заголовок</p>
-    <p class="text">Текст карточки</p>
-  </div>
-
-  <script>
-    // Загрузить сохранённые настройки
-    (function init() {
-      var theme = localStorage.getItem('theme') || 'corporate';
-      var mode  = localStorage.getItem('mode')  || '';
-      applyTheme(theme, mode);
-      document.getElementById('themeSelect').value = theme;
-      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-    })();
-
-    function setTheme(theme) {
-      var mode = document.documentElement.getAttribute('data-mode') || '';
-      // minimal не поддерживает dark — сбросить если нужно
-      if (theme === 'minimal') mode = '';
-      applyTheme(theme, mode);
-    }
-
-    function toggleDark() {
-      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
-      if (theme === 'minimal') return; // minimal только light
-      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
-      applyTheme(theme, mode);
-    }
-
-    function applyTheme(theme, mode) {
-      document.documentElement.setAttribute('data-theme', theme);
-      document.documentElement.setAttribute('data-mode', mode);
-      localStorage.setItem('theme', theme);
-      localStorage.setItem('mode', mode);
-      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-      // Скрыть кнопку Dark для minimal
-      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
-    }
-  </script>
-
-</body>
-</html>
-```
-
-> **Почему `<?!= include(...); ?>` три раза?**
-> GAS HTML Service требует отдельный файл для каждого CSS. Все три подключаются в `<head>` — браузер применяет только тот блок, чей `data-theme` совпадает с текущим атрибутом.
-
----
-
-## Промпт для AI-агента: все темы с переключателем
-
-Если в проекте работает AI-агент (Claude Code или другой), скопируй этот промпт — он содержит всё необходимое для встраивания всех тем с переключателем:
-
----
+### Промпт 2 — Все темы с переключателем
 
 ```
 Интегрируй Design System Engine 2 в этот GAS-проект со всеми темами и переключателем.
@@ -557,4 +259,257 @@ https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/
 
 ---
 
-*Промпт самодостаточен — агент встроит все темы с переключателем без доступа к документации.*
+## Ручная интеграция
+
+### Шаг 1 — Получить файлы
+
+Есть три способа — выбрать один:
+
+**A. Скачать ZIP с GitHub (рекомендуется)**
+
+1. Открыть [github.com/alexzah-droid/design-token-theme-engine](https://github.com/alexzah-droid/design-token-theme-engine)
+2. Нажать **Code → Download ZIP**
+3. Распаковать — нужна папка `theme-engine/dist/`
+
+**B. Скачать только нужный CSS-файл**
+
+Прямая ссылка на готовый bundle (правой кнопкой → «Сохранить как»):
+
+| Тема | Файл |
+|------|------|
+| Corporate light | `theme-engine/dist/corporate.bundle.css` |
+| Corporate dark  | `theme-engine/dist/corporate.dark.bundle.css` |
+| Apple light     | `theme-engine/dist/apple.bundle.css` |
+| Apple dark      | `theme-engine/dist/apple.dark.bundle.css` |
+| Minimal         | `theme-engine/dist/minimal.bundle.css` |
+
+На GitHub: перейти в файл → нажать **Raw** → сохранить страницу.
+
+**C. Клонировать репозиторий**
+
+```bash
+git clone https://github.com/alexzah-droid/design-token-theme-engine.git
+```
+
+Готовые CSS уже в `theme-engine/dist/` — `npm run build` запускать не нужно.
+
+---
+
+### Шаг 2 — Структура GAS-проекта
+
+Минимальная структура файлов в [script.google.com](https://script.google.com):
+
+```
+Code.gs       — серверный код (doGet, include, функции данных)
+Page.html     — основной шаблон страницы
+Styles.html   — только CSS (bundle вставляется сюда)
+```
+
+---
+
+### Шаг 3 — Вставить CSS
+
+Открыть `dist/corporate.bundle.css` и скопировать всё содержимое.
+
+`Styles.html`:
+```html
+<style>
+/* вставить полное содержимое corporate.bundle.css */
+</style>
+```
+
+`Page.html` — подключить стили и задать тему:
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <?!= include('Styles'); ?>
+</head>
+<body>
+  <!-- компоненты используют классы: .button .card .input .table .badge ... -->
+</body>
+</html>
+```
+
+`Code.gs` — функция include обязательна:
+```javascript
+function doGet() {
+  return HtmlService.createTemplateFromFile('Page')
+    .evaluate()
+    .setTitle('My App');
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
+}
+```
+
+---
+
+### Шаг 4 — Смена темы
+
+Тема задаётся атрибутом `data-theme` на `<html>`:
+
+| Значение | Тема |
+|----------|------|
+| `corporate` | Деловая, сдержанная (есть dark) |
+| `apple` | Нейтральная, современная (есть dark) |
+| `minimal` | Минималистичная (только light) |
+
+Dark mode — добавить `data-mode="dark"`:
+
+```html
+<!-- светлая -->
+<html data-theme="corporate">
+
+<!-- тёмная -->
+<html data-theme="corporate" data-mode="dark">
+```
+
+Переключение через JS:
+```javascript
+function toggleDark() {
+  var html = document.documentElement;
+  html.setAttribute('data-mode',
+    html.getAttribute('data-mode') === 'dark' ? '' : 'dark');
+}
+```
+
+---
+
+### Шаг 5 — Деплой
+
+**Web App:**
+- Deploy → New deployment → Web app
+- Execute as: Me
+- Who has access: Anyone with Google Account
+
+**Sidebar / Add-on:**
+```javascript
+function openSidebar() {
+  var html = HtmlService.createTemplateFromFile('Page').evaluate()
+    .setTitle('My App');
+  SpreadsheetApp.getUi().showSidebar(html);
+}
+```
+
+---
+
+### Все темы с переключателем — вручную
+
+Если нужно встроить все темы без AI-агента:
+
+**Структура проекта:**
+
+```
+Code.gs               — серверный код
+Page.html             — шаблон с переключателем
+StylesCorporate.html  — corporate.bundle.css
+StylesApple.html      — apple.bundle.css
+StylesMinimal.html    — minimal.bundle.css
+```
+
+Тёмные варианты (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) уже включены в светлые bundle-файлы — отдельные файлы не нужны.
+
+`Page.html`:
+```html
+<!DOCTYPE html>
+<html data-theme="corporate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?!= include('StylesCorporate'); ?>
+  <?!= include('StylesApple'); ?>
+  <?!= include('StylesMinimal'); ?>
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-brand">My App</span>
+    <div class="nav-actions">
+      <select class="select" id="themeSelect" onchange="setTheme(this.value)" style="width:auto">
+        <option value="corporate">Corporate</option>
+        <option value="apple">Apple</option>
+        <option value="minimal">Minimal</option>
+      </select>
+      <button class="button" onclick="toggleDark()" id="darkBtn">Dark</button>
+    </div>
+  </nav>
+
+  <script>
+    (function init() {
+      var theme = localStorage.getItem('theme') || 'corporate';
+      var mode  = localStorage.getItem('mode')  || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+      document.getElementById('themeSelect').value = theme;
+    })();
+
+    function setTheme(theme) {
+      var mode = document.documentElement.getAttribute('data-mode') || '';
+      if (theme === 'minimal') mode = '';
+      applyTheme(theme, mode);
+    }
+
+    function toggleDark() {
+      var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      if (theme === 'minimal') return;
+      var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
+      applyTheme(theme, mode);
+    }
+
+    function applyTheme(theme, mode) {
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.setAttribute('data-mode', mode);
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('mode', mode);
+      document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
+      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+    }
+  </script>
+
+</body>
+</html>
+```
+
+> **Почему `<?!= include(...); ?>` три раза?**
+> GAS HTML Service требует отдельный файл для каждого CSS. Все три подключаются в `<head>` — браузер применяет только тот блок, чей `data-theme` совпадает с текущим атрибутом.
+
+---
+
+## Доступные компоненты
+
+Полный список классов с живыми примерами:
+**[→ Preview онлайн](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
+
+Основные классы:
+
+| Класс | Элемент |
+|-------|---------|
+| `.button` | Кнопка |
+| `.card` | Карточка |
+| `.input`, `.select`, `.textarea` | Поля формы |
+| `.label` | Подпись поля |
+| `.table` | Таблица |
+| `.badge-success/warning/error/neutral` | Статусные бейджи |
+| `.alert-success/warning/error/info` | Алерты |
+| `.nav`, `.nav-brand` | Навигация |
+| `.heading`, `.text`, `.text-secondary` | Типографика |
+| `.pagination`, `.pagination-item` | Пагинация |
+| `.tabs`, `.tab`, `.tab--active` | Вкладки |
+| `.switch`, `.switch-track`, `.switch-thumb` | Переключатель |
+| `.chip`, `.chip--active` | Фильтр-чипы |
+
+---
+
+## Структура bundle
+
+Bundle = токены темы + компонентные стили в одном файле:
+
+```
+[data-theme="corporate"] { --button-bg: #17311F; ... }   ← CSS-переменные токенов
+.button { background: var(--button-bg); ... }              ← компоненты используют var()
+```
+
+Не редактировать bundle вручную — он перезаписывается при `npm run build`.
