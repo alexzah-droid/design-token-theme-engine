@@ -181,6 +181,38 @@
     }
     .pv-vp-btn.pv-vp-btn--active { background: #555; color: #fff; border-color: #666; }
     .pv-demo-frame { transition: max-width 0.3s ease; }
+
+    /* Download button */
+    .pv-dl-btn {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid #444;
+      white-space: nowrap;
+    }
+    .pv-dl-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+    /* Card header with copy button */
+    .pv-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .pv-card-head .pv-group-label { margin: 0; }
+    .pv-copy-btn {
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 1px solid var(--input-border, #ddd);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-secondary, #888);
+      cursor: pointer;
+    }
+    .pv-copy-btn:hover { background: var(--surface-bg2, #f0f0f0); }
+    .pv-copy-btn.pv-copied { color: #1e7e34; border-color: #1e7e34; }
   </style>
 </head>
 
@@ -219,6 +251,8 @@
           <button data-set-mode="dark">&#9680; Dark</button>
         </div>
         <span id="darkNote" class="pv-dark-note" style="display:none">dark not supported</span>
+
+        <a id="pvDlBundle" href="../dist/corporate.bundle.css" download class="pv-dl-btn">⬇ Download bundle</a>
       </div>
     </div>
   </header>
@@ -442,7 +476,10 @@
 
         <!-- A11y / Utilities -->
         <div class="card">
-          <p class="pv-group-label">A11y &amp; Utilities</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">A11y &amp; Utilities</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('a11y', this)">Copy HTML</button>
+          </div>
           <div class="pv-row">
             <a href="#main" class="skip-link" style="position:static; top:auto;">Skip link (a11y)</a>
           </div>
@@ -455,7 +492,10 @@
 
         <!-- Switch -->
         <div class="card">
-          <p class="pv-group-label">Switch / Toggle</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Switch / Toggle</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('switch', this)">Copy HTML</button>
+          </div>
           <div class="pv-row" style="align-items: center; flex-wrap: wrap;">
             <label class="switch">
               <input type="checkbox">
@@ -477,7 +517,10 @@
 
         <!-- Tabs -->
         <div class="card">
-          <p class="pv-group-label">Tabs</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Tabs</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('tabs', this)">Copy HTML</button>
+          </div>
           <div class="tabs">
             <button class="tab tab--active">Overview</button>
             <button class="tab">Details</button>
@@ -490,7 +533,10 @@
 
         <!-- Accordion -->
         <div class="card">
-          <p class="pv-group-label">Accordion</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Accordion</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('accordion', this)">Copy HTML</button>
+          </div>
           <div class="accordion">
             <div class="accordion-item accordion-item--open" id="pv-acc-1">
               <button class="accordion-head" onclick="pvToggleAcc('pv-acc-1')" aria-expanded="true">
@@ -515,7 +561,10 @@
 
         <!-- Dropdown -->
         <div class="card">
-          <p class="pv-group-label">Dropdown</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Dropdown</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('dropdown', this)">Copy HTML</button>
+          </div>
           <div style="max-width: 260px;">
             <div class="dropdown" id="pv-dd-1">
               <div class="dropdown-head" tabindex="0" onclick="pvToggleDropdown('pv-dd-1')" onkeydown="if(event.key==='Enter'||event.key===' ')pvToggleDropdown('pv-dd-1')" role="combobox" aria-expanded="false">
@@ -533,7 +582,10 @@
 
         <!-- Progress -->
         <div class="card">
-          <p class="pv-group-label">Progress</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Progress</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('progress', this)">Copy HTML</button>
+          </div>
           <div class="pv-row" style="flex-direction: column; gap: 16px; align-items: stretch;">
             <div>
               <p class="pv-hint-text">Linear 60%</p>
@@ -592,7 +644,10 @@
 
         <!-- KPI Cards -->
         <div class="card">
-          <p class="pv-group-label">KPI Cards</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">KPI Cards</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('kpi', this)">Copy HTML</button>
+          </div>
           <div class="pv-row" style="flex-wrap: wrap; gap: 24px; align-items: flex-start;">
             <div class="kpi">
               <span class="kpi-label">Total Revenue</span>
@@ -614,7 +669,10 @@
 
         <!-- Filter Chips -->
         <div class="card">
-          <p class="pv-group-label">Filter Chips</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Filter Chips</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('chips', this)">Copy HTML</button>
+          </div>
           <div class="chips">
             <button class="chip chip--active">All</button>
             <button class="chip">Paid</button>
@@ -672,7 +730,10 @@
 
         <!-- Buttons -->
         <div class="card">
-          <p class="pv-group-label">Buttons</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Buttons</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('button', this)">Copy HTML</button>
+          </div>
           <div class="pv-row">
             <button class="button">Default</button>
             <button class="button" disabled>Disabled</button>
@@ -682,7 +743,10 @@
 
         <!-- Badges -->
         <div class="card">
-          <p class="pv-group-label">Badges</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Badges</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('badge', this)">Copy HTML</button>
+          </div>
           <div class="pv-row">
             <span class="badge badge-success">Paid</span>
             <span class="badge badge-warning">Pending</span>
@@ -693,7 +757,10 @@
 
         <!-- Alerts -->
         <div class="card">
-          <p class="pv-group-label">Alerts</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Alerts</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('alert', this)">Copy HTML</button>
+          </div>
           <div class="pv-row" style="flex-direction: column;">
             <div class="alert alert-success">Invoice INV-1042 has been paid successfully.</div>
             <div class="alert alert-warning">Invoice INV-1046 is due in 3 days.</div>
@@ -704,7 +771,10 @@
 
         <!-- Form Inputs -->
         <div class="card">
-          <p class="pv-group-label">Form Inputs</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Form Inputs</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('form', this)">Copy HTML</button>
+          </div>
           <div class="pv-col2">
             <div>
               <label class="label" style="display:block; margin-bottom:4px;">Client</label>
@@ -751,7 +821,10 @@
 
         <!-- Table -->
         <div class="card">
-          <p class="pv-group-label">Table</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Table</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('table', this)">Copy HTML</button>
+          </div>
           <table class="table">
             <thead>
               <tr>
@@ -810,7 +883,10 @@
 
         <!-- Pagination -->
         <div class="card">
-          <p class="pv-group-label">Pagination</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Pagination</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('pagination', this)">Copy HTML</button>
+          </div>
           <div class="pagination">
             <a class="pagination-item pagination-item--disabled">&#8592; Prev</a>
             <a class="pagination-item pagination-item--active">1</a>
@@ -822,7 +898,10 @@
 
         <!-- Nav -->
         <div class="card">
-          <p class="pv-group-label">Nav</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Nav</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('nav', this)">Copy HTML</button>
+          </div>
           <nav class="nav">
             <span class="nav-brand">Invoice Manager</span>
             <div class="nav-actions">
@@ -850,7 +929,10 @@
 
         <!-- Card -->
         <div class="card">
-          <p class="pv-group-label">Card</p>
+          <div class="pv-card-head">
+            <p class="pv-group-label">Card</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('card', this)">Copy HTML</button>
+          </div>
           <div class="card">
             <p class="heading" style="margin:0 0 8px">Card heading</p>
             <p class="text" style="margin:0 0 4px">Cards accept themed border, radius and shadow. This is a nested card to show the component in isolation.</p>
@@ -1383,6 +1465,11 @@
         note.style.display = (currentMode === 'dark' && !themesWithDark.includes(currentTheme))
           ? 'inline' : 'none';
       }
+      // Download bundle link
+      const dlBtn = document.getElementById('pvDlBundle');
+      if (dlBtn) {
+        dlBtn.href = `../dist/${currentTheme}.bundle.css`;
+      }
     }
 
     // Attach events
@@ -1428,6 +1515,122 @@
         if (frame) frame.style.maxWidth = btn.dataset.vpWidth || '';
       });
     });
+
+    const PV_SNIPPETS = {
+      'switch': `<label class="switch">
+  <input type="checkbox">
+  <span class="switch-track"><span class="switch-thumb"></span></span>
+  <span class="label">Toggle</span>
+</label>`,
+      'tabs': `<div class="tabs">
+  <button class="tab tab--active">Tab 1</button>
+  <button class="tab">Tab 2</button>
+  <button class="tab">Tab 3</button>
+</div>`,
+      'accordion': `<div class="accordion">
+  <div class="accordion-item accordion-item--open">
+    <button class="accordion-head" aria-expanded="true">
+      <span>Section 1</span>
+      <span class="accordion-icon">▼</span>
+    </button>
+    <div class="accordion-body">
+      <p class="text">Content here.</p>
+    </div>
+  </div>
+</div>`,
+      'dropdown': `<div class="dropdown">
+  <div class="dropdown-head" tabindex="0" role="combobox" aria-expanded="false">
+    <span>Select...</span>
+    <span>▾</span>
+  </div>
+  <div class="dropdown-list" role="listbox">
+    <div class="dropdown-item" role="option">Option 1</div>
+    <div class="dropdown-item" role="option">Option 2</div>
+    <div class="dropdown-item" role="option">Option 3</div>
+  </div>
+</div>`,
+      'progress': `<div class="progress"><div class="progress-bar" style="width:60%"></div></div>`,
+      'button': `<button class="button">Primary</button>
+<button class="button button--secondary">Secondary</button>
+<button class="button button--ghost">Ghost</button>
+<button class="button" disabled>Disabled</button>`,
+      'card': `<div class="card">
+  <p class="heading">Card title</p>
+  <p class="text">Card content goes here.</p>
+</div>`,
+      'form': `<div style="display:flex;flex-direction:column;gap:12px;max-width:320px">
+  <label class="label">Name</label>
+  <input class="input" type="text" placeholder="Enter name">
+  <label class="label">Status</label>
+  <select class="select">
+    <option>Active</option>
+    <option>Pending</option>
+  </select>
+  <label class="label">Notes</label>
+  <textarea class="textarea" rows="3" placeholder="Enter notes"></textarea>
+</div>`,
+      'table': `<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Status</th><th>Amount</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td><span class="badge badge-success">Active</span></td><td>$1,200</td></tr>
+    <tr><td>Bob</td><td><span class="badge badge-warning">Pending</span></td><td>$850</td></tr>
+    <tr><td>Carol</td><td><span class="badge badge-error">Overdue</span></td><td>$2,400</td></tr>
+  </tbody>
+</table>`,
+      'badge': `<span class="badge badge-success">Success</span>
+<span class="badge badge-warning">Warning</span>
+<span class="badge badge-error">Error</span>
+<span class="badge badge-neutral">Neutral</span>`,
+      'alert': `<div class="alert alert-success">Success message</div>
+<div class="alert alert-warning">Warning message</div>
+<div class="alert alert-error">Error message</div>
+<div class="alert alert-info">Info message</div>`,
+      'nav': `<nav class="nav">
+  <span class="nav-brand">My App</span>
+  <div class="nav-actions">
+    <button class="button button--ghost">Settings</button>
+  </div>
+</nav>`,
+      'pagination': `<div class="pagination">
+  <button class="pagination-item">←</button>
+  <button class="pagination-item pagination-item--active">1</button>
+  <button class="pagination-item">2</button>
+  <button class="pagination-item">3</button>
+  <button class="pagination-item">→</button>
+</div>`,
+      'chips': `<div class="chips">
+  <button class="chip chip--active">All</button>
+  <button class="chip">Active</button>
+  <button class="chip">Pending</button>
+  <button class="chip">Closed</button>
+</div>`,
+      'kpi': `<div class="kpi-tile">
+  <div class="kpi-label">Revenue</div>
+  <div class="kpi-value">$12,400</div>
+  <div class="kpi-delta kpi-delta--up">+8.2%</div>
+</div>`,
+      'a11y': `<!-- Skip link (place as first element in body) -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Surface utilities -->
+<div class="surface-2">Surface 2 background</div>
+<div class="surface-3">Surface 3 background</div>`
+    };
+
+    function pvCopyHtml(key, btn) {
+      const snippet = PV_SNIPPETS[key];
+      if (!snippet) return;
+      navigator.clipboard.writeText(snippet).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('pv-copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy HTML';
+          btn.classList.remove('pv-copied');
+        }, 1500);
+      });
+    }
   </script>
 
 </body>
