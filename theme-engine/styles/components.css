@@ -880,8 +880,14 @@ th[aria-sort="descending"] .table-sort-icon {
 
 .table-row-expand td {
   padding: 0;
-  border: 1px solid var(--table-border-color);
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
   border-top: none;
+  border-bottom: none;
+}
+
+.table-row-expandable--open + .table-row-expand td {
+  border-bottom: 1px solid var(--table-border-color);
 }
 
 .table-row-expand-body {
