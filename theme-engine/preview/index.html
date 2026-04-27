@@ -881,6 +881,49 @@
           </table>
         </div>
 
+        <!-- Expandable Table -->
+        <div class="card">
+          <div class="pv-card-head">
+            <p class="pv-group-label">Expandable Table</p>
+            <button class="pv-copy-btn" onclick="pvCopyHtml('table-expandable', this)">Copy HTML</button>
+          </div>
+          <table class="table">
+            <thead>
+              <tr><th>Name</th><th>Status</th><th>Amount</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr class="table-row-expandable" onclick="this.classList.toggle('table-row-expandable--open')">
+                <td>Alice Johnson</td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>$1,200</td>
+                <td class="table-expand-cell"><span class="table-expand-icon">▼</span></td>
+              </tr>
+              <tr class="table-row-expand">
+                <td colspan="4"><div class="table-row-expand-body">Contract signed 2024-01-15. Next review in Q2. Preferred contact via email.</div></td>
+              </tr>
+              <tr class="table-row-expandable" onclick="this.classList.toggle('table-row-expandable--open')">
+                <td>Bob Smith</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+                <td>$850</td>
+                <td class="table-expand-cell"><span class="table-expand-icon">▼</span></td>
+              </tr>
+              <tr class="table-row-expand">
+                <td colspan="4"><div class="table-row-expand-body">Awaiting document verification. Follow up scheduled for next week.</div></td>
+              </tr>
+              <tr class="table-row-expandable table-row-expandable--open" onclick="this.classList.toggle('table-row-expandable--open')">
+                <td>Carol Davis</td>
+                <td><span class="badge badge-error">Overdue</span></td>
+                <td>$2,400</td>
+                <td class="table-expand-cell"><span class="table-expand-icon">▼</span></td>
+              </tr>
+              <tr class="table-row-expand">
+                <td colspan="4"><div class="table-row-expand-body">Payment overdue by 14 days. Escalated to finance team on 2026-04-10.</div></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="pv-hint-text">Click any row to expand / collapse details</p>
+        </div>
+
         <!-- Pagination -->
         <div class="card">
           <div class="pv-card-head">
@@ -1577,6 +1620,24 @@
     <tr><td>Alice</td><td><span class="badge badge-success">Active</span></td><td>$1,200</td></tr>
     <tr><td>Bob</td><td><span class="badge badge-warning">Pending</span></td><td>$850</td></tr>
     <tr><td>Carol</td><td><span class="badge badge-error">Overdue</span></td><td>$2,400</td></tr>
+  </tbody>
+</table>`,
+      'table-expandable': `<table class="table">
+  <thead>
+    <tr><th>Name</th><th>Status</th><th>Amount</th><th></th></tr>
+  </thead>
+  <tbody>
+    <tr class="table-row-expandable" onclick="this.classList.toggle('table-row-expandable--open')">
+      <td>Alice</td>
+      <td><span class="badge badge-success">Active</span></td>
+      <td>$1,200</td>
+      <td class="table-expand-cell"><span class="table-expand-icon">▼</span></td>
+    </tr>
+    <tr class="table-row-expand">
+      <td colspan="4">
+        <div class="table-row-expand-body">Additional details here.</div>
+      </td>
+    </tr>
   </tbody>
 </table>`,
       'badge': `<span class="badge badge-success">Success</span>
