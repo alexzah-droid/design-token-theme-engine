@@ -324,7 +324,7 @@
   <!-- ══════════════════════════════════════
        MAIN CONTENT
   ══════════════════════════════════════ -->
-  <div class="pv-main">
+  <div class="pv-main" id="main">
 
 
     <!-- ══════════════════════════════════════
@@ -1658,13 +1658,21 @@
 
     function pvSelectDd(id, value) {
       document.getElementById(id + '-val').textContent = value;
-      document.getElementById(id).classList.remove('dropdown--open');
+      const dd = document.getElementById(id);
+      dd.classList.remove('dropdown--open');
+      dd.querySelector('.dropdown-head').setAttribute('aria-expanded', 'false');
+      dd.querySelectorAll('.dropdown-item').forEach(item => {
+        item.classList.toggle('dropdown-item--selected', item.textContent.trim() === value);
+      });
     }
 
     // Close dropdowns on outside click
     document.addEventListener('click', function(e) {
       document.querySelectorAll('.dropdown--open').forEach(function(dd) {
-        if (!dd.contains(e.target)) dd.classList.remove('dropdown--open');
+        if (!dd.contains(e.target)) {
+          dd.classList.remove('dropdown--open');
+          dd.querySelector('.dropdown-head')?.setAttribute('aria-expanded', 'false');
+        }
       });
       // Close download dropdown
       const dlWrap = document.getElementById('pvDlWrap');
@@ -1714,10 +1722,10 @@
     <div class="dropdown-item" role="option">Option 3</div>
   </div>
 </div>`,
-      'progress': `<div class="progress"><div class="progress-bar" style="width:60%"></div></div>`,
+      'progress': `<div class="progress"><div class="progress-fill" style="width:60%"></div></div>`,
       'button': `<button class="button">Primary</button>
-<button class="button button--secondary">Secondary</button>
-<button class="button button--ghost">Ghost</button>
+<button class="button is-hover">Hover state</button>
+<button class="button is-focus">Focus state</button>
 <button class="button" disabled>Disabled</button>`,
       'card': `<div class="card">
   <p class="heading">Card title</p>
@@ -1773,7 +1781,7 @@
       'nav': `<nav class="nav">
   <span class="nav-brand">My App</span>
   <div class="nav-actions">
-    <button class="button button--ghost">Settings</button>
+    <button class="button">Settings</button>
   </div>
 </nav>`,
       'pagination': `<div class="pagination">
@@ -1789,7 +1797,7 @@
   <button class="chip">Pending</button>
   <button class="chip">Closed</button>
 </div>`,
-      'kpi': `<div class="kpi-tile">
+      'kpi': `<div class="kpi">
   <div class="kpi-label">Revenue</div>
   <div class="kpi-value">$12,400</div>
   <div class="kpi-delta kpi-delta--up">+8.2%</div>
@@ -1803,22 +1811,22 @@
     };
 
     const PV_VARS = {
-      'button':   ['button-bg','button-text','button-hover-bg','button-disabled-bg','button-radius','button-padding-x','button-padding-y','button-font-weight','button-font-size','focus-ring'],
+      'button':   ['button-bg','button-text','button-hover-bg','button-disabled-bg','button-disabled-text','button-radius','button-padding-x','button-padding-y','button-font-weight','button-shadow','focus-ring'],
       'card':     ['card-bg','card-border-color','card-radius','card-shadow','card-padding'],
-      'form':     ['input-bg','input-border','input-focus-border','input-radius','input-text','input-placeholder','label-color'],
+      'form':     ['input-bg','input-border','input-radius','input-text','input-padding','input-shadow','label-color','label-font-size','label-font-weight','focus-ring'],
       'table':    ['table-header-bg','table-header-text','table-border-color','table-cell-padding','table-row-hover-bg'],
       'table-expandable': ['table-header-bg','table-header-text','table-border-color','table-cell-padding','table-row-hover-bg','surface-bg2','text-secondary','text-muted','animation-duration-slow','animation-ease-out'],
       'badge':    ['badge-success-bg','badge-success-text','badge-warning-bg','badge-warning-text','badge-error-bg','badge-error-text','badge-neutral-bg','badge-neutral-text'],
       'alert':    ['alert-success-bg','alert-success-text','alert-warning-bg','alert-warning-text','alert-error-bg','alert-error-text','alert-info-bg','alert-info-text'],
-      'nav':      ['nav-bg','nav-text','nav-border','nav-brand-color'],
-      'pagination':['pagination-bg','pagination-text','pagination-border','pagination-active-bg','pagination-active-text','pagination-hover-bg'],
-      'tabs':     ['tab-text','tab-active-text','tab-active-border','tab-hover-bg'],
+      'nav':      ['nav-bg','nav-text','nav-border-color','nav-brand-color','nav-padding-x','nav-padding-y'],
+      'pagination':['pagination-item-bg','pagination-item-text','pagination-item-border','pagination-item-radius','pagination-active-bg','pagination-active-text','pagination-active-border'],
+      'tabs':     ['tab-bg','tab-text','tab-active-text','tab-indicator-color','tab-border-color'],
       'accordion':['accordion-border','accordion-bg','accordion-head-bg','accordion-head-text','animation-duration-slow','animation-ease-out'],
       'dropdown': ['dropdown-bg','dropdown-border','dropdown-text','dropdown-item-hover-bg','input-radius'],
-      'progress': ['progress-bg','progress-fill','progress-radius'],
-      'chips':    ['chip-bg','chip-text','chip-border','chip-active-bg','chip-active-text','chip-active-border','chip-radius'],
-      'kpi':      ['kpi-value-color','kpi-label-color','kpi-delta-up','kpi-delta-down','card-bg','card-border-color','card-radius'],
-      'switch':   ['switch-track-bg','switch-track-checked-bg','switch-thumb-bg','switch-radius'],
+      'progress': ['progress-track-bg','progress-fill-color','progress-radius'],
+      'chips':    ['chip-bg','chip-text','chip-border','chip-active-bg','chip-active-text','chip-radius'],
+      'kpi':      ['kpi-value-color','kpi-label-color','kpi-delta-up-color','kpi-delta-down-color','card-bg','card-border-color','card-radius'],
+      'switch':   ['switch-track-bg','switch-track-active-bg','switch-thumb-bg'],
       'a11y':     ['surface-bg2','surface-bg3','text-primary','text-secondary','text-muted','focus-ring'],
     };
 
