@@ -247,6 +247,18 @@
     }
     .pv-copy-btn:hover { background: var(--surface-bg2, #f0f0f0); }
     .pv-copy-btn.pv-copied { color: #1e7e34; border-color: #1e7e34; }
+    .pv-card-head-actions { display: flex; gap: 6px; }
+    .pv-dl-css-btn {
+      font-size: 11px;
+      padding: 3px 10px;
+      border: 1px solid var(--input-border, #ddd);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-muted, #aaa);
+      cursor: pointer;
+    }
+    .pv-dl-css-btn:hover { background: var(--surface-bg2, #f0f0f0); }
+    .pv-dl-css-btn.pv-dl-done { color: #1e7e34; border-color: #1e7e34; }
   </style>
 </head>
 
@@ -529,7 +541,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">A11y &amp; Utilities</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('a11y', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('a11y', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('a11y', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row">
             <a href="#main" class="skip-link" style="position:static; top:auto;">Skip link (a11y)</a>
@@ -545,7 +560,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Switch / Toggle</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('switch', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('switch', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('switch', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row" style="align-items: center; flex-wrap: wrap;">
             <label class="switch">
@@ -570,7 +588,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Tabs</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('tabs', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('tabs', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('tabs', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="tabs">
             <button class="tab tab--active">Overview</button>
@@ -586,7 +607,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Accordion</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('accordion', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('accordion', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('accordion', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="accordion">
             <div class="accordion-item accordion-item--open" id="pv-acc-1">
@@ -614,7 +638,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Dropdown</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('dropdown', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('dropdown', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('dropdown', this)">↓ CSS</button>
+            </div>
           </div>
           <div style="max-width: 260px;">
             <div class="dropdown" id="pv-dd-1">
@@ -635,7 +662,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Progress</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('progress', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('progress', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('progress', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row" style="flex-direction: column; gap: 16px; align-items: stretch;">
             <div>
@@ -697,7 +727,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">KPI Cards</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('kpi', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('kpi', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('kpi', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row" style="flex-wrap: wrap; gap: 24px; align-items: flex-start;">
             <div class="kpi">
@@ -722,7 +755,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Filter Chips</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('chips', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('chips', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('chips', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="chips">
             <button class="chip chip--active">All</button>
@@ -783,7 +819,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Buttons</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('button', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('button', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('button', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row">
             <button class="button">Default</button>
@@ -796,7 +835,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Badges</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('badge', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('badge', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('badge', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row">
             <span class="badge badge-success">Paid</span>
@@ -810,7 +852,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Alerts</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('alert', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('alert', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('alert', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-row" style="flex-direction: column;">
             <div class="alert alert-success">Invoice INV-1042 has been paid successfully.</div>
@@ -824,7 +869,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Form Inputs</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('form', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('form', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('form', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pv-col2">
             <div>
@@ -874,7 +922,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Table</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('table', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('table', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('table', this)">↓ CSS</button>
+            </div>
           </div>
           <table class="table">
             <thead>
@@ -936,7 +987,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Expandable Table</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('table-expandable', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('table-expandable', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('table-expandable', this)">↓ CSS</button>
+            </div>
           </div>
           <table class="table">
             <thead>
@@ -979,7 +1033,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Pagination</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('pagination', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('pagination', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('pagination', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="pagination">
             <a class="pagination-item pagination-item--disabled">&#8592; Prev</a>
@@ -994,7 +1051,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Nav</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('nav', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('nav', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('nav', this)">↓ CSS</button>
+            </div>
           </div>
           <nav class="nav">
             <span class="nav-brand">Invoice Manager</span>
@@ -1025,7 +1085,10 @@
         <div class="card">
           <div class="pv-card-head">
             <p class="pv-group-label">Card</p>
-            <button class="pv-copy-btn" onclick="pvCopyHtml('card', this)">Copy HTML</button>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('card', this)">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('card', this)">↓ CSS</button>
+            </div>
           </div>
           <div class="card">
             <p class="heading" style="margin:0 0 8px">Card heading</p>
@@ -1739,6 +1802,26 @@
 <div class="surface-3">Surface 3 background</div>`
     };
 
+    const PV_VARS = {
+      'button':   ['button-bg','button-text','button-hover-bg','button-disabled-bg','button-radius','button-padding-x','button-padding-y','button-font-weight','button-font-size','focus-ring'],
+      'card':     ['card-bg','card-border-color','card-radius','card-shadow','card-padding'],
+      'form':     ['input-bg','input-border','input-focus-border','input-radius','input-text','input-placeholder','label-color'],
+      'table':    ['table-header-bg','table-header-text','table-border-color','table-cell-padding','table-row-hover-bg'],
+      'table-expandable': ['table-header-bg','table-header-text','table-border-color','table-cell-padding','table-row-hover-bg','surface-bg2','text-secondary','text-muted','animation-duration-slow','animation-ease-out'],
+      'badge':    ['badge-success-bg','badge-success-text','badge-warning-bg','badge-warning-text','badge-error-bg','badge-error-text','badge-neutral-bg','badge-neutral-text'],
+      'alert':    ['alert-success-bg','alert-success-text','alert-warning-bg','alert-warning-text','alert-error-bg','alert-error-text','alert-info-bg','alert-info-text'],
+      'nav':      ['nav-bg','nav-text','nav-border','nav-brand-color'],
+      'pagination':['pagination-bg','pagination-text','pagination-border','pagination-active-bg','pagination-active-text','pagination-hover-bg'],
+      'tabs':     ['tab-text','tab-active-text','tab-active-border','tab-hover-bg'],
+      'accordion':['accordion-border','accordion-bg','accordion-head-bg','accordion-head-text','animation-duration-slow','animation-ease-out'],
+      'dropdown': ['dropdown-bg','dropdown-border','dropdown-text','dropdown-item-hover-bg','input-radius'],
+      'progress': ['progress-bg','progress-fill','progress-radius'],
+      'chips':    ['chip-bg','chip-text','chip-border','chip-active-bg','chip-active-text','chip-active-border','chip-radius'],
+      'kpi':      ['kpi-value-color','kpi-label-color','kpi-delta-up','kpi-delta-down','card-bg','card-border-color','card-radius'],
+      'switch':   ['switch-track-bg','switch-track-checked-bg','switch-thumb-bg','switch-radius'],
+      'a11y':     ['surface-bg2','surface-bg3','text-primary','text-secondary','text-muted','focus-ring'],
+    };
+
     function pvCopyHtml(key, btn) {
       const snippet = PV_SNIPPETS[key];
       if (!snippet) return;
@@ -1750,6 +1833,43 @@
           btn.classList.remove('pv-copied');
         }, 1500);
       });
+    }
+
+    function pvDownloadCss(key, btn) {
+      const vars = PV_VARS[key];
+      const snippet = PV_SNIPPETS[key];
+      if (!vars) return;
+
+      const style = getComputedStyle(document.documentElement);
+      const theme = document.documentElement.getAttribute('data-theme') || 'corporate';
+      const mode  = document.documentElement.getAttribute('data-mode') || 'light';
+
+      // Resolve variable values from current theme
+      const resolved = vars.map(v => {
+        const val = style.getPropertyValue('--' + v).trim();
+        return val ? `  --${v}: ${val};` : null;
+      }).filter(Boolean).join('\n');
+
+      const htmlComment = snippet
+        ? `\n/* HTML:\n${snippet.replace(/\*\//g, '* /')}\n*/`
+        : '';
+
+      const css = `/* Design System Engine 2 — ${key} component */\n/* Theme: ${theme} | Mode: ${mode || 'light'} */\n\n:root {\n${resolved}\n}${htmlComment}\n`;
+
+      const blob = new Blob([css], { type: 'text/css' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ds2-${key}.css`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      btn.textContent = 'Downloaded!';
+      btn.classList.add('pv-dl-done');
+      setTimeout(() => {
+        btn.textContent = '↓ CSS';
+        btn.classList.remove('pv-dl-done');
+      }, 1500);
     }
   </script>
 
