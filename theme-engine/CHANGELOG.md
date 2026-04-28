@@ -5,6 +5,21 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.7.0] — 2026-04-28
+
+### Added
+- **Expandable Table Row** — новый компонент: `.table-row-expandable`, `.table-row-expandable--open`, `.table-expand-cell`, `.table-expand-icon`, `.table-row-expand`, `.table-row-expand-body`; анимация max-height по паттерну accordion; только существующие семантические токены; validator 7/7, WCAG 0 errors
+- **Preview: Download bundle дропдаун** — кнопка в шапке preview заменена на дропдаун со всеми 5 bundle-файлами; «current» синхронизируется с активной темой/режимом
+- **Preview: ↓ CSS на каждом компоненте** — кнопка скачивает `ds2-{component}.css` с `:root {}` блоком (реальные значения из текущей темы через `getComputedStyle`) и HTML-сниппетом в комментарии; 17 компонентов
+- **Preview: Copy HTML** — кнопка на 16 компонентных карточках
+- **GAS_GUIDE.md / GAS_GUIDE.en.md** — полная переработка: раздел «Подготовка» с таблицей нужных файлов, 2 самодостаточных AI-промпта (одна тема / все темы с переключателем), ручные шаги оставлены ниже
+- **Multi-theme switcher** — HTML/JS пример переключателя всех тем с `localStorage`, guard для minimal (no dark mode)
+
+### Fixed
+- Expandable Table Row: `border-bottom` на `<td>` скрыт при свёрнутом состоянии (не было пустой рамки)
+
+---
+
 ## [0.6.0] — 2026-04-26
 
 ### Added

@@ -123,7 +123,7 @@ Theme switching works via `data-theme` and `data-mode` attributes on the root HT
 
 ## Components
 
-60+ classes: buttons, cards, forms, navigation, tables, badges, switches, tabs, accordions, dropdowns, progress bars, KPI tiles, chips, charts (sparkline, area, bar, donut, heatmap, gantt), and typography utilities.
+60+ classes: buttons, cards, forms, navigation, tables (including expandable row), badges, switches, tabs, accordions, dropdowns, progress bars, KPI tiles, chips, charts (sparkline, area, bar, donut, heatmap, gantt), and typography utilities.
 
 All components use only semantic CSS custom properties — no hardcoded values anywhere. The validator guarantees this.
 
