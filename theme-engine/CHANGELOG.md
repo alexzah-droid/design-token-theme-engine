@@ -5,6 +5,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.7.1] — 2026-04-29
+
+### Fixed
+- **`chart-card`** — добавлен `box-shadow: var(--card-shadow)`: chart-карточки в Apple теме теперь отображают тени наравне с обычными `.card`
+- **Preview: Typography** — оба раздела Typography (Foundations и Components) переведены на `display: grid; grid-template-columns: 260px 1fr`; Typography Scale получил мета-колонку `.class · --token`
+- **Preview: a11y / snippets / PV_VARS** — skip-link цель (`id="main"`), сниппеты (`progress-bar`→`progress-fill`, `button--secondary/ghost`→`is-hover/is-focus`, `kpi-tile`→`kpi`), PV_VARS синхронизированы с реальными CSS-переменными, dropdown `aria-expanded` корректно сбрасывается
+
+### Changed
+- **README.md / README.en.md** — ссылка на preview перенесена выше fold (после бейджей)
+
+---
+
 ## [0.7.0] — 2026-04-28
 
 ### Added
