@@ -8,6 +8,8 @@ Token-based CSS theme engine: меняешь JSON-файл с токенами �
 [![Validator](https://img.shields.io/badge/validator-7%2F7-brightgreen)]()
 [![Zero deps](https://img.shields.io/badge/dependencies-zero-brightgreen)]()
 
+**[Открыть preview онлайн →](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
+
 ## Что это
 
 - Генерирует scoped CSS custom properties из JSON design tokens

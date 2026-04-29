@@ -8,6 +8,8 @@ Token-based CSS theme engine: edit one JSON file, rebuild, and the entire UI upd
 [![Validator](https://img.shields.io/badge/validator-7%2F7-brightgreen)]()
 [![Zero deps](https://img.shields.io/badge/dependencies-zero-brightgreen)]()
 
+**[Open preview online →](https://alexzah-droid.github.io/design-token-theme-engine/theme-engine/preview/)**
+
 ## What It Is
 
 - Generates scoped CSS custom properties from JSON design tokens
