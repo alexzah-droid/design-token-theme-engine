@@ -919,6 +919,7 @@ th[aria-sort="descending"] .table-sort-icon {
   border-radius: var(--card-radius);
   padding: var(--chart-padding);
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 
 .chart-title {

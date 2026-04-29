@@ -1089,6 +1089,63 @@ th[aria-sort="descending"] .table-sort-icon {
   color: var(--text-muted);
 }
 
+/* ── Expandable table row ───────────────────────────────────── */
+
+.table-row-expandable {
+  cursor: pointer;
+}
+
+.table-row-expandable:hover td {
+  background: var(--table-row-hover-bg);
+}
+
+.table-expand-cell {
+  width: 32px;
+  text-align: center;
+  padding: var(--table-cell-padding);
+  border: 1px solid var(--table-border-color);
+}
+
+.table-expand-icon {
+  display: inline-block;
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform var(--animation-duration-normal) var(--animation-ease-out);
+  user-select: none;
+}
+
+.table-row-expandable--open .table-expand-icon {
+  transform: rotate(180deg);
+}
+
+.table-row-expand td {
+  padding: 0;
+  border-left: 1px solid var(--table-border-color);
+  border-right: 1px solid var(--table-border-color);
+  border-top: none;
+  border-bottom: none;
+}
+
+.table-row-expandable--open + .table-row-expand td {
+  border-bottom: 1px solid var(--table-border-color);
+}
+
+.table-row-expand-body {
+  background: var(--surface-bg2);
+  color: var(--text-secondary);
+  font-size: var(--type-scale-small-size);
+  line-height: 1.6;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--animation-duration-slow) var(--animation-ease-out),
+              padding var(--animation-duration-slow) var(--animation-ease-out);
+}
+
+.table-row-expandable--open + .table-row-expand .table-row-expand-body {
+  max-height: 300px;
+  padding: var(--table-cell-padding) calc(var(--table-cell-padding) * 2);
+}
+
 /* ============================================================
    CHARTS SUBSYSTEM — Stage 7
    All colors via semantic vars; no hardcoded values.
@@ -1102,6 +1159,7 @@ th[aria-sort="descending"] .table-sort-icon {
   border-radius: var(--card-radius);
   padding: var(--chart-padding);
   overflow: hidden;
+  box-shadow: var(--card-shadow);
 }
 
 .chart-title {
