@@ -29,6 +29,7 @@ corporate.bundle.css      — Corporate theme (tokens + components in one file)
 apple.bundle.css          — Apple HIG-inspired theme
 minimal.bundle.css        — Minimal theme
 corporate.dark.bundle.css — Corporate, dark mode
+apple.dark.bundle.css     — Apple, dark mode
 ```
 
 **Step 2.** Link the file in your HTML:

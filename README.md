@@ -29,6 +29,7 @@ corporate.bundle.css      — Corporate тема (токены + компоне�
 apple.bundle.css          — Apple HIG-inspired тема
 minimal.bundle.css        — Minimal тема
 corporate.dark.bundle.css — Corporate, тёмный режим
+apple.dark.bundle.css     — Apple, тёмный режим
 ```
 
 **Шаг 2.** Подключите файл в HTML:
