@@ -149,7 +149,8 @@
 
     /* ── Typography samples ── */
     .pv-type-row {
-      display: flex;
+      display: grid;
+      grid-template-columns: 260px 1fr;
       align-items: baseline;
       gap: 20px;
       padding: 12px 0;
@@ -159,8 +160,6 @@
     .pv-type-meta {
       font-size: 11px;
       color: var(--text-secondary, #888);
-      min-width: 200px;
-      flex-shrink: 0;
     }
     .pv-type-row p { margin: 0; }
 
@@ -710,16 +709,41 @@
         <!-- Typography Scale -->
         <div class="card">
           <p class="pv-group-label">Typography Scale</p>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <p class="t-display">Display 48</p>
-            <p class="t-h1">Heading 1 · 32px</p>
-            <p class="t-h2">Heading 2 · 24px</p>
-            <p class="t-h3">Heading 3 · 20px</p>
-            <p class="t-lead">Lead paragraph — slightly larger, secondary color.</p>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-display · --type-scale-display-size</span>
+            <p class="t-display">Display</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-h1 · --type-scale-h1-size</span>
+            <p class="t-h1">Heading 1</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-h2 · --type-scale-h2-size</span>
+            <p class="t-h2">Heading 2</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-h3 · --type-scale-h3-size</span>
+            <p class="t-h3">Heading 3</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-lead · lead paragraph</span>
+            <p class="t-lead">Lead — slightly larger, secondary color.</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.text · body base</span>
             <p class="text">Body text — base size, primary color.</p>
-            <p class="t-small">Small text · 12px</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-small · --type-scale-small-size</span>
+            <p class="t-small">Small text</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-overline · uppercase label</span>
             <p class="t-overline">Overline label</p>
-            <p class="t-mono">mono · code · numbers</p>
+          </div>
+          <div class="pv-type-row">
+            <span class="pv-type-meta">.t-mono · code / numbers</span>
+            <p class="t-mono">mono · 0123 · code</p>
           </div>
         </div>
 
