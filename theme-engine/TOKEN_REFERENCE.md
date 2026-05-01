@@ -450,3 +450,27 @@ Apple dark theme overrides: `--glass-bg: rgba(30,30,32,0.82)`, `--glass-border: 
 | `--chip-active-bg` | `{color.primary}` | `#17311F` |
 | `--chip-active-text` | `{color.onPrimary}` | `#EFE9D9` |
 | `--chip-radius` | `{radius.sm}` | `2px` |
+
+---
+
+### Date Picker
+
+| CSS Variable | Maps to | Corporate value |
+|---|---|---|
+| `--datepicker-bg` | `{color.background}` | `#F5F0E8` |
+| `--datepicker-border` | `{color.border}` | `#d8d1c2` |
+| `--datepicker-radius` | `{radius.md}` | `8px` |
+| `--datepicker-cell-size` | `32px` | `32px` |
+| `--datepicker-cell-radius` | `{radius.sm}` | `4px` |
+| `--datepicker-header-text` | `{color.textPrimary}` | `#1B1E19` |
+| `--datepicker-weekday-text` | `{color.textMuted}` | `#8A8C86` |
+| `--datepicker-day-text` | `{color.textPrimary}` | `#1B1E19` |
+| `--datepicker-day-hover-bg` | `{color.surface2}` | `#EAE4D8` |
+| `--datepicker-today-bg` | `{color.infoSoft}` | `rgba(26,115,232,.08)` |
+| `--datepicker-today-text` | `{color.textPrimary}` | `#1B1E19` |
+| `--datepicker-today-border` | `{color.primary}` | `#17311F` |
+| `--datepicker-selected-bg` | `{color.primary}` | `#17311F` |
+| `--datepicker-selected-text` | `{color.onPrimary}` | `#EFE9D9` |
+| `--datepicker-disabled-text` | `{color.textMuted}` | `#8A8C86` |
+| `--datepicker-nav-hover-bg` | `{color.surface2}` | `#EAE4D8` |
+| `--datepicker-shadow` | `{shadow.md}` | `0 4px 12px rgba(0,0,0,.08)` |

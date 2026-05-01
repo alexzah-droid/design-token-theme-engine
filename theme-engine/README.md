@@ -81,7 +81,7 @@ Bundles are auto-generated — do not edit manually.
 
 **Progress:** `.progress`, `.progress-fill`, `.progress--indeterminate`, `.progress-circle`, `.progress-circle-track`, `.progress-circle-fill`
 
-**Data display:** `.kpi`, `.kpi-label`, `.kpi-value`, `.kpi-delta`, `.kpi-delta--up`, `.kpi-delta--down`, `.chips`, `.chip`, `.chip--active`, `.table-sortable`, `.table-sort-icon`, `.table-empty`, `.table-empty-text`, `.table-empty-hint`
+**Data display:** `.kpi`, `.kpi-label`, `.kpi-value`, `.kpi-delta`, `.kpi-delta--up`, `.kpi-delta--down`, `.chips`, `.chip`, `.chip--active`, `.table-sortable`, `.table-sort-icon`, `.table-empty`, `.table-empty-text`, `.table-empty-hint`, `.table-row-expandable`, `.table-row-expandable--open`, `.table-expand-cell`, `.table-expand-icon`, `.table-row-expand`, `.table-row-expand-body`
 
 **Typography scale:** `.t-display`, `.t-h1`, `.t-h2`, `.t-h3`, `.t-lead`, `.t-small`, `.t-overline`, `.t-mono`
 
@@ -90,6 +90,8 @@ Bundles are auto-generated — do not edit manually.
 **Static states:** `.is-hover`, `.is-focus`, `.is-disabled`, `.is-selected` — apply to button, input, select, textarea, tab, chip, dropdown-item, pagination-item
 
 **Layout utilities:** `.row` (flex wrap), `.grid-2`, `.grid-3`, `.grid-4`, `.grid-6` (CSS grid columns)
+
+**Date Picker:** `.datepicker`, `.datepicker-header`, `.datepicker-title`, `.datepicker-nav`, `.datepicker-grid`, `.datepicker-weekday`, `.datepicker-day`, `.datepicker-day--today`, `.datepicker-day--selected`, `.datepicker-day--disabled`, `.datepicker-day--empty`
 
 **Utilities:** `.surface-2`, `.surface-3` (surface hierarchy), `.skip-link` (a11y)
 

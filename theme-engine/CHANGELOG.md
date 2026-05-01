@@ -5,6 +5,16 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.8.0] — 2026-05-01
+
+### Added
+- **Date Picker** component: `.datepicker`, `.datepicker-header`, `.datepicker-title`, `.datepicker-nav`, `.datepicker-grid`, `.datepicker-weekday`, `.datepicker-day` + modifiers `--today`, `--selected`, `--disabled`, `--empty`
+- **17 semantic tokens** in `datepicker.*` group (bg, border, radius, cellSize, cellRadius, headerText, weekdayText, dayText, dayHoverBg, todayBg, todayText, todayBorder, selectedBg, selectedText, disabledText, navHoverBg, shadow)
+- **Preview**: interactive Date Picker card in section 02 Components — month navigation, date selection, today highlight, ARIA attributes (`aria-current`, `aria-selected`, `role="grid"`)
+- **TOKEN_REFERENCE.md**: new Datepicker section with all 17 tokens
+
+---
+
 ## [0.7.1] — 2026-04-29
 
 ### Fixed

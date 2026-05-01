@@ -14,7 +14,7 @@ Token-based CSS theme engine: edit one JSON file, rebuild, and the entire UI upd
 
 - Generates scoped CSS custom properties from JSON design tokens
 - 3 themes (corporate, apple, minimal) with dark mode support
-- 60+ ready-to-use CSS component classes with zero framework dependencies
+- 70+ ready-to-use CSS component classes with zero framework dependencies
 - Built-in validator enforces 7 architectural invariants on every build
 - WCAG AA checker automatically verifies contrast ratios across all themes on every token change
 
@@ -126,7 +126,7 @@ Theme switching works via `data-theme` and `data-mode` attributes on the root HT
 
 ## Components
 
-60+ classes: buttons, cards, forms, navigation, tables (including expandable row), badges, switches, tabs, accordions, dropdowns, progress bars, KPI tiles, chips, charts (sparkline, area, bar, donut, heatmap, gantt), and typography utilities.
+70+ classes: buttons, cards, forms, navigation, tables (including expandable row), badges, switches, tabs, accordions, dropdowns, progress bars, KPI tiles, chips, charts (sparkline, area, bar, donut, heatmap, gantt), date picker, and typography utilities.
 
 All components use only semantic CSS custom properties — no hardcoded values anywhere. The validator guarantees this.
 
