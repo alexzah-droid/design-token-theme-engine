@@ -225,5 +225,24 @@
     "labelColor": "{color.textSecondary}",
     "deltaUpColor": "{color.success}",
     "deltaDownColor": "{color.error}"
+  },
+  "datepicker": {
+    "bg": "{color.background}",
+    "border": "{color.border}",
+    "radius": "{radius.md}",
+    "cellSize": "32px",
+    "cellRadius": "{radius.sm}",
+    "headerText": "{color.textPrimary}",
+    "weekdayText": "{color.textMuted}",
+    "dayText": "{color.textPrimary}",
+    "dayHoverBg": "{color.surface2}",
+    "todayBg": "{color.infoSoft}",
+    "todayText": "{color.textPrimary}",
+    "todayBorder": "{color.primary}",
+    "selectedBg": "{color.primary}",
+    "selectedText": "{color.onPrimary}",
+    "disabledText": "{color.textMuted}",
+    "navHoverBg": "{color.surface2}",
+    "shadow": "{shadow.md}"
   }
 }

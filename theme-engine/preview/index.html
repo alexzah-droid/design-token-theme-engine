@@ -1121,6 +1121,27 @@
           </div>
         </div>
 
+        <!-- Date Picker -->
+        <div class="card" id="datepicker-card">
+          <div class="pv-card-head">
+            <p class="pv-group-label">Date Picker</p>
+            <div class="pv-card-head-actions">
+              <button class="pv-copy-btn" onclick="pvCopyHtml('dp-demo', this)" aria-label="Copy HTML">Copy HTML</button>
+              <button class="pv-dl-css-btn" onclick="pvDownloadCss('dp-demo', this)" aria-label="Download CSS">↓ CSS</button>
+            </div>
+          </div>
+          <div id="dp-demo">
+            <div class="datepicker" id="pv-datepicker" role="application" aria-label="Date picker">
+              <div class="datepicker-header">
+                <button class="datepicker-nav" id="dp-prev" onclick="pvDpNav(-1)" aria-label="Previous month">&#8249;</button>
+                <span class="datepicker-title" id="dp-title" aria-live="polite"></span>
+                <button class="datepicker-nav" id="dp-next" onclick="pvDpNav(1)" aria-label="Next month">&#8250;</button>
+              </div>
+              <div class="datepicker-grid" id="dp-grid" role="grid" aria-label="Calendar"></div>
+            </div>
+          </div>
+        </div>
+
       </div><!-- /pv-groups -->
     </section>
 
@@ -1903,6 +1924,66 @@
         btn.classList.remove('pv-dl-done');
       }, 1500);
     }
+
+    // ── Date Picker ────────────────────────────────────────────────────────
+    (function () {
+      var WEEKDAYS = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+      var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var today = new Date();
+      var dpYear = today.getFullYear();
+      var dpMonth = today.getMonth();
+      var dpSelected = null;
+
+      function pvDpRender() {
+        var title = document.getElementById('dp-title');
+        var grid = document.getElementById('dp-grid');
+        if (!title || !grid) return;
+        title.textContent = MONTHS[dpMonth] + ' ' + dpYear;
+
+        var html = '';
+        WEEKDAYS.forEach(function(d) {
+          html += '<div class="datepicker-weekday" aria-hidden="true">' + d + '</div>';
+        });
+
+        var first = new Date(dpYear, dpMonth, 1);
+        // Monday-based: getDay() returns 0=Sun, shift to Mon=0
+        var startDay = (first.getDay() + 6) % 7;
+        var daysInMonth = new Date(dpYear, dpMonth + 1, 0).getDate();
+
+        for (var i = 0; i < startDay; i++) {
+          html += '<div class="datepicker-day datepicker-day--empty" aria-hidden="true"></div>';
+        }
+
+        for (var day = 1; day <= daysInMonth; day++) {
+          var isToday = (day === today.getDate() && dpMonth === today.getMonth() && dpYear === today.getFullYear());
+          var isSelected = dpSelected && (day === dpSelected.getDate() && dpMonth === dpSelected.getMonth() && dpYear === dpSelected.getFullYear());
+          var cls = 'datepicker-day';
+          if (isToday) cls += ' datepicker-day--today';
+          if (isSelected) cls += ' datepicker-day--selected';
+          var ariaLabel = MONTHS[dpMonth] + ' ' + day + ', ' + dpYear;
+          var ariaCurrent = isToday ? ' aria-current="date"' : '';
+          var ariaSelected = isSelected ? ' aria-selected="true"' : ' aria-selected="false"';
+          html += '<div class="' + cls + '" role="gridcell" tabindex="' + (isSelected || (dpSelected === null && isToday) ? '0' : '-1') + '" aria-label="' + ariaLabel + '"' + ariaCurrent + ariaSelected + ' onclick="pvDpSelect(' + dpYear + ',' + dpMonth + ',' + day + ')">' + day + '</div>';
+        }
+        grid.innerHTML = html;
+      }
+
+      window.pvDpNav = function(dir) {
+        dpMonth += dir;
+        if (dpMonth > 11) { dpMonth = 0; dpYear++; }
+        if (dpMonth < 0) { dpMonth = 11; dpYear--; }
+        pvDpRender();
+      };
+
+      window.pvDpSelect = function(y, m, d) {
+        dpSelected = new Date(y, m, d);
+        pvDpRender();
+      };
+
+      document.addEventListener('DOMContentLoaded', pvDpRender);
+      // Also render immediately in case DOM is already ready
+      if (document.readyState !== 'loading') pvDpRender();
+    })();
   </script>
 
 </body>

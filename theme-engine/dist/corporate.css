@@ -227,4 +227,21 @@
   --kpi-label-color: #5A5C56;
   --kpi-delta-up-color: #1e7e34;
   --kpi-delta-down-color: #d32f2f;
+  --datepicker-bg: #F6F2EA;
+  --datepicker-border: #d8d1c2;
+  --datepicker-radius: 4px;
+  --datepicker-cell-size: 32px;
+  --datepicker-cell-radius: 2px;
+  --datepicker-header-text: #1B1C19;
+  --datepicker-weekday-text: #6E6B65;
+  --datepicker-day-text: #1B1C19;
+  --datepicker-day-hover-bg: #F0EBE2;
+  --datepicker-today-bg: rgba(43,79,116,.15);
+  --datepicker-today-text: #1B1C19;
+  --datepicker-today-border: #17311F;
+  --datepicker-selected-bg: #17311F;
+  --datepicker-selected-text: #EFE9D9;
+  --datepicker-disabled-text: #6E6B65;
+  --datepicker-nav-hover-bg: #F0EBE2;
+  --datepicker-shadow: none;
 }
