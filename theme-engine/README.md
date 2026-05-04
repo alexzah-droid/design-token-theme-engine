@@ -46,6 +46,7 @@ Preview: open `preview/index.html` in a browser.
 | `apple.css` | `[data-theme="apple"]` |
 | `apple.dark.css` | `[data-theme="apple"][data-mode="dark"]` |
 | `minimal.css` | `[data-theme="minimal"]` |
+| `minimal.dark.css` | `[data-theme="minimal"][data-mode="dark"]` |
 
 **Bundle CSS** — tokens + component styles in one file (for GAS embed or single-file use):
 
@@ -56,6 +57,7 @@ Preview: open `preview/index.html` in a browser.
 | `apple.bundle.css` | Apple | Light |
 | `apple.dark.bundle.css` | Apple | Dark |
 | `minimal.bundle.css` | Minimal | Light |
+| `minimal.dark.bundle.css` | Minimal | Dark |
 
 Bundles are auto-generated — do not edit manually.
 
@@ -67,7 +69,7 @@ Bundles are auto-generated — do not edit manually.
 |-------|-------------|
 | `corporate` | Business, restrained (+ dark mode) |
 | `apple` | Neutral, HIG-inspired (+ dark mode) |
-| `minimal` | Clean, minimal (light only) |
+| `minimal` | Clean, minimal (+ dark mode) |
 
 ---
 

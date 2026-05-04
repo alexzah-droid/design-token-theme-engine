@@ -47,7 +47,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **Preview: ↓ CSS на каждом компоненте** — кнопка скачивает `ds2-{component}.css` с `:root {}` блоком (реальные значения из текущей темы через `getComputedStyle`) и HTML-сниппетом в комментарии; 17 компонентов
 - **Preview: Copy HTML** — кнопка на 16 компонентных карточках
 - **GAS_GUIDE.md / GAS_GUIDE.en.md** — полная переработка: раздел «Подготовка» с таблицей нужных файлов, 2 самодостаточных AI-промпта (одна тема / все темы с переключателем), ручные шаги оставлены ниже
-- **Multi-theme switcher** — HTML/JS пример переключателя всех тем с `localStorage`, guard для minimal (no dark mode)
+- **Multi-theme switcher** — HTML/JS пример переключателя всех тем с `localStorage`
 
 ### Fixed
 - Expandable Table Row: `border-bottom` на `<td>` скрыт при свёрнутом состоянии (не было пустой рамки)
@@ -197,7 +197,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - 3-layer token model: `tokens/base.json` → `tokens/semantic.json` → `themes/*.json`
 - Build pipeline (`build-theme.js`): deepMerge → resolveToken → flattenTokens → CSS
 - Bundle generation (`*.bundle.css`) — tokens + components in one file for GAS embed
-- Themes: `corporate` (+ dark), `apple` (+ dark), `minimal`
+- Themes: `corporate` (+ dark), `apple` (+ dark), `minimal` (+ dark)
 - Validator (`validate.js`) — 7 architectural invariants
 - Components: `.button`, `.card`, `.input`, `.select`, `.textarea`, `.label`, `.text`, `.text-secondary`, `.heading`, `.badge` (4 variants), `.nav`, `.page-layout`, `.page-sidebar`, `.page-content`, `.sidebar-link`, `.table`, `.checkbox`, `.radio`, `.alert` (4 variants), `.pagination`
 - GAS embed: `gas-example/` (Code.gs, Page.html, Styles.html), `GAS_GUIDE.md`

@@ -73,7 +73,7 @@ document.documentElement.removeAttribute('data-mode');
 |-------|-------|------|
 | `corporate` | yes | yes |
 | `apple` | yes | yes |
-| `minimal` | yes | — |
+| `minimal` | yes | yes |
 
 ## Available components
 

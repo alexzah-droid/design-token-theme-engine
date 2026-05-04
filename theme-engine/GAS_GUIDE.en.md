@@ -60,7 +60,8 @@ In the project or in design-token-theme-engine/theme-engine/dist/ you will find 
 - corporate.dark.bundle.css — corporate theme, dark
 - apple.bundle.css          — Apple HIG-inspired, light
 - apple.dark.bundle.css     — Apple HIG-inspired, dark
-- minimal.bundle.css        — minimalist, light only
+- minimal.bundle.css        — minimalist, light
+- minimal.dark.bundle.css   — minimalist, dark
 
 Pick [THEME_NAME].bundle.css — this is the file to integrate.
 
@@ -172,7 +173,8 @@ From design-token-theme-engine/theme-engine/dist/:
 
 - corporate.bundle.css  — corporate theme (light + dark in one file)
 - apple.bundle.css      — Apple HIG-inspired (light + dark in one file)
-- minimal.bundle.css    — minimalist (light only)
+- minimal.bundle.css    — minimalist (light)
+- minimal.dark.bundle.css — minimalist (dark)
 
 Each bundle = theme tokens + component styles.
 
@@ -229,20 +231,17 @@ function include(filename) {
     (function init() {
       var theme = localStorage.getItem('theme') || 'corporate';
       var mode  = localStorage.getItem('mode')  || '';
-      if (theme === 'minimal') mode = '';
       applyTheme(theme, mode);
       document.getElementById('themeSelect').value = theme;
     })();
 
     function setTheme(theme) {
       var mode = document.documentElement.getAttribute('data-mode') || '';
-      if (theme === 'minimal') mode = '';
       applyTheme(theme, mode);
     }
 
     function toggleDark() {
       var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
-      if (theme === 'minimal') return;
       var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
       applyTheme(theme, mode);
     }
@@ -253,7 +252,7 @@ function include(filename) {
       localStorage.setItem('theme', theme);
       localStorage.setItem('mode', mode);
       document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+      document.getElementById('darkBtn').style.display = '';
     }
   </script>
 
@@ -279,7 +278,6 @@ Body text:     class="text" / class="text-secondary"
 - Do NOT write inline styles with color values — use system classes only
 - Do NOT override CSS custom properties manually
 - localStorage persists the user's theme choice between sessions
-- minimal does not support dark mode — hide the dark button for it
 
 ## Live preview of all components
 
@@ -310,7 +308,8 @@ Direct links to pre-built bundles (right-click → Save as):
 | Corporate dark  | `theme-engine/dist/corporate.dark.bundle.css` |
 | Apple light     | `theme-engine/dist/apple.bundle.css` |
 | Apple dark      | `theme-engine/dist/apple.dark.bundle.css` |
-| Minimal         | `theme-engine/dist/minimal.bundle.css` |
+| Minimal light   | `theme-engine/dist/minimal.bundle.css` |
+| Minimal dark    | `theme-engine/dist/minimal.dark.bundle.css` |
 
 On GitHub: navigate to the file → click **Raw** → save the page.
 
@@ -384,7 +383,7 @@ The theme is set via the `data-theme` attribute on `<html>`:
 |-------|-------|
 | `corporate` | Formal, restrained (dark mode available) |
 | `apple` | Neutral, modern (dark mode available) |
-| `minimal` | Minimalist (light only) |
+| `minimal` | Minimalist (+ dark mode) |
 
 Dark mode — add `data-mode="dark"`:
 
@@ -436,7 +435,7 @@ Code.gs               — server-side code
 Page.html             — page template with switcher
 StylesCorporate.html  — corporate.bundle.css
 StylesApple.html      — apple.bundle.css
-StylesMinimal.html    — minimal.bundle.css
+StylesMinimal.html    — minimal.bundle.css / minimal.dark.bundle.css
 ```
 
 Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already included inside the light bundle files — no extra files needed.
@@ -470,20 +469,17 @@ Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already
     (function init() {
       var theme = localStorage.getItem('theme') || 'corporate';
       var mode  = localStorage.getItem('mode')  || '';
-      if (theme === 'minimal') mode = '';
       applyTheme(theme, mode);
       document.getElementById('themeSelect').value = theme;
     })();
 
     function setTheme(theme) {
       var mode = document.documentElement.getAttribute('data-mode') || '';
-      if (theme === 'minimal') mode = '';
       applyTheme(theme, mode);
     }
 
     function toggleDark() {
       var theme = document.documentElement.getAttribute('data-theme') || 'corporate';
-      if (theme === 'minimal') return;
       var mode = document.documentElement.getAttribute('data-mode') === 'dark' ? '' : 'dark';
       applyTheme(theme, mode);
     }
@@ -494,7 +490,7 @@ Dark variants (`corporate.dark.bundle.css`, `apple.dark.bundle.css`) are already
       localStorage.setItem('theme', theme);
       localStorage.setItem('mode', mode);
       document.getElementById('darkBtn').textContent = mode === 'dark' ? 'Light' : 'Dark';
-      document.getElementById('darkBtn').style.display = theme === 'minimal' ? 'none' : '';
+      document.getElementById('darkBtn').style.display = '';
     }
   </script>
 
