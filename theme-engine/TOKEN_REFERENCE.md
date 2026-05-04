@@ -13,7 +13,7 @@ Corporate theme default values shown.
 | Group | Token | Value |
 |-------|-------|-------|
 | color | `--color-primary` | `#17311F` |
-| color | `--color-primary-hover` | `#10231A` |
+| color | `--color-primary-hover` | `#1F3D2E` |
 | color | `--color-on-primary` | `#ffffff` |
 | color | `--color-background` | `#F6F2EA` |
 | color | `--color-surface` | `#FFFFFF` |
@@ -58,6 +58,12 @@ Corporate theme default values shown.
 | color | `--color-chart-heat` | `66, 133, 244` |
 | color | `--color-chart-heat-color` | `#4285f4` |
 | color | `--color-focus-ring` | `0 0 0 3px rgba(66,133,244,.35)` |
+| color | `--color-accent` | `#1a73e8` |
+| color | `--color-accent-hover` | `#1666c1` |
+| color | `--color-accent-soft` | `rgba(26,115,232,.14)` |
+| color | `--color-surface-inverse` | `#1f1f1f` |
+| color | `--color-on-surface-inverse` | `#ffffff` |
+| color | `--color-border-on-dark` | `rgba(255,255,255,.14)` |
 
 ---
 
@@ -78,7 +84,7 @@ Corporate theme default values shown.
 |---|---|---|
 | `--button-bg` | `{color.primary}` | `#17311F` |
 | `--button-text` | `{color.onPrimary}` | `#ffffff` |
-| `--button-hover-bg` | `{color.primaryHover}` | `#10231A` |
+| `--button-hover-bg` | `{color.primaryHover}` | `#1F3D2E` |
 | `--button-disabled-bg` | `{color.surface}` | `#FFFFFF` |
 | `--button-disabled-text` | `{color.textSecondary}` | `#8e8e93` |
 | `--button-radius` | `{radius.md}` | `4px` |

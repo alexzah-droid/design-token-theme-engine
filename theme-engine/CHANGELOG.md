@@ -5,6 +5,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.9.0] — 2026-05-04
+
+### Changed
+- **Corporate theme** — palette updated to ZTZ brand values (designer delivery v5): green primary `#17311F`, gold accent `#B08A3E`, parchment background `#F6F2EA`. Dark mode inverts to gold primary `#B08A3E` on deep green `#0E1A13`
+- **6 new base tokens** added to `tokens/base.json`: `accent`, `accentHover`, `accentSoft` (second brand colour slot), `surfaceInverse`, `onSurfaceInverse` (inverted surface for dark navbars), `borderOnDark` (border colour on dark surfaces)
+- All existing dist/ files regenerated
+
+---
+
 ## [0.8.0] — 2026-05-01
 
 ### Added
