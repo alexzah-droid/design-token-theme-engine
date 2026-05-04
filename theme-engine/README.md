@@ -65,7 +65,7 @@ Bundles are auto-generated — do not edit manually.
 
 | Theme | Description |
 |-------|-------------|
-| `corporate` | ZTZ brand — green/gold palette (+ dark mode) |
+| `corporate` | Business, restrained (+ dark mode) |
 | `apple` | Neutral, HIG-inspired (+ dark mode) |
 | `minimal` | Clean, minimal (light only) |
 
