@@ -131,6 +131,7 @@ function buildTheme(themeName, mode) {
 buildTheme("corporate");
 buildTheme("minimal");
 buildTheme("apple");
+buildTheme("green_");
 
 const darkFiles = fs.readdirSync(THEMES_DIR).filter(f => f.endsWith(".dark.json"));
 darkFiles.forEach(file => buildTheme(file.replace(".dark.json", ""), "dark"));
@@ -176,3 +177,5 @@ buildBundle("corporate", true);
 buildBundle("apple", false);
 buildBundle("apple", true);
 buildBundle("minimal", false);
+buildBundle("green_", false);
+buildBundle("green_", true);

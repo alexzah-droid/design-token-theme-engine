@@ -31,6 +31,12 @@
   --color-focus-ring: 0 0 0 3px rgba(0,122,255,.35);
   --color-glass-bg: rgba(30,30,32,0.82);
   --color-glass-border: rgba(255,255,255,0.12);
+  --color-accent: #1a73e8;
+  --color-accent-hover: #1666c1;
+  --color-accent-soft: rgba(26,115,232,.14);
+  --color-surface-inverse: #1f1f1f;
+  --color-on-surface-inverse: #ffffff;
+  --color-border-on-dark: rgba(255,255,255,.14);
   --spacing-xs: 4px;
   --spacing-sm: 10px;
   --spacing-md: 20px;

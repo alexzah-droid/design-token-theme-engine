@@ -31,7 +31,13 @@
     "chartHeatColor": "#4285f4",
     "focusRing": "0 0 0 3px rgba(26,115,232,.35)",
     "glassBg": "rgba(255,255,255,0.72)",
-    "glassBorder": "rgba(255,255,255,0.30)"
+    "glassBorder": "rgba(255,255,255,0.30)",
+    "accent": "#1a73e8",
+    "accentHover": "#1666c1",
+    "accentSoft": "rgba(26,115,232,.14)",
+    "surfaceInverse": "#1f1f1f",
+    "onSurfaceInverse": "#ffffff",
+    "borderOnDark": "rgba(255,255,255,.14)"
   },
   "spacing": {
     "xs": "4px",

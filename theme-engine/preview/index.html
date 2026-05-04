@@ -279,6 +279,7 @@
         <a href="#charts">Charts</a>
         <a href="#dev-ux">Dev UX</a>
         <a href="#apple">Apple</a>
+        <a href="#green_">Green</a>
       </nav>
 
       <!-- Controls -->
@@ -288,6 +289,7 @@
           <button data-set-theme="corporate" class="pv-active">Corporate</button>
           <button data-set-theme="minimal">Minimal</button>
           <button data-set-theme="apple">Apple</button>
+          <button data-set-theme="green_">Green</button>
         </div>
 
         <!-- Mode switcher -->
@@ -313,6 +315,8 @@
             <div class="pv-dl-menu-sep"></div>
             <a href="../dist/corporate.dark.bundle.css" download>corporate.dark.bundle.css</a>
             <a href="../dist/apple.dark.bundle.css" download>apple.dark.bundle.css</a>
+            <a href="../dist/green_.bundle.css" download>green_.bundle.css <span class="pv-dl-tag">light+dark</span></a>
+            <a href="../dist/green_.dark.bundle.css" download>green_.dark.bundle.css</a>
           </div>
         </div>
       </div>
@@ -1609,13 +1613,14 @@
 
   <!-- Apple theme anchor for nav -->
   <div id="apple" style="height:0; overflow:hidden"></div>
+  <div id="green_" style="height:0; overflow:hidden"></div>
 
 
   <!-- ══════════════════════════════════════
        JS: Theme & mode switching
   ══════════════════════════════════════ -->
   <script>
-    const themesWithDark = ['corporate', 'apple'];
+    const themesWithDark = ['corporate', 'apple', 'green_'];
     let currentTheme = 'corporate';
     let currentMode = '';
 
