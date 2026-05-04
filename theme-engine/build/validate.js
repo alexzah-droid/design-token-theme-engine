@@ -169,6 +169,55 @@ function checkDarkThemes() {
 }
 
 //
+// 7. Проверка: все var(--xxx) в components.css объявлены в semantic.json
+//
+function checkSemantic() {
+  const semantic = readJson(path.join(TOKENS_DIR, "semantic.json"));
+  const css = read(STYLES_FILE);
+
+  function toKebabCase(str) {
+    return str.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+  }
+
+  function collectVarNames(obj, prefix) {
+    const names = new Set();
+    for (const [key, value] of Object.entries(obj)) {
+      const parts = [...prefix, toKebabCase(key)];
+      if (typeof value === "object" && value !== null) {
+        for (const name of collectVarNames(value, parts)) names.add(name);
+      } else {
+        names.add(`--${parts.join("-")}`);
+      }
+    }
+    return names;
+  }
+
+  const defined = collectVarNames(semantic, []);
+
+  // Collect vars declared locally in components.css (--xxx: value)
+  const localDefined = new Set();
+  const declRe = /(--[\w-]+)\s*:/g;
+  let d;
+  while ((d = declRe.exec(css)) !== null) localDefined.add(d[1]);
+
+  // Only check var(--xxx) without a fallback — vars with fallbacks are intentional
+  // component-level parameters set via inline style (e.g. --s, --d on gantt bars)
+  const used = new Set();
+  const re = /var\(\s*(--[\w-]+)\s*\)/g;
+  let m;
+  while ((m = re.exec(css)) !== null) {
+    if (!localDefined.has(m[1])) used.add(m[1]);
+  }
+
+  const unknown = [...used].filter(v => !defined.has(v));
+  if (unknown.length > 0) {
+    fail(`components.css references undefined semantic tokens:\n  ${unknown.join("\n  ")}`);
+  }
+
+  ok(`Semantic tokens: all ${used.size} var() references are defined in semantic.json`);
+}
+
+//
 // RUN
 //
 
@@ -178,5 +227,6 @@ checkThemes();
 checkDarkThemes();
 checkBuildOutput();
 checkNoBaseVariablesInStyles();
+checkSemantic();
 
 console.log("\n🎉 All checks passed");
