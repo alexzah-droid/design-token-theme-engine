@@ -1,0 +1,40 @@
+{
+  "color": {
+    "background": "#111111",
+    "surface": "#1A1A1A",
+    "surface2": "#222222",
+    "surface3": "#2A2A2A",
+    "border": "rgba(255,255,255,0.09)",
+    "textPrimary": "#FAFAFA",
+    "textSecondary": "#A1A1AA",
+    "textMuted": "#909098",
+    "primary": "#5C5FED",
+    "primaryHover": "#6264F0",
+    "onPrimary": "#FFFFFF",
+    "success": "#22C55E",
+    "onSuccess": "#052E16",
+    "warning": "#F59E0B",
+    "onWarning": "#451A03",
+    "error": "#F87171",
+    "onError": "#1C0A0A",
+    "successSoft": "rgba(34,197,94,.12)",
+    "warnSoft": "rgba(245,158,11,.12)",
+    "errorSoft": "rgba(248,113,113,.12)",
+    "infoSoft": "rgba(99,102,241,.14)",
+    "focusRing": "0 0 0 3px rgba(99,102,241,.30)",
+    "chart1": "#818CF8",
+    "chart2": "#38BDF8",
+    "chart3": "#34D399",
+    "chart4": "#FBBF24",
+    "chart5": "#F87171",
+    "chart6": "#C084FC",
+    "chartHeat": "92,95,237",
+    "chartHeatColor": "#5C5FED",
+    "glassBg": "rgba(26,26,26,0.75)",
+    "glassBorder": "rgba(255,255,255,0.10)"
+  },
+  "shadow": {
+    "sm": "0 1px 3px rgba(0,0,0,.40)",
+    "md": "0 4px 16px rgba(0,0,0,.50)"
+  }
+}

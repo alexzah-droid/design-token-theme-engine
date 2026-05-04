@@ -176,3 +176,4 @@ buildBundle("corporate", true);
 buildBundle("apple", false);
 buildBundle("apple", true);
 buildBundle("minimal", false);
+buildBundle("minimal", true);
