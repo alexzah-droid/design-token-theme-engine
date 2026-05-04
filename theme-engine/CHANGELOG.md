@@ -12,6 +12,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - **6 new base tokens** added to `tokens/base.json`: `accent`, `accentHover`, `accentSoft` (second brand colour slot), `surfaceInverse`, `onSurfaceInverse` (inverted surface for dark navbars), `borderOnDark` (border colour on dark surfaces)
 - All existing dist/ files regenerated
 
+### Added
+- **`checkSemantic()` validator (check 7)** — verifies every `var(--x)` in `components.css` without a fallback is declared in `tokens/semantic.json`; excludes locally-declared custom properties and component-parametric vars (those use fallbacks, e.g. `--s`, `--d` on Gantt bars). Found: 173 references, all valid
+
 ---
 
 ## [0.8.0] — 2026-05-01

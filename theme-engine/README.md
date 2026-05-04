@@ -65,7 +65,7 @@ Bundles are auto-generated — do not edit manually.
 
 | Theme | Description |
 |-------|-------------|
-| `corporate` | Business, restrained (+ dark mode) |
+| `corporate` | ZTZ brand — green/gold palette (+ dark mode) |
 | `apple` | Neutral, HIG-inspired (+ dark mode) |
 | `minimal` | Clean, minimal (light only) |
 
@@ -128,12 +128,12 @@ See `gas-example/` for a working example and `GAS_GUIDE.md` for full instruction
 `npm run validate` checks 7 invariants — all must pass:
 
 1. No hardcoded HEX/rgb/rgba/hsl in `styles/components.css`
-2. No base tokens used directly in components (only semantic tokens)
-3. Semantic tokens reference only existing base token groups
-4. Theme files override only base tokens
-5. Dark themes add no new token names
-6. Build output contains required CSS variables
-7. Component styles use only semantic CSS variables
+2. All `{references}` in `semantic.json` point to existing base tokens
+3. Theme files contain only base-token overrides (`color`, `spacing`, `radius`, `typography`, `shadow`)
+4. Dark themes introduce no new token names
+5. Build output (`dist/`) contains required CSS variables
+6. No base token variables used directly in `components.css` (only semantic vars)
+7. Every `var(--x)` in `components.css` is declared in `semantic.json`
 
 ## WCAG AA Checker
 
