@@ -1,25 +1,64 @@
 {
   "color": {
-    "primary": "#000000",
-    "primaryHover": "#333333",
-    "surface": "#f8f8f8",
-    "border": "#d9d9d9",
-    "focusRing": "0 0 0 3px rgba(0,0,0,.25)",
-    "chart1": "#1a1a1a",
-    "chart2": "#404040",
-    "chart3": "#666666",
-    "chart4": "#8c8c8c",
-    "chart5": "#b3b3b3",
-    "chart6": "#d9d9d9",
-    "chartHeat": "0, 0, 0",
-    "chartHeatColor": "#000000"
+    "primary": "#4F46E5",
+    "primaryHover": "#4338CA",
+    "onPrimary": "#FFFFFF",
+    "background": "#FAFAFA",
+    "surface": "#FFFFFF",
+    "surface2": "#F4F4F5",
+    "surface3": "#E4E4E7",
+    "border": "#E4E4E7",
+    "textPrimary": "#18181B",
+    "textSecondary": "#71717A",
+    "textMuted": "#737382",
+    "success": "#16A34A",
+    "onSuccess": "#052E16",
+    "warning": "#D97706",
+    "onWarning": "#451A03",
+    "error": "#DC2626",
+    "onError": "#FFFFFF",
+    "successSoft": "rgba(22,163,74,.10)",
+    "warnSoft": "rgba(217,119,6,.10)",
+    "errorSoft": "rgba(220,38,38,.10)",
+    "infoSoft": "rgba(79,70,229,.10)",
+    "focusRing": "0 0 0 3px rgba(79,70,229,.25)",
+    "chart1": "#4F46E5",
+    "chart2": "#0EA5E9",
+    "chart3": "#10B981",
+    "chart4": "#F59E0B",
+    "chart5": "#EF4444",
+    "chart6": "#8B5CF6",
+    "chartHeat": "79,70,229",
+    "chartHeatColor": "#4F46E5",
+    "glassBg": "rgba(255,255,255,0.75)",
+    "glassBorder": "rgba(0,0,0,0.08)"
   },
   "radius": {
-    "sm": "0px",
-    "md": "2px",
-    "lg": "4px"
+    "sm": "4px",
+    "md": "6px",
+    "lg": "10px"
+  },
+  "shadow": {
+    "sm": "0 1px 2px rgba(0,0,0,.05), 0 1px 3px rgba(0,0,0,.04)",
+    "md": "0 4px 12px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.04)"
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "28px"
   },
   "typography": {
-    "fontFamily": "system-ui, -apple-system, sans-serif"
+    "fontFamily": "\"Inter\", \"SF Pro Text\", system-ui, sans-serif",
+    "headingLetterSpacing": "-0.2px",
+    "headingFontWeight": "600",
+    "buttonFontWeight": "500"
+  },
+  "motion": {
+    "easeOut": "cubic-bezier(0.16,1,0.3,1)",
+    "easeInOut": "cubic-bezier(0.65,0,0.35,1)",
+    "dur1": "100ms",
+    "dur2": "160ms",
+    "dur3": "240ms"
   }
 }
