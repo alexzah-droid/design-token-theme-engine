@@ -4,15 +4,15 @@
     "surface": "#1c1c1e",
     "surface2": "#2c2c2e",
     "surface3": "#3a3a3c",
-    "border": "#38383a",
-    "textPrimary": "#ffffff",
-    "textSecondary": "#98989D",
-    "textMuted": "#898990",
-    "glassBg": "rgba(30,30,32,0.82)",
-    "glassBorder": "rgba(255,255,255,0.12)"
+    "border": "rgba(255,255,255,0.12)",
+    "textPrimary": "#F5F5F7",
+    "textSecondary": "#AEAEB2",
+    "textMuted": "#8E8E93",
+    "glassBg": "rgba(28,28,30,0.72)",
+    "glassBorder": "rgba(255,255,255,0.14)"
   },
   "shadow": {
-    "sm": "0 2px 8px rgba(0,0,0,.5)",
-    "md": "0 8px 24px rgba(0,0,0,.6)"
+    "sm": "0 2px 8px rgba(0,0,0,.55)",
+    "md": "0 8px 24px rgba(0,0,0,.65)"
   }
 }

@@ -82,7 +82,7 @@ function checkTokenReferences() {
 //
 function checkThemes() {
   const files = fs.readdirSync(THEMES_DIR).filter(f => !f.startsWith(".") && f.endsWith(".json"));
-  const allowedKeys = ["color", "spacing", "radius", "typography", "shadow"];
+  const allowedKeys = ["color", "spacing", "radius", "typography", "shadow", "motion"];
 
   files.forEach(file => {
     const theme = readJson(path.join(THEMES_DIR, file));
@@ -132,7 +132,7 @@ function checkNoBaseVariablesInStyles() {
 
 function checkDarkThemes() {
   const base = readJson(path.join(TOKENS_DIR, "base.json"));
-  const allowedKeys = ["color", "spacing", "radius", "typography", "shadow"];
+  const allowedKeys = ["color", "spacing", "radius", "typography", "shadow", "motion"];
   const files = fs.readdirSync(THEMES_DIR).filter(f => !f.startsWith(".") && f.endsWith(".dark.json"));
 
   if (files.length === 0) {

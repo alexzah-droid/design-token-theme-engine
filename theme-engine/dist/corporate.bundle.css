@@ -19,12 +19,12 @@
   --color-text-muted: rgba(27,28,25,.40);
   --color-success: #2E6B3E;
   --color-on-success: #EFE9D9;
-  --color-warning: #9E7A1C;
+  --color-warning: #A8841E;
   --color-on-warning: #1B1C19;
   --color-error: #8C2E2E;
   --color-on-error: #EFE9D9;
   --color-success-soft: rgba(46,107,62,.12);
-  --color-warn-soft: rgba(158,122,28,.14);
+  --color-warn-soft: rgba(168,132,30,.14);
   --color-error-soft: rgba(140,46,46,.12);
   --color-info-soft: rgba(43,79,116,.12);
   --color-chart1: #1F3D2E;
@@ -127,7 +127,7 @@
   --badge-font-weight: 500;
   --badge-success-bg: #2E6B3E;
   --badge-success-text: #EFE9D9;
-  --badge-warning-bg: #9E7A1C;
+  --badge-warning-bg: #A8841E;
   --badge-warning-text: #1B1C19;
   --badge-error-bg: #8C2E2E;
   --badge-error-text: #EFE9D9;
@@ -161,7 +161,7 @@
   --alert-padding-x: 16px;
   --alert-success-bg: #2E6B3E;
   --alert-success-text: #EFE9D9;
-  --alert-warning-bg: #9E7A1C;
+  --alert-warning-bg: #A8841E;
   --alert-warning-text: #1B1C19;
   --alert-error-bg: #8C2E2E;
   --alert-error-text: #EFE9D9;
@@ -178,7 +178,7 @@
   --pagination-active-text: #EFE9D9;
   --pagination-active-border: #17311F;
   --status-success-soft: rgba(46,107,62,.12);
-  --status-warn-soft: rgba(158,122,28,.14);
+  --status-warn-soft: rgba(168,132,30,.14);
   --status-error-soft: rgba(140,46,46,.12);
   --status-info-soft: rgba(43,79,116,.12);
   --chart-color1: #1F3D2E;

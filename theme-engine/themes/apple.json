@@ -1,11 +1,11 @@
 {
   "color": {
-    "primary": "#0070f0",
-    "primaryHover": "#006ee8",
+    "primary": "#0066CC",
+    "primaryHover": "#0054A8",
     "background": "#F2F2F7",
     "surface": "#ffffff",
     "surface2": "#E5E5EA",
-    "surface3": "#dddde0",
+    "surface3": "#C7C7CC",
     "border": "#C6C6CB",
     "textPrimary": "#1c1c1e",
     "textSecondary": "#6D6D72",
@@ -23,12 +23,12 @@
     "chart6": "#5ac8fa",
     "chartHeat": "0, 122, 255",
     "chartHeatColor": "#007aff",
-    "focusRing": "0 0 0 3px rgba(0,122,255,.35)"
+    "focusRing": "0 0 0 4px rgba(0,122,255,.20)"
   },
   "radius": {
-    "sm": "6px",
-    "md": "10px",
-    "lg": "16px"
+    "sm": "8px",
+    "md": "12px",
+    "lg": "18px"
   },
   "spacing": {
     "sm": "10px",
@@ -36,12 +36,18 @@
     "lg": "32px"
   },
   "shadow": {
-    "sm": "0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.06)",
-    "md": "0 4px 12px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06)"
+    "sm": "0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04)",
+    "md": "0 4px 16px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06)"
   },
   "typography": {
     "fontFamily": "-apple-system, BlinkMacSystemFont, sans-serif",
-    "headingLetterSpacing": "-0.3px",
+    "headingLetterSpacing": "-0.4px",
     "buttonFontWeight": "500"
+  },
+  "motion": {
+    "easeOut": "cubic-bezier(0.25,0.46,0.45,0.94)",
+    "easeInOut": "cubic-bezier(0.45,0,0.55,1)",
+    "dur2": "250ms",
+    "dur3": "320ms"
   }
 }
