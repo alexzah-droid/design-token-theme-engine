@@ -5,6 +5,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.9.1] — 2026-05-07
+
+### Added
+- **`minimal.dark` theme** — dark mode for minimal: neutral surfaces `#111111–#2A2A2A`, indigo primary `#5C5FED` (4.86:1 with white), status pairs with WCAG-correct dark text on bright backgrounds, `primaryHover #6264F0` (4.57:1); `minimal.dark.css` + `minimal.dark.bundle.css` generated
+- **Apple HIG 2024 token improvements** — `apple.json`: primary `#0066CC` (5.56:1, WCAG-safe), radius sm/md/lg = 8/12/18px, easeOut `cubic-bezier(0.25,0.46,0.45,0.94)`, headingLetterSpacing `−0.4px`; `apple.dark.json`: textPrimary `#F5F5F7`, textSecondary `#AEAEB2`, textMuted `#8E8E93`, elevated shadows
+- **`motion` overrides in themes** — validator `allowedKeys` extended with `"motion"`; apple.json now correctly overrides `motion.*` tokens
+
+### Changed
+- **`minimal.json` WCAG fixes** — textMuted `#A1A1AA` → `#717182` (4.58:1 on page-bg); onSuccess → `#052E16`, onWarning → `#451A03` (dark text on status backgrounds)
+- **Preview** — minimal added to `themesWithDark`; download dropdown updated to light+dark; dark mode guard for minimal removed from GAS guide JS examples
+- All docs updated: README, USAGE (RU/EN), CHANGELOG, GAS_GUIDE (RU/EN) — minimal described as `+ dark mode`
+
+---
+
 ## [0.9.0] — 2026-05-04
 
 ### Changed

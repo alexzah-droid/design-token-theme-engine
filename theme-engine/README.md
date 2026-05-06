@@ -131,7 +131,7 @@ See `gas-example/` for a working example and `GAS_GUIDE.md` for full instruction
 
 1. No hardcoded HEX/rgb/rgba/hsl in `styles/components.css`
 2. All `{references}` in `semantic.json` point to existing base tokens
-3. Theme files contain only base-token overrides (`color`, `spacing`, `radius`, `typography`, `shadow`)
+3. Theme files contain only base-token overrides (`color`, `spacing`, `radius`, `typography`, `shadow`, `motion`)
 4. Dark themes introduce no new token names
 5. Build output (`dist/`) contains required CSS variables
 6. No base token variables used directly in `components.css` (only semantic vars)
